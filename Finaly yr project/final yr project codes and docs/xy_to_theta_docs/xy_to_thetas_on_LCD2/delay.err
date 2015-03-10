@@ -1,0 +1,3 @@
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\xy_to_theta_docs\xy_to_thetas_on_LCD2\delay.c 12 : static function 'LCDReset' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\xy_to_theta_docs\xy_to_thetas_on_LCD2\delay.c 12 : static function 'LCDWriteByte' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\xy_to_theta_docs\xy_to_thetas_on_LCD2\delay.c 12 : static function 'LCDEnable' not defined

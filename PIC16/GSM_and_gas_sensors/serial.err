@@ -1,0 +1,4 @@
+Warning[2064] C:\Users\hardik - admin\Desktop\GSMtry\serial.c 37 : static function 'LCDReset' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\GSMtry\serial.c 37 : static function 'LCDWriteByte' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\GSMtry\serial.c 37 : static function 'LCDEnable' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\GSMtry\serial.c 37 : static function 'MainSystemInitialize' not defined

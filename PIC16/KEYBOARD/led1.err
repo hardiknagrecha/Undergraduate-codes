@@ -1,0 +1,3 @@
+Warning[2064] C:\Users\X4ROY\Desktop\codes\KEYBOARD\led1.c 41 : static function 'LCDReset' not defined
+Warning[2064] C:\Users\X4ROY\Desktop\codes\KEYBOARD\led1.c 41 : static function 'LCDWriteByte' not defined
+Warning[2064] C:\Users\X4ROY\Desktop\codes\KEYBOARD\led1.c 41 : static function 'LCDEnable' not defined

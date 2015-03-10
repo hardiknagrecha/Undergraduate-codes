@@ -1,0 +1,12 @@
+___ftpack: CODE, 3489 0 123
+_main: CODE, 1578 0 470
+___lwtoft: CODE, 3279 0 27
+_ADCInitialize: CODE, 1030 0 18
+___ftadd: CODE, 1248 0 330
+_ADCReadData: CODE, 3848 0 248
+_Delay: CODE, 3306 0 31
+___ftmul: CODE, 3612 0 236
+___wmul: CODE, 3337 0 44
+___ftge: CODE, 3381 0 108
+___ftdiv: CODE, 1048 0 200
+Total: 1835

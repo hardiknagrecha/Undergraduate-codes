@@ -1,0 +1,3079 @@
+
+
+HI-TECH Software PICC Macro Assembler V9.65PL1 build 4898 
+                                                      Sat Jul 14 11:27:48 2012
+
+HI-TECH Software Omniscient Code Generator build 4898
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code 
+                                 Generator build 4898"
+     2                           
+     3                           	processor	16F877A
+     4                           clrc	macro
+     5                           	bcf	status,0
+     6  0000                     	endm
+     7                           clrz	macro
+     8                           	bcf	status,2
+     9  0000                     	endm
+    10                           setc	macro
+    11                           	bsf	status,0
+    12  0000                     	endm
+    13                           setz	macro
+    14                           	bsf	status,2
+    15  0000                     	endm
+    16                           skipc	macro
+    17                           	btfss	status,0
+    18  0000                     	endm
+    19                           skipz	macro
+    20                           	btfss	status,2
+    21  0000                     	endm
+    22                           skipnc	macro
+    23                           	btfsc	status,0
+    24  0000                     	endm
+    25                           skipnz	macro
+    26                           	btfsc	status,2
+    27  0000                     	endm
+    28  0000                     indf	equ	0
+    29  0000                     indf0	equ	0
+    30  0000                     pc	equ	2
+    31  0000                     pcl	equ	2
+    32  0000                     status	equ	3
+    33  0000                     fsr	equ	4
+    34  0000                     fsr0	equ	4
+    35  0000                     c	equ	1
+    36  0000                     z	equ	0
+    37  0000                     pclath	equ	10
+    38                           # 14 "C:\Users\hardik\Desktop\projects\pwm base
+                                 d speed control of DC motor\main.h"
+    39                           	psect config,class=CONFIG,delta=2 ;#
+    40                           # 14 "C:\Users\hardik\Desktop\projects\pwm base
+                                 d speed control of DC motor\main.h"
+    41  2007  2F0A               	dw 0x2F0A ;#
+    42                           	FNCALL _LCDWriteString,stringtab
+    43                           	FNCALL _LCDWriteString,stringtab
+    44                           	FNCALL _LCDWriteString,stringtab
+    45                           	FNCALL _LCDWriteString,stringtab
+    46                           	FNCALL _LCDWriteString,stringtab
+    47                           	FNCALL _LCDWriteString,stringtab
+    48                           global __tempreg
+    49  0000                     __tempreg	set	32
+    50                           global __Lcommon, __Hcommon
+    51  0000                     __Lcommon set 0x7A
+    52  0000                     __Hcommon set 0x7E
+    53                           global __Lrdata_0, __Hrdata_0
+    54  0000                     __Lrdata_0	equ	0x70
+    55  0000                     __Hrdata_0	equ	0x7A
+    56                           global __Lramdata, __Lrdata_0, __Hramdata, __Hr
+                                 data_0
+    57  0000                     __Lramdata	set	__Lrdata_0
+    58  0000                     __Hramdata	set	__Hrdata_0
+    59                           	GLOBAL	__databank
+    60  0000                     __databank	EQU	-1
+    61                           	FNCALL _LCDWriteString,stringtab
+    62                           	FNCALL _LCDWriteString,stringtab
+    63                           	FNCALL _LCDWriteString,stringtab
+    64                           	FNCALL _LCDWriteString,stringtab
+    65                           	FNCALL _LCDWriteString,stringtab
+    66                           	FNCALL _LCDWriteString,stringtab
+    67                           	FNCALL _LCDWriteString,stringtab
+    68                           	FNCALL _LCDWriteString,stringtab
+    69  0000                     _LCDDisplayInitializing_i	equ	??_LCDDisplayInit
+                                 ializing+0
+    70                           	global	_LCDDisplayInitializing_i
+    71  0000                     _LCDWriteString_lcd_string	equ	??_LCDWriteStrin
+                                 g+0
+    72                           	global	_LCDWriteString_lcd_string
+    73  0000                     _LCDWriteData_LCDData	equ	??_LCDWriteData+0
+    74                           	global	_LCDWriteData_LCDData
+    75  0000                     _LCDWriteCommand_LCDData	equ	??_LCDWriteCommand
+                                 +0
+    76                           	global	_LCDWriteCommand_LCDData
+    77  0000                     _LCDWriteByte_LCDData	equ	??_LCDWriteByte+0
+    78                           	global	_LCDWriteByte_LCDData
+    79  0000                     _Delay_pause	equ	??_Delay+0
+    80                           	global	_Delay_pause
+    81  0000                     _Delay_time	equ	?_Delay+0
+    82                           	global	_Delay_time
+    83  0000                     ___lwmod_counter	equ	??___lwmod+0
+    84                           	global	___lwmod_counter
+    85  0000                     ___lwmod_dividend	equ	?___lwmod+0
+    86                           	global	___lwmod_dividend
+    87  0000                     ___lwmod_divisor	equ	?___lwmod+2
+    88                           	global	___lwmod_divisor
+    89                           ;Data sizes: Strings 20, constant 0, data 10, b
+                                 ss 0, persistent 0 stack 24
+    90                           	global	_main
+    91                           	global	??_main
+    92                           	global	?_main
+    93                           
+    94                           ; *************** function _main **************
+                                 *
+    95                           ; Defined at:
+    96                           ;		line 39 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\main.
+                                 c"
+    97                           ; Parameters:
+    98                           ;		None
+    99                           ; Auto variables:
+   100                           ;		Count       	       	type: unsigned char 
+   101                           ; Return value:
+   102                           ;		type: void 
+   103                           ;		size: 0
+   104                           ; Registers used:
+   105                           ;		wreg, status,2, status,0, pclath, cstack
+   106                           ; Tracked objects:
+   107                           ;		On entry : BFF/0
+   108                           ;		On exit  : 0/0
+   109                           ;		Unchanged: 0/0
+   110                           ; Data sizes:
+   111                           ;		Autos:    0
+   112                           ;		Params:   0
+   113                           ;		Temp:     0
+   114                           ;		Total:    0
+   115                           ; This function calls:
+   116                           ;		_MainSystemInitialize
+   117                           ;		_LCDDisplayInitializing
+   118                           ; This function is called by:
+   119                           ;		Startup code after reset
+   120                           ; This function uses a non-reentrant model
+   121                           ; 
+   122                           	psect	maintext,class=CODE,delta=2
+   123                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\main.c"
+   124                           	line	39
+   125                           	psect	maintext
+   126                           ;main.c: 38: void main(void)
+   127                           ;main.c: 39: {
+   128                           	
+   129  003C                     _main:	
+   130                           	opt stack 5
+   131                           ; Regs used in _main: [wreg+status,2+status,0+p
+                                 clath+cstack]
+   132                           	line	41
+   133                           ;main.c: 40: unsigned char Count;
+   134                           ;main.c: 41: MainSystemInitialize();
+   135  003C  120A  118A  22ED   	fcall	_MainSystemInitialize
+              120A  118A         
+   136                           	line	42
+   137                           ;main.c: 42: LCDDisplayInitializing();
+   138  0041  120A  118A  21ED   	fcall	_LCDDisplayInitializing
+              120A  118A         
+   139                           	line	47
+   140                           ;main.c: 47: TRISB=0;
+   141  0046  1003               	clrc
+   142  0047  1683               	bsf	status, 5	;RP0=1, select bank1
+   143  0048  1303               	bcf	status, 6	;RP1=0, select bank1
+   144                           	
+   145  0049  3000               	movlw	0
+   146  004A  1803               	btfsc	status,0
+   147  004B  3001               	movlw	1
+   148  004C  0086               	movwf	(134)^080h	;volatile
+   149                           	line	48
+   150                           ;main.c: 48: PORTB=0;
+   151  004D  1003               	clrc
+   152  004E  1283               	bcf	status, 5	;RP0=0, select bank0
+   153  004F  1303               	bcf	status, 6	;RP1=0, select bank0
+   154                           	
+   155  0050  3000               	movlw	0
+   156  0051  1803               	btfsc	status,0
+   157  0052  3001               	movlw	1
+   158  0053  0086               	movwf	(6)	;volatile
+   159                           	line	50
+   160                           ;main.c: 50: T0CS=0;
+   161  0054  1683               	bsf	status, 5	;RP0=1, select bank1
+   162  0055  1303               	bcf	status, 6	;RP1=0, select bank1
+   163  0056  1281               	bcf	(1037/8)^080h,(1037)&7
+   164                           	line	51
+   165                           ;main.c: 51: T0SE=0;
+   166  0057  1201               	bcf	(1036/8)^080h,(1036)&7
+   167                           	line	52
+   168                           ;main.c: 52: PSA=0;
+   169  0058  1181               	bcf	(1035/8)^080h,(1035)&7
+   170                           	line	53
+   171                           ;main.c: 53: PS2=PS1=PS0=0;
+   172  0059  1001               	bcf	(1032/8)^080h,(1032)&7
+   173  005A  1081               	bcf	(1033/8)^080h,(1033)&7
+   174  005B  1101               	bcf	(1034/8)^080h,(1034)&7
+   175                           	line	54
+   176                           ;main.c: 54: GIE=1;
+   177  005C  1283               	bcf	status, 5	;RP0=0, select bank0
+   178  005D  1303               	bcf	status, 6	;RP1=0, select bank0
+   179  005E  178B               	bsf	(95/8),(95)&7
+   180                           	line	55
+   181                           ;main.c: 55: TMR0=0x01;
+   182  005F  3001               	movlw	(01h)
+   183                           	
+   184  0060  0081               	movwf	(1)	;volatile
+   185                           	line	56
+   186                           ;main.c: 56: TMR0IF=0;
+   187  0061  110B               	bcf	(90/8),(90)&7
+   188                           	line	57
+   189                           ;main.c: 57: TMR0IE=1;
+   190  0062  168B               	bsf	(93/8),(93)&7
+   191                           	line	59
+   192                           ;main.c: 59: while(1);
+   193                           	
+   194  0063                     l57:	
+   195                           	
+   196  0063                     l56:	
+   197  0063  2863               	goto	l56
+   198                           	global	start
+   199  0064  120A  118A  2812   	ljmp	start
+   200                           ; =============== function _main ends =========
+                                 ======
+   201                           
+   202                           GLOBAL __end_of_main
+   203  0067                     	__end_of_main:
+   204                           	FNSIZE	_main,0,0
+   205                           	psect	maintext
+   206                           	line	61
+   207                           	signat	_main,88
+   208                           	global	_LCDDisplayInitializing
+   209                           	global	??_LCDDisplayInitializing
+   210                           	global	?_LCDDisplayInitializing
+   211                           
+   212                           ; *************** function _LCDDisplayInitializ
+                                 ing ***************
+   213                           ; Defined at:
+   214                           ;		line 53 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   215                           ; Parameters:
+   216                           ;		None
+   217                           ; Auto variables:
+   218                           ;		i           	       	type: unsigned char 
+   219                           ; Return value:
+   220                           ;		type: void 
+   221                           ;		size: 0
+   222                           ; Registers used:
+   223                           ;		wreg, status,2, status,0, pclath, cstack
+   224                           ; Tracked objects:
+   225                           ;		On entry : 0/0
+   226                           ;		On exit  : 0/0
+   227                           ;		Unchanged: 0/0
+   228                           ; Data sizes:
+   229                           ;		Autos:    1
+   230                           ;		Params:   0
+   231                           ;		Temp:     1
+   232                           ;		Total:    2
+   233                           ; This function calls:
+   234                           ;		_LCDWriteString
+   235                           ;		_LCDWriteCommand
+   236                           ;		_LCDWriteData
+   237                           ;		_Delay
+   238                           ; This function is called by:
+   239                           ;		_main
+   240                           ; This function uses a non-reentrant model
+   241                           ; 
+   242                           	psect	text104,local,class=CODE,delta=2
+   243                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   244                           	line	53
+   245                           ;LCD.c: 52: void LCDDisplayInitializing(void)
+   246                           ;LCD.c: 53: {
+   247                           	
+   248  01ED                     _LCDDisplayInitializing:	
+   249                           	opt stack 4
+   250                           ; Regs used in _LCDDisplayInitializing: [wreg+s
+                                 tatus,2+status,0+pclath+cstack]
+   251                           	line	56
+   252                           ;LCD.c: 55: LCDubyte i;
+   253                           ;LCD.c: 56: LCDWriteString("INITIALIZING....");
+   254  01ED  3001               	movlw	((STR_1-__stringbase))&0ffh
+   255  01EE  120A  118A  227C   	fcall	_LCDWriteString
+              120A  118A         
+   256                           	line	57
+   257                           ;LCD.c: 57: LCDWriteCommand(0xC0);
+   258  01F3  30C0               	movlw	(0C0h)
+   259  01F4  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   260                           	line	58
+   261                           ;LCD.c: 58: for(i = 0 ; i < 16; i++)
+   262  01F9  1003               	clrc
+   263  01FA  1283               	bcf	status, 5	;RP0=0, select bank0
+   264  01FB  1303               	bcf	status, 6	;RP1=0, select bank0
+   265                           	
+   266  01FC  3000               	movlw	0
+   267  01FD  1803               	btfsc	status,0
+   268  01FE  3001               	movlw	1
+   269  01FF  00A0               	movwf	(_LCDDisplayInitializing_i)
+   270  0200  2A01               	goto	l18
+   271                           	line	59
+   272                           	
+   273  0201                     l18:	
+   274                           	line	60
+   275                           ;LCD.c: 59: {
+   276                           ;LCD.c: 60: LCDWriteData(46);
+   277  0201  302E               	movlw	(02Eh)
+   278  0202  120A  118A  22E4   	fcall	_LCDWriteData
+              120A  118A         
+   279                           	line	61
+   280                           ;LCD.c: 61: Delay(100);
+   281  0207  3064               	movlw	low(064h)
+   282  0208  1283               	bcf	status, 5	;RP0=0, select bank0
+   283  0209  1303               	bcf	status, 6	;RP1=0, select bank0
+   284                           	
+   285  020A  00A7               	movwf	(?_Delay)
+   286  020B  3000               	movlw	high(064h)
+   287  020C  00A8               	movwf	((?_Delay))+1
+   288  020D  120A  118A  229F   	fcall	_Delay
+              120A  118A         
+   289                           	line	58
+   290  0212  3001               	movlw	(01h)
+   291  0213  1283               	bcf	status, 5	;RP0=0, select bank0
+   292  0214  1303               	bcf	status, 6	;RP1=0, select bank0
+   293  0215  00A1               	movwf	(??_LCDDisplayInitializing+1+0)
+   294                           	
+   295  0216  0821               	movf	(??_LCDDisplayInitializing+1+0),w
+   296  0217  07A0               	addwf	(_LCDDisplayInitializing_i),f
+   297  0218  3010               	movlw	(010h)
+   298                           	
+   299  0219  0220               	subwf	(_LCDDisplayInitializing_i),w
+   300  021A  1C03               	skipc
+   301  021B  2A1D               	goto	u1651
+   302  021C  2A1E               	goto	u1650
+   303  021D                     u1651:
+   304  021D  2A01               	goto	l18
+   305  021E                     u1650:
+   306                           	
+   307  021E                     l19:	
+   308                           	line	63
+   309                           ;LCD.c: 62: }
+   310                           ;LCD.c: 63: LCDWriteCommand(0x01);
+   311  021E  3001               	movlw	(01h)
+   312  021F  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   313                           	line	64
+   314                           ;LCD.c: 64: }
+   315  0224                     l17:	
+   316  0224  0008               	return
+   317                           ; =============== function _LCDDisplayInitializ
+                                 ing ends ===============
+   318                           
+   319                           GLOBAL __end_of_LCDDisplayInitializing
+   320  0225                     	__end_of_LCDDisplayInitializing:
+   321                           	FNSIZE	_LCDDisplayInitializing,2,0
+   322                           	signat	_LCDDisplayInitializing,88
+   323                           	global	_MainSystemInitialize
+   324                           	global	??_MainSystemInitialize
+   325                           	global	?_MainSystemInitialize
+   326                           
+   327                           ; *************** function _MainSystemInitializ
+                                 e ***************
+   328                           ; Defined at:
+   329                           ;		line 64 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\main.
+                                 c"
+   330                           ; Parameters:
+   331                           ;		None
+   332                           ; Auto variables:
+   333                           ;		None
+   334                           ; Return value:
+   335                           ;		type: void 
+   336                           ;		size: 0
+   337                           ; Registers used:
+   338                           ;		wreg, status,2, status,0, pclath, cstack
+   339                           ; Tracked objects:
+   340                           ;		On entry : BFF/0
+   341                           ;		On exit  : 0/0
+   342                           ;		Unchanged: 0/0
+   343                           ; Data sizes:
+   344                           ;		Autos:    0
+   345                           ;		Params:   0
+   346                           ;		Temp:     0
+   347                           ;		Total:    0
+   348                           ; This function calls:
+   349                           ;		_LCDInitialize
+   350                           ; This function is called by:
+   351                           ;		_main
+   352                           ; This function uses a non-reentrant model
+   353                           ; 
+   354                           	psect	text105,local,class=CODE,delta=2
+   355                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\main.c"
+   356                           	line	64
+   357                           ;main.c: 63: static void MainSystemInitialize(v
+                                 oid)
+   358                           ;main.c: 64: {
+   359                           	
+   360  02ED                     _MainSystemInitialize:	
+   361                           	opt stack 4
+   362                           ; Regs used in _MainSystemInitialize: [wreg+sta
+                                 tus,2+status,0+pclath+cstack]
+   363                           	line	65
+   364                           ;main.c: 65: LCDInitialize();
+   365  02ED  120A  118A  2251   	fcall	_LCDInitialize
+              120A  118A         
+   366                           	line	66
+   367                           ;main.c: 66: }
+   368  02F2                     l59:	
+   369  02F2  0008               	return
+   370                           ; =============== function _MainSystemInitializ
+                                 e ends ===============
+   371                           
+   372                           GLOBAL __end_of_MainSystemInitialize
+   373  02F3                     	__end_of_MainSystemInitialize:
+   374                           	FNSIZE	_MainSystemInitialize,0,0
+   375                           	signat	_MainSystemInitialize,88
+   376                           	global	_LCDWriteString
+   377                           	global	??_LCDWriteString
+   378                           	global	?_LCDWriteString
+   379                           
+   380                           ; *************** function _LCDWriteString ****
+                                 ***********
+   381                           ; Defined at:
+   382                           ;		line 25 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   383                           ; Parameters:
+   384                           ;		lcd_string  	reg:   wr	type: PTR const unsig
+                                 ned char ; Largest target is 17
+   385                           ;		 -> STR_3(2), STR_2(3), STR_1(17), 
+   386                           ; Auto variables:
+   387                           ;		lcd_string  	       	type: PTR const unsigne
+                                 d char ; Largest target is 17
+   388                           ;		 -> STR_3(2), STR_2(3), STR_1(17), 
+   389                           ; Return value:
+   390                           ;		type: void 
+   391                           ;		size: 0
+   392                           ; Registers used:
+   393                           ;		wreg, status,2, status,0, pclath, cstack
+   394                           ; Tracked objects:
+   395                           ;		On entry : 0/0
+   396                           ;		On exit  : 0/0
+   397                           ;		Unchanged: 0/0
+   398                           ; Data sizes:
+   399                           ;		Autos:    1
+   400                           ;		Params:   0
+   401                           ;		Temp:     1
+   402                           ;		Total:    2
+   403                           ; This function calls:
+   404                           ;		_LCDWriteData
+   405                           ; This function is called by:
+   406                           ;		_LCDDisplayInitializing
+   407                           ; This function uses a non-reentrant model
+   408                           ; 
+   409                           	psect	text106,local,class=CODE,delta=2
+   410                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   411                           	line	25
+   412                           ;LCD.c: 24: void LCDWriteString(const char *lcd
+                                 _string)
+   413                           ;LCD.c: 25: {
+   414                           	
+   415  027C                     _LCDWriteString:	
+   416                           	opt stack 3
+   417                           ; Regs used in _LCDWriteString: [wreg+status,2+
+                                 status,0+pclath+cstack]
+   418                           ;_LCDWriteString_lcd_string stored from wreg
+   419  027C  1283               	bcf	status, 5	;RP0=0, select bank0
+   420  027D  1303               	bcf	status, 6	;RP1=0, select bank0
+   421                           	
+   422  027E  00A2               	movwf	(_LCDWriteString_lcd_string)
+   423                           	line	26
+   424                           ;LCD.c: 26: while(*lcd_string)
+   425  027F  2A91               	goto	l12
+   426                           	
+   427  0280                     l13:	
+   428                           	line	28
+   429                           ;LCD.c: 27: {
+   430                           ;LCD.c: 28: LCDWriteData(*lcd_string++);
+   431                           	
+   432  0280  0822               	movf	(_LCDWriteString_lcd_string),w
+   433                           	FNCALL _LCDWriteString,stringtab
+   434  0281  120A  118A  2109   	fcall	stringdir
+              120A  118A         
+   435  0286  120A  118A  22E4   	fcall	_LCDWriteData
+              120A  118A         
+   436  028B  3001               	movlw	(01h)
+   437  028C  1283               	bcf	status, 5	;RP0=0, select bank0
+   438  028D  1303               	bcf	status, 6	;RP1=0, select bank0
+   439  028E  00A3               	movwf	(??_LCDWriteString+1+0)
+   440                           	
+   441  028F  0823               	movf	(??_LCDWriteString+1+0),w
+   442  0290  07A2               	addwf	(_LCDWriteString_lcd_string),f
+   443                           	line	29
+   444                           	
+   445  0291                     l12:	
+   446                           	line	26
+   447  0291  1283               	bcf	status, 5	;RP0=0, select bank0
+   448  0292  1303               	bcf	status, 6	;RP1=0, select bank0
+   449                           	
+   450  0293  0822               	movf	(_LCDWriteString_lcd_string),w
+   451                           	FNCALL _LCDWriteString,stringtab
+   452  0294  120A  118A  2109   	fcall	stringdir
+              120A  118A         
+   453  0299  3800               	iorlw	0
+   454  029A  1D03               	skipz
+   455  029B  2A9D               	goto	u1671
+   456  029C  2A9E               	goto	u1670
+   457  029D                     u1671:
+   458  029D  2A80               	goto	l13
+   459  029E                     u1670:
+   460                           	
+   461  029E                     l14:	
+   462                           	line	30
+   463                           ;LCD.c: 29: }
+   464                           ;LCD.c: 30: }
+   465  029E                     l11:	
+   466  029E  0008               	return
+   467                           ; =============== function _LCDWriteString ends
+                                  ===============
+   468                           
+   469                           GLOBAL __end_of_LCDWriteString
+   470  029F                     	__end_of_LCDWriteString:
+   471                           	FNSIZE	_LCDWriteString,2,0
+   472                           	signat	_LCDWriteString,4216
+   473                           	global	_LCDInitialize
+   474                           	global	??_LCDInitialize
+   475                           	global	?_LCDInitialize
+   476                           
+   477                           ; *************** function _LCDInitialize *****
+                                 **********
+   478                           ; Defined at:
+   479                           ;		line 34 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   480                           ; Parameters:
+   481                           ;		None
+   482                           ; Auto variables:
+   483                           ;		None
+   484                           ; Return value:
+   485                           ;		type: void 
+   486                           ;		size: 0
+   487                           ; Registers used:
+   488                           ;		wreg, status,2, status,0, pclath, cstack
+   489                           ; Tracked objects:
+   490                           ;		On entry : BFF/0
+   491                           ;		On exit  : 0/0
+   492                           ;		Unchanged: 0/0
+   493                           ; Data sizes:
+   494                           ;		Autos:    0
+   495                           ;		Params:   0
+   496                           ;		Temp:     1
+   497                           ;		Total:    1
+   498                           ; This function calls:
+   499                           ;		_LCDReset
+   500                           ;		_LCDWriteCommand
+   501                           ; This function is called by:
+   502                           ;		_MainSystemInitialize
+   503                           ; This function uses a non-reentrant model
+   504                           ; 
+   505                           	psect	text107,local,class=CODE,delta=2
+   506                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   507                           	line	34
+   508                           ;LCD.c: 33: void LCDInitialize(void)
+   509                           ;LCD.c: 34: {
+   510                           	
+   511  0251                     _LCDInitialize:	
+   512                           	opt stack 3
+   513                           ; Regs used in _LCDInitialize: [wreg+status,2+s
+                                 tatus,0+pclath+cstack]
+   514                           	line	35
+   515                           ;LCD.c: 35: TRISD = TRISD & 0x03;
+   516  0251  1683               	bsf	status, 5	;RP0=1, select bank1
+   517  0252  1303               	bcf	status, 6	;RP1=0, select bank1
+   518                           	
+   519  0253  0808               	movf	(136)^080h,w	;volatile
+   520  0254  3903               	andlw	03h
+   521                           	
+   522  0255  0088               	movwf	(136)^080h	;volatile
+   523                           	line	36
+   524                           ;LCD.c: 36: RD3 = 0;
+   525  0256  1283               	bcf	status, 5	;RP0=0, select bank0
+   526  0257  1303               	bcf	status, 6	;RP1=0, select bank0
+   527  0258  1188               	bcf	(67/8),(67)&7
+   528                           	line	37
+   529                           ;LCD.c: 37: RD2 = 0;
+   530  0259  1108               	bcf	(66/8),(66)&7
+   531                           	line	38
+   532                           ;LCD.c: 38: PORTD &= 0x0f;
+   533  025A  300F               	movlw	(0Fh)
+   534  025B  00A0               	movwf	(??_LCDInitialize+0+0)
+   535                           	
+   536  025C  0820               	movf	(??_LCDInitialize+0+0),w
+   537  025D  0588               	andwf	(8),f	;volatile
+   538                           	line	39
+   539                           ;LCD.c: 39: LCDReset();
+   540  025E  120A  118A  22B8   	fcall	_LCDReset
+              120A  118A         
+   541                           	line	40
+   542                           ;LCD.c: 40: LCDWriteCommand(0x28);
+   543  0263  3028               	movlw	(028h)
+   544  0264  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   545                           	line	41
+   546                           ;LCD.c: 41: LCDWriteCommand(0x0C);
+   547  0269  300C               	movlw	(0Ch)
+   548  026A  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   549                           	line	42
+   550                           ;LCD.c: 42: LCDWriteCommand(0x06);
+   551  026F  3006               	movlw	(06h)
+   552  0270  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   553                           	line	43
+   554                           ;LCD.c: 43: LCDWriteCommand(0x01);
+   555  0275  3001               	movlw	(01h)
+   556  0276  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   557                           	line	45
+   558                           ;LCD.c: 45: }
+   559  027B                     l15:	
+   560  027B  0008               	return
+   561                           ; =============== function _LCDInitialize ends 
+                                 ===============
+   562                           
+   563                           GLOBAL __end_of_LCDInitialize
+   564  027C                     	__end_of_LCDInitialize:
+   565                           	FNSIZE	_LCDInitialize,1,0
+   566                           	signat	_LCDInitialize,88
+   567                           	global	_LCDWriteData
+   568                           	global	??_LCDWriteData
+   569                           	global	?_LCDWriteData
+   570                           
+   571                           ; *************** function _LCDWriteData ******
+                                 *********
+   572                           ; Defined at:
+   573                           ;		line 18 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   574                           ; Parameters:
+   575                           ;		LCDData     	reg:   wr	type: unsigned char 
+   576                           ; Auto variables:
+   577                           ;		LCDData     	       	type: unsigned char 
+   578                           ; Return value:
+   579                           ;		type: void 
+   580                           ;		size: 0
+   581                           ; Registers used:
+   582                           ;		wreg, status,2, status,0, pclath, cstack
+   583                           ; Tracked objects:
+   584                           ;		On entry : 300/0
+   585                           ;		On exit  : 0/0
+   586                           ;		Unchanged: 0/0
+   587                           ; Data sizes:
+   588                           ;		Autos:    1
+   589                           ;		Params:   0
+   590                           ;		Temp:     0
+   591                           ;		Total:    1
+   592                           ; This function calls:
+   593                           ;		_LCDWriteByte
+   594                           ; This function is called by:
+   595                           ;		_LCDWriteString
+   596                           ;		_LCDDisplayInitializing
+   597                           ;		_LCDWriteInteger
+   598                           ; This function uses a non-reentrant model
+   599                           ; 
+   600                           	psect	text108,local,class=CODE,delta=2
+   601                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   602                           	line	18
+   603                           ;LCD.c: 17: void LCDWriteData(LCDubyte LCDData)
+   604                           ;LCD.c: 18: {
+   605                           	
+   606  02E4                     _LCDWriteData:	
+   607                           	opt stack 2
+   608                           ; Regs used in _LCDWriteData: [wreg+status,2+st
+                                 atus,0+pclath+cstack]
+   609                           ;_LCDWriteData_LCDData stored from wreg
+   610                           	
+   611  02E4  00A4               	movwf	(_LCDWriteData_LCDData)
+   612                           	line	19
+   613                           ;LCD.c: 19: RD2 = 1;
+   614  02E5  1508               	bsf	(66/8),(66)&7
+   615                           	line	20
+   616                           ;LCD.c: 20: LCDWriteByte(LCDData);
+   617                           	
+   618  02E6  0824               	movf	(_LCDWriteData_LCDData),w
+   619  02E7  120A  118A  2225   	fcall	_LCDWriteByte
+              120A  118A         
+   620                           	line	21
+   621                           ;LCD.c: 21: }
+   622  02EC                     l10:	
+   623  02EC  0008               	return
+   624                           ; =============== function _LCDWriteData ends =
+                                 ==============
+   625                           
+   626                           GLOBAL __end_of_LCDWriteData
+   627  02ED                     	__end_of_LCDWriteData:
+   628                           	FNSIZE	_LCDWriteData,1,0
+   629                           	signat	_LCDWriteData,4216
+   630                           	global	_LCDReset
+   631                           	global	??_LCDReset
+   632                           	global	?_LCDReset
+   633                           
+   634                           ; *************** function _LCDReset **********
+                                 *****
+   635                           ; Defined at:
+   636                           ;		line 47 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   637                           ; Parameters:
+   638                           ;		None
+   639                           ; Auto variables:
+   640                           ;		None
+   641                           ; Return value:
+   642                           ;		type: void 
+   643                           ;		size: 0
+   644                           ; Registers used:
+   645                           ;		wreg, status,2, status,0, pclath, cstack
+   646                           ; Tracked objects:
+   647                           ;		On entry : BFF/0
+   648                           ;		On exit  : 0/0
+   649                           ;		Unchanged: 0/0
+   650                           ; Data sizes:
+   651                           ;		Autos:    0
+   652                           ;		Params:   0
+   653                           ;		Temp:     0
+   654                           ;		Total:    0
+   655                           ; This function calls:
+   656                           ;		_LCDWriteCommand
+   657                           ; This function is called by:
+   658                           ;		_LCDInitialize
+   659                           ; This function uses a non-reentrant model
+   660                           ; 
+   661                           	psect	text109,local,class=CODE,delta=2
+   662                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   663                           	line	47
+   664                           ;LCD.c: 46: static void LCDReset(void)
+   665                           ;LCD.c: 47: {
+   666                           	
+   667  02B8                     _LCDReset:	
+   668                           	opt stack 2
+   669                           ; Regs used in _LCDReset: [wreg+status,2+status
+                                 ,0+pclath+cstack]
+   670                           	line	48
+   671                           ;LCD.c: 48: LCDWriteCommand(0x33);
+   672  02B8  3033               	movlw	(033h)
+   673  02B9  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   674                           	line	49
+   675                           ;LCD.c: 49: LCDWriteCommand(0x33);
+   676  02BE  3033               	movlw	(033h)
+   677  02BF  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   678                           	line	50
+   679                           ;LCD.c: 50: LCDWriteCommand(0x32);
+   680  02C4  3032               	movlw	(032h)
+   681  02C5  120A  118A  22D9   	fcall	_LCDWriteCommand
+              120A  118A         
+   682                           	line	51
+   683                           ;LCD.c: 51: }
+   684  02CA                     l16:	
+   685  02CA  0008               	return
+   686                           ; =============== function _LCDReset ends =====
+                                 ==========
+   687                           
+   688                           GLOBAL __end_of_LCDReset
+   689  02CB                     	__end_of_LCDReset:
+   690                           	FNSIZE	_LCDReset,0,0
+   691                           	signat	_LCDReset,88
+   692                           	global	_LCDWriteCommand
+   693                           	global	??_LCDWriteCommand
+   694                           	global	?_LCDWriteCommand
+   695                           
+   696                           ; *************** function _LCDWriteCommand ***
+                                 ************
+   697                           ; Defined at:
+   698                           ;		line 12 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   699                           ; Parameters:
+   700                           ;		LCDData     	reg:   wr	type: unsigned char 
+   701                           ; Auto variables:
+   702                           ;		LCDData     	       	type: unsigned char 
+   703                           ; Return value:
+   704                           ;		type: void 
+   705                           ;		size: 0
+   706                           ; Registers used:
+   707                           ;		wreg, status,2, status,0, pclath, cstack
+   708                           ; Tracked objects:
+   709                           ;		On entry : 0/0
+   710                           ;		On exit  : 0/0
+   711                           ;		Unchanged: 0/0
+   712                           ; Data sizes:
+   713                           ;		Autos:    1
+   714                           ;		Params:   0
+   715                           ;		Temp:     0
+   716                           ;		Total:    1
+   717                           ; This function calls:
+   718                           ;		_LCDWriteByte
+   719                           ; This function is called by:
+   720                           ;		_LCDInitialize
+   721                           ;		_LCDReset
+   722                           ;		_LCDDisplayInitializing
+   723                           ; This function uses a non-reentrant model
+   724                           ; 
+   725                           	psect	text110,local,class=CODE,delta=2
+   726                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   727                           	line	12
+   728                           ;LCD.c: 11: void LCDWriteCommand(LCDubyte LCDDa
+                                 ta)
+   729                           ;LCD.c: 12: {
+   730                           	
+   731  02D9                     _LCDWriteCommand:	
+   732                           	opt stack 1
+   733                           ; Regs used in _LCDWriteCommand: [wreg+status,2
+                                 +status,0+pclath+cstack]
+   734                           ;_LCDWriteCommand_LCDData stored from wreg
+   735  02D9  1283               	bcf	status, 5	;RP0=0, select bank0
+   736  02DA  1303               	bcf	status, 6	;RP1=0, select bank0
+   737                           	
+   738  02DB  00A2               	movwf	(_LCDWriteCommand_LCDData)
+   739                           	line	13
+   740                           ;LCD.c: 13: RD2 = 0;
+   741  02DC  1108               	bcf	(66/8),(66)&7
+   742                           	line	14
+   743                           ;LCD.c: 14: LCDWriteByte(LCDData);
+   744                           	
+   745  02DD  0822               	movf	(_LCDWriteCommand_LCDData),w
+   746  02DE  120A  118A  2225   	fcall	_LCDWriteByte
+              120A  118A         
+   747                           	line	15
+   748                           ;LCD.c: 15: }
+   749  02E3                     l9:	
+   750  02E3  0008               	return
+   751                           ; =============== function _LCDWriteCommand end
+                                 s ===============
+   752                           
+   753                           GLOBAL __end_of_LCDWriteCommand
+   754  02E4                     	__end_of_LCDWriteCommand:
+   755                           	FNSIZE	_LCDWriteCommand,1,0
+   756                           	signat	_LCDWriteCommand,4216
+   757                           	global	_LCDWriteByte
+   758                           	global	??_LCDWriteByte
+   759                           	global	?_LCDWriteByte
+   760                           
+   761                           ; *************** function _LCDWriteByte ******
+                                 *********
+   762                           ; Defined at:
+   763                           ;		line 66 in file "C:\Users\hardik\Desktop\pro
+                                 jects\pwm based speed control of DC motor\LCD.c
+                                 "
+   764                           ; Parameters:
+   765                           ;		LCDData     	reg:   wr	type: unsigned char 
+   766                           ; Auto variables:
+   767                           ;		LCDData     	       	type: unsigned char 
+   768                           ; Return value:
+   769                           ;		type: void 
+   770                           ;		size: 0
+   771                           ; Registers used:
+   772                           ;		wreg, status,2, status,0, pclath, cstack
+   773                           ; Tracked objects:
+   774                           ;		On entry : 300/0
+   775                           ;		On exit  : 0/0
+   776                           ;		Unchanged: 0/0
+   777                           ; Data sizes:
+   778                           ;		Autos:    1
+   779                           ;		Params:   0
+   780                           ;		Temp:     1
+   781                           ;		Total:    2
+   782                           ; This function calls:
+   783                           ;		_LCDEnable
+   784                           ;		_Delay
+   785                           ; This function is called by:
+   786                           ;		_LCDWriteCommand
+   787                           ;		_LCDWriteData
+   788                           ; This function uses a non-reentrant model
+   789                           ; 
+   790                           	psect	text111,local,class=CODE,delta=2
+   791                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   792                           	line	66
+   793                           ;LCD.c: 65: static void LCDWriteByte(LCDubyte L
+                                 CDData)
+   794                           ;LCD.c: 66: {
+   795                           	
+   796  0225                     _LCDWriteByte:	
+   797                           	opt stack 0
+   798                           ; Regs used in _LCDWriteByte: [wreg+status,2+st
+                                 atus,0+pclath+cstack]
+   799                           ;_LCDWriteByte_LCDData stored from wreg
+   800                           	
+   801  0225  00A5               	movwf	(_LCDWriteByte_LCDData)
+   802                           	line	67
+   803                           ;LCD.c: 67: PORTD = (PORTD & 0x0F)|(LCDData & 0
+                                 xF0);
+   804                           	
+   805  0226  0825               	movf	(_LCDWriteByte_LCDData),w
+   806  0227  39F0               	andlw	0F0h
+   807  0228  00A6               	movwf	(??_LCDWriteByte+1+0)
+   808                           	
+   809  0229  0808               	movf	(8),w	;volatile
+   810  022A  390F               	andlw	0Fh
+   811  022B  0426               	iorwf	(??_LCDWriteByte+1+0),w
+   812                           	
+   813  022C  0088               	movwf	(8)	;volatile
+   814                           	line	68
+   815                           ;LCD.c: 68: LCDEnable();
+   816  022D  120A  118A  22CB   	fcall	_LCDEnable
+              120A  118A         
+   817                           	line	69
+   818                           ;LCD.c: 69: PORTD = (PORTD & 0x0F)|(LCDData << 
+                                 4);
+   819  0232  1283               	bcf	status, 5	;RP0=0, select bank0
+   820  0233  1303               	bcf	status, 6	;RP1=0, select bank0
+   821                           	
+   822  0234  0825               	movf	(_LCDWriteByte_LCDData),w
+   823  0235  00A6               	movwf	(??_LCDWriteByte+1+0)
+   824  0236  3004               	movlw	04h
+   825  0237                     u1665:
+   826  0237  1003               	clrc
+   827  0238  0DA6               	rlf	(??_LCDWriteByte+1+0),f
+   828  0239  3EFF               	addlw	-1
+   829  023A  1D03               	skipz
+   830  023B  2A37               	goto	u1665
+   831                           	
+   832  023C  0808               	movf	(8),w	;volatile
+   833  023D  390F               	andlw	0Fh
+   834  023E  0426               	iorwf	0+(??_LCDWriteByte+1+0),w
+   835                           	
+   836  023F  0088               	movwf	(8)	;volatile
+   837                           	line	70
+   838                           ;LCD.c: 70: LCDEnable();
+   839  0240  120A  118A  22CB   	fcall	_LCDEnable
+              120A  118A         
+   840                           	line	71
+   841                           ;LCD.c: 71: Delay(2);
+   842  0245  3002               	movlw	low(02h)
+   843  0246  1283               	bcf	status, 5	;RP0=0, select bank0
+   844  0247  1303               	bcf	status, 6	;RP1=0, select bank0
+   845                           	
+   846  0248  00A7               	movwf	(?_Delay)
+   847  0249  3000               	movlw	high(02h)
+   848  024A  00A8               	movwf	((?_Delay))+1
+   849  024B  120A  118A  229F   	fcall	_Delay
+              120A  118A         
+   850                           	line	72
+   851                           ;LCD.c: 72: }
+   852  0250                     l21:	
+   853  0250  0008               	return
+   854                           ; =============== function _LCDWriteByte ends =
+                                 ==============
+   855                           
+   856                           GLOBAL __end_of_LCDWriteByte
+   857  0251                     	__end_of_LCDWriteByte:
+   858                           	FNSIZE	_LCDWriteByte,2,0
+   859                           	signat	_LCDWriteByte,4216
+   860                           	global	_LCDEnable
+   861                           	global	??_LCDEnable
+   862                           	global	?_LCDEnable
+   863                           
+   864                           ; *************** function _LCDEnable *********
+                                 ******
+   865                           ; Defined at:
+   866                           ;		line 5 in file "C:\Users\hardik\Desktop\proj
+                                 ects\pwm based speed control of DC motor\LCD.c"
+   867                           ; Parameters:
+   868                           ;		None
+   869                           ; Auto variables:
+   870                           ;		None
+   871                           ; Return value:
+   872                           ;		type: void 
+   873                           ;		size: 0
+   874                           ; Registers used:
+   875                           ;		wreg, status,2, status,0, pclath, cstack
+   876                           ; Tracked objects:
+   877                           ;		On entry : 300/0
+   878                           ;		On exit  : 0/0
+   879                           ;		Unchanged: 0/0
+   880                           ; Data sizes:
+   881                           ;		Autos:    0
+   882                           ;		Params:   0
+   883                           ;		Temp:     0
+   884                           ;		Total:    0
+   885                           ; This function calls:
+   886                           ;		_Delay
+   887                           ; This function is called by:
+   888                           ;		_LCDWriteByte
+   889                           ; This function uses a non-reentrant model
+   890                           ; 
+   891                           	psect	text112,local,class=CODE,delta=2
+   892                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\LCD.c"
+   893                           	line	5
+   894                           ;LCD.c: 4: static void LCDEnable(void)
+   895                           ;LCD.c: 5: {
+   896                           	
+   897  02CB                     _LCDEnable:	
+   898                           	opt stack 0
+   899                           ; Regs used in _LCDEnable: [wreg+status,2+statu
+                                 s,0+pclath+cstack]
+   900                           	line	6
+   901                           ;LCD.c: 6: RD3 = 1;
+   902  02CB  1588               	bsf	(67/8),(67)&7
+   903                           	line	7
+   904                           ;LCD.c: 7: Delay(10);
+   905  02CC  300A               	movlw	low(0Ah)
+   906                           	
+   907  02CD  00A7               	movwf	(?_Delay)
+   908  02CE  3000               	movlw	high(0Ah)
+   909  02CF  00A8               	movwf	((?_Delay))+1
+   910  02D0  120A  118A  229F   	fcall	_Delay
+              120A  118A         
+   911                           	line	8
+   912                           ;LCD.c: 8: RD3 = 0;
+   913  02D5  1283               	bcf	status, 5	;RP0=0, select bank0
+   914  02D6  1303               	bcf	status, 6	;RP1=0, select bank0
+   915  02D7  1188               	bcf	(67/8),(67)&7
+   916                           	line	9
+   917                           ;LCD.c: 9: }
+   918  02D8                     l8:	
+   919  02D8  0008               	return
+   920                           ; =============== function _LCDEnable ends ====
+                                 ===========
+   921                           
+   922                           GLOBAL __end_of_LCDEnable
+   923  02D9                     	__end_of_LCDEnable:
+   924                           	FNSIZE	_LCDEnable,0,0
+   925                           	signat	_LCDEnable,88
+   926                           	global	_Delay
+   927                           	global	??_Delay
+   928                           	global	?_Delay
+   929                           
+   930                           ; *************** function _Delay *************
+                                 **
+   931                           ; Defined at:
+   932                           ;		line 4 in file "C:\Users\hardik\Desktop\proj
+                                 ects\pwm based speed control of DC motor\delay.
+                                 c"
+   933                           ; Parameters:
+   934                           ;		time        	offs:   0	type: unsigned int 
+   935                           ; Auto variables:
+   936                           ;		pause       	       	type: unsigned char 
+   937                           ; Return value:
+   938                           ;		type: void 
+   939                           ;		size: 0
+   940                           ; Registers used:
+   941                           ;		wreg, status,2, status,0
+   942                           ; Tracked objects:
+   943                           ;		On entry : 300/0
+   944                           ;		On exit  : 0/0
+   945                           ;		Unchanged: 0/0
+   946                           ; Data sizes:
+   947                           ;		Autos:    1
+   948                           ;		Params:   2
+   949                           ;		Temp:     0
+   950                           ;		Total:    3
+   951                           ; This function calls:
+   952                           ;		Nothing
+   953                           ; This function is called by:
+   954                           ;		_LCDEnable
+   955                           ;		_LCDDisplayInitializing
+   956                           ;		_LCDWriteByte
+   957                           ; This function uses a non-reentrant model
+   958                           ; 
+   959                           	psect	text113,local,class=CODE,delta=2
+   960                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\delay.c"
+   961                           	line	4
+   962                           ;delay.c: 3: void Delay(unsigned int time)
+   963                           ;delay.c: 4: {
+   964                           	
+   965  029F                     _Delay:	
+   966                           	opt stack 0
+   967                           ; Regs used in _Delay: [wreg+status,2+status,0]
+   968                           	line	6
+   969                           ;delay.c: 5: unsigned char pause;
+   970                           ;delay.c: 6: while( time > 0)
+   971  029F  2AB1               	goto	l2
+   972                           	
+   973  02A0                     l3:	
+   974                           	line	8
+   975                           ;delay.c: 7: {
+   976                           ;delay.c: 8: pause = 255;
+   977                           	
+   978  02A0  01A9               	clrf	(_Delay_pause)
+   979  02A1  03A9               	decf	(_Delay_pause),f
+   980                           	line	9
+   981                           ;delay.c: 9: while(pause--);
+   982  02A2  2AA3               	goto	l5
+   983                           	
+   984  02A3                     l5:	
+   985                           	
+   986                           	
+   987  02A3  3001               	movlw	low(01h)
+   988  02A4  02A9               	subwf	(_Delay_pause),f
+   989  02A5  0829               	movf	((_Delay_pause))&07fh,w
+   990  02A6  3AFF               	xorlw	0FFh
+   991  02A7  1D03               	skipz
+   992  02A8  2AAA               	goto	u1721
+   993  02A9  2AAB               	goto	u1720
+   994  02AA                     u1721:
+   995  02AA  2AA3               	goto	l5
+   996  02AB                     u1720:
+   997                           	
+   998  02AB                     l7:	
+   999                           	line	10
+  1000                           ;delay.c: 10: time--;
+  1001                           	
+  1002  02AB  3001               	movlw	low(01h)
+  1003  02AC  02A7               	subwf	(_Delay_time),f
+  1004  02AD  3000               	movlw	high(01h)
+  1005  02AE  1C03               	skipc
+  1006  02AF  03A8               	decf	(_Delay_time+1),f
+  1007  02B0  02A8               	subwf	(_Delay_time+1),f
+  1008                           	line	11
+  1009                           	
+  1010  02B1                     l2:	
+  1011                           	line	6
+  1012                           	
+  1013  02B1  0828               	movf	((_Delay_time+1)),w
+  1014  02B2  0427               	iorwf	((_Delay_time)),w
+  1015  02B3  1D03               	skipz
+  1016  02B4  2AB6               	goto	u1731
+  1017  02B5  2AB7               	goto	u1730
+  1018  02B6                     u1731:
+  1019  02B6  2AA0               	goto	l3
+  1020  02B7                     u1730:
+  1021                           	
+  1022  02B7                     l4:	
+  1023                           	line	12
+  1024                           ;delay.c: 11: }
+  1025                           ;delay.c: 12: }
+  1026  02B7                     l1:	
+  1027  02B7  0008               	return
+  1028                           ; =============== function _Delay ends ========
+                                 =======
+  1029                           
+  1030                           GLOBAL __end_of_Delay
+  1031  02B8                     	__end_of_Delay:
+  1032                           	FNSIZE	_Delay,1,2
+  1033                           	signat	_Delay,4216
+  1034                           	global	_timer
+  1035                           	global	??_timer
+  1036                           	global	?_timer
+  1037                           
+  1038                           ; *************** function _timer *************
+                                 **
+  1039                           ; Defined at:
+  1040                           ;		line 7 in file "C:\Users\hardik\Desktop\proj
+                                 ects\pwm based speed control of DC motor\main.c
+                                 "
+  1041                           ; Parameters:
+  1042                           ;		None
+  1043                           ; Auto variables:
+  1044                           ;		None
+  1045                           ; Return value:
+  1046                           ;		type: int 
+  1047                           ;		size: 2
+  1048                           ; Registers used:
+  1049                           ;		wreg, status,2, status,0, pclath, cstack
+  1050                           ; Tracked objects:
+  1051                           ;		On entry : 300/0
+  1052                           ;		On exit  : 0/0
+  1053                           ;		Unchanged: 0/0
+  1054                           ; Data sizes:
+  1055                           ;		Autos:    0
+  1056                           ;		Params:   0
+  1057                           ;		Temp:     8
+  1058                           ;		Total:    8
+  1059                           ; This function calls:
+  1060                           ;		___lwmod
+  1061                           ; This function is called by:
+  1062                           ;		Interrupt level 1
+  1063                           ; This function uses a non-reentrant model
+  1064                           ; 
+  1065                           	psect	intrtext,class=CODE,delta=2
+  1066                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\main.c"
+  1067                           	line	7
+  1068                           ;main.c: 3: int i=48,j=48,k=48;
+  1069                           ;main.c: 5: unsigned int count=0,count1=0,c=1,t
+                                 imes=300;
+  1070                           ;main.c: 6: interrupt timer(void)
+  1071                           ;main.c: 7: {
+  1072                           	
+  1073  012D                     _timer:	
+  1074                           	opt stack 7
+  1075                           ; Regs used in _timer: [wreg+status,2+status,0+
+                                 pclath+cstack]
+  1076                           	psect	intentry,class=CODE,delta=2
+  1077                           global interrupt_function
+  1078  0004                     interrupt_function:
+  1079                           	global saved_w
+  1080  0000                     	saved_w	set	btemp+1
+  1081  0004  00FF               	movwf	saved_w
+  1082  0005  0803               	movf	status,w
+  1083  0006  1283               	bcf	status, 5	;RP0=0, select bank0
+  1084  0007  1303               	bcf	status, 6	;RP1=0, select bank0
+  1085  0008  00AE               	movwf	(??_timer+4)
+  1086  0009  0804               	movf	fsr0,w
+  1087  000A  00AF               	movwf	(??_timer+5)
+  1088  000B  080A               	movf	pclath,w
+  1089  000C  00B0               	movwf	(??_timer+6)
+  1090  000D  087E               	movf	btemp+0,w
+  1091  000E  00B1               	movwf	(??_timer+7)
+  1092  000F  120A  118A  292D   	ljmp	_timer
+  1093                           	psect	intrtext
+  1094                           	line	8
+  1095                           ;main.c: 8: if(TMR0IF==1)
+  1096  012D  1D0B               	btfss	(90/8),(90)&7
+  1097  012E  2930               	goto	i1u1521
+  1098  012F  2931               	goto	i1u1520
+  1099  0130                     i1u1521:
+  1100  0130  29AA               	goto	i1l49
+  1101  0131                     i1u1520:
+  1102                           	line	10
+  1103                           ;main.c: 9: {
+  1104                           ;main.c: 10: count++;
+  1105                           	
+  1106  0131  3001               	movlw	low(01h)
+  1107  0132  07FA               	addwf	(122),f
+  1108  0133  1803               	skipnc
+  1109  0134  0AFB               	incf	(122+1),f
+  1110  0135  3000               	movlw	high(01h)
+  1111  0136  07FB               	addwf	(122+1),f
+  1112                           	line	11
+  1113                           ;main.c: 11: count1++;
+  1114                           	
+  1115  0137  3001               	movlw	low(01h)
+  1116  0138  07FC               	addwf	(124),f
+  1117  0139  1803               	skipnc
+  1118  013A  0AFD               	incf	(124+1),f
+  1119  013B  3000               	movlw	high(01h)
+  1120  013C  07FD               	addwf	(124+1),f
+  1121                           	line	14
+  1122                           ;main.c: 14: if(count==300)
+  1123                           	
+  1124  013D  3001               	movlw	high(012Ch)
+  1125  013E  067B               	xorwf	(122+1),w
+  1126  013F  1D03               	skipz
+  1127  0140  2943               	goto	i1u1535
+  1128  0141  302C               	movlw	low(012Ch)
+  1129  0142  067A               	xorwf	(122),w
+  1130  0143                     i1u1535:
+  1131                           
+  1132  0143  1D03               	skipz
+  1133  0144  2946               	goto	i1u1531
+  1134  0145  2947               	goto	i1u1530
+  1135  0146                     i1u1531:
+  1136  0146  294B               	goto	i1l50
+  1137  0147                     i1u1530:
+  1138                           	line	15
+  1139                           ;main.c: 15: count=0;
+  1140  0147  3000               	movlw	low(0)
+  1141                           	
+  1142  0148  00FA               	movwf	(122)
+  1143  0149  3000               	movlw	high(0)
+  1144  014A  00FB               	movwf	((122))+1
+  1145                           	
+  1146  014B                     i1l50:	
+  1147                           	line	18
+  1148                           ;main.c: 18: if(count<(300-c))
+  1149                           	
+  1150  014B  302C               	movlw	low(012Ch)
+  1151  014C  00AA               	movwf	(??_timer+0+0)
+  1152  014D  3001               	movlw	high(012Ch)
+  1153  014E  00AB               	movwf	(??_timer+0+0+1)
+  1154  014F  0870               	movf	(112),w
+  1155  0150  022A               	subwf	0+(??_timer+0+0),w
+  1156  0151  00AC               	movwf	(??_timer+2+0)
+  1157  0152  0871               	movf	(112+1),w
+  1158  0153  1C03               	skipc
+  1159  0154  0A71               	incf	(112+1),w
+  1160  0155  022B               	subwf	1+(??_timer+0+0),w
+  1161  0156  00AD               	movwf	1+(??_timer+2+0)
+  1162                           	
+  1163  0157  082D               	movf	1+(??_timer+2+0),w
+  1164  0158  027B               	subwf	(122+1),w
+  1165  0159  1D03               	skipz
+  1166  015A  295D               	goto	i1u1545
+  1167  015B  082C               	movf	0+(??_timer+2+0),w
+  1168  015C  027A               	subwf	(122),w
+  1169  015D                     i1u1545:
+  1170  015D  1803               	skipnc
+  1171  015E  2960               	goto	i1u1541
+  1172  015F  2961               	goto	i1u1540
+  1173  0160                     i1u1541:
+  1174  0160  2962               	goto	i1l51
+  1175  0161                     i1u1540:
+  1176                           	line	19
+  1177                           ;main.c: 19: RB0=0;
+  1178  0161  1006               	bcf	(48/8),(48)&7
+  1179                           	
+  1180  0162                     i1l51:	
+  1181                           	line	20
+  1182                           ;main.c: 20: if(count>=(300-c))
+  1183                           	
+  1184  0162  302C               	movlw	low(012Ch)
+  1185  0163  00AA               	movwf	(??_timer+0+0)
+  1186  0164  3001               	movlw	high(012Ch)
+  1187  0165  00AB               	movwf	(??_timer+0+0+1)
+  1188  0166  0870               	movf	(112),w
+  1189  0167  022A               	subwf	0+(??_timer+0+0),w
+  1190  0168  00AC               	movwf	(??_timer+2+0)
+  1191  0169  0871               	movf	(112+1),w
+  1192  016A  1C03               	skipc
+  1193  016B  0A71               	incf	(112+1),w
+  1194  016C  022B               	subwf	1+(??_timer+0+0),w
+  1195  016D  00AD               	movwf	1+(??_timer+2+0)
+  1196                           	
+  1197  016E  082D               	movf	1+(??_timer+2+0),w
+  1198  016F  027B               	subwf	(122+1),w
+  1199  0170  1D03               	skipz
+  1200  0171  2974               	goto	i1u1555
+  1201  0172  082C               	movf	0+(??_timer+2+0),w
+  1202  0173  027A               	subwf	(122),w
+  1203  0174                     i1u1555:
+  1204  0174  1C03               	skipc
+  1205  0175  2977               	goto	i1u1551
+  1206  0176  2978               	goto	i1u1550
+  1207  0177                     i1u1551:
+  1208  0177  2979               	goto	i1l52
+  1209  0178                     i1u1550:
+  1210                           	line	21
+  1211                           ;main.c: 21: RB0=1;
+  1212  0178  1406               	bsf	(48/8),(48)&7
+  1213                           	
+  1214  0179                     i1l52:	
+  1215                           	line	23
+  1216                           ;main.c: 23: if(count1%times==0)
+  1217                           	
+  1218                           	
+  1219  0179  0879               	movf	(120+1),w
+  1220  017A  01B5               	clrf	(1+(?___lwmod)+02h)
+  1221  017B  07B5               	addwf	(1+(?___lwmod)+02h)
+  1222  017C  0878               	movf	(120),w
+  1223  017D  01B4               	clrf	(0+(?___lwmod)+02h)
+  1224  017E  07B4               	addwf	(0+(?___lwmod)+02h)
+  1225                           
+  1226                           	
+  1227                           	
+  1228  017F  087D               	movf	(124+1),w
+  1229  0180  01B3               	clrf	(?___lwmod+1)
+  1230  0181  07B3               	addwf	(?___lwmod+1)
+  1231  0182  087C               	movf	(124),w
+  1232  0183  01B2               	clrf	(?___lwmod)
+  1233  0184  07B2               	addwf	(?___lwmod)
+  1234                           
+  1235  0185  120A  118A  21B5   	fcall	___lwmod
+              120A  118A         
+  1236  018A  1283               	bcf	status, 5	;RP0=0, select bank0
+  1237  018B  1303               	bcf	status, 6	;RP1=0, select bank0
+  1238  018C  0833               	movf	((1+?___lwmod)),w
+  1239  018D  0432               	iorwf	((0+?___lwmod)),w
+  1240  018E  1D03               	skipz
+  1241  018F  2991               	goto	i1u1561
+  1242  0190  2992               	goto	i1u1560
+  1243  0191                     i1u1561:
+  1244  0191  2998               	goto	i1l53
+  1245  0192                     i1u1560:
+  1246                           	line	24
+  1247                           ;main.c: 24: c++;
+  1248                           	
+  1249  0192  3001               	movlw	low(01h)
+  1250  0193  07F0               	addwf	(112),f
+  1251  0194  1803               	skipnc
+  1252  0195  0AF1               	incf	(112+1),f
+  1253  0196  3000               	movlw	high(01h)
+  1254  0197  07F1               	addwf	(112+1),f
+  1255                           	
+  1256  0198                     i1l53:	
+  1257                           	line	27
+  1258                           ;main.c: 27: if(c==300)
+  1259                           	
+  1260  0198  3001               	movlw	high(012Ch)
+  1261  0199  0671               	xorwf	(112+1),w
+  1262  019A  1D03               	skipz
+  1263  019B  299E               	goto	i1u1575
+  1264  019C  302C               	movlw	low(012Ch)
+  1265  019D  0670               	xorwf	(112),w
+  1266  019E                     i1u1575:
+  1267                           
+  1268  019E  1D03               	skipz
+  1269  019F  29A1               	goto	i1u1571
+  1270  01A0  29A2               	goto	i1u1570
+  1271  01A1                     i1u1571:
+  1272  01A1  29A6               	goto	i1l54
+  1273  01A2                     i1u1570:
+  1274                           	line	28
+  1275                           ;main.c: 28: c=1;
+  1276  01A2  3001               	movlw	low(01h)
+  1277                           	
+  1278  01A3  00F0               	movwf	(112)
+  1279  01A4  3000               	movlw	high(01h)
+  1280  01A5  00F1               	movwf	((112))+1
+  1281                           	
+  1282  01A6                     i1l54:	
+  1283                           	line	30
+  1284                           ;main.c: 30: TMR0IF=0;
+  1285  01A6  110B               	bcf	(90/8),(90)&7
+  1286                           	line	31
+  1287                           ;main.c: 31: TMR0IE=1;
+  1288  01A7  168B               	bsf	(93/8),(93)&7
+  1289                           	line	32
+  1290                           ;main.c: 32: TMR0=0x01;
+  1291  01A8  3001               	movlw	(01h)
+  1292                           	
+  1293  01A9  0081               	movwf	(1)	;volatile
+  1294                           	line	34
+  1295                           	
+  1296  01AA                     i1l49:	
+  1297                           	line	35
+  1298                           ;main.c: 34: }
+  1299                           ;main.c: 35: }
+  1300  01AA                     i1l48:	
+  1301  01AA  0831               	movf	(??_timer+7),w
+  1302  01AB  00FE               	movwf	btemp+0
+  1303  01AC  0830               	movf	(??_timer+6),w
+  1304  01AD  008A               	movwf	pclath
+  1305  01AE  082F               	movf	(??_timer+5),w
+  1306  01AF  0084               	movwf	fsr0
+  1307  01B0  082E               	movf	(??_timer+4),w
+  1308  01B1  0083               	movwf	status
+  1309  01B2  0EFF               	swapf	saved_w,f
+  1310  01B3  0E7F               	swapf	saved_w,w
+  1311  01B4  0009               	retfie
+  1312                           ; =============== function _timer ends ========
+                                 =======
+  1313                           
+  1314                           GLOBAL __end_of_timer
+  1315  01B5                     	__end_of_timer:
+  1316                           	FNSIZE	_timer,8,0
+  1317                           	signat	_timer,90
+  1318                           	psect	intrtext
+  1319                           	global	intlevel1
+  1320                           	FNBREAK ___lwmod,intlevel1
+  1321                           	global	___lwmod
+  1322                           	global	??___lwmod
+  1323                           	global	?___lwmod
+  1324                           
+  1325                           ; *************** function ___lwmod ***********
+                                 ****
+  1326                           ; Defined at:
+  1327                           ;		line 5 in file "C:\Program Files (x86)\HI-TE
+                                 CH Software\PICC\PRO\9.65\sources\lwmod.c"
+  1328                           ; Parameters:
+  1329                           ;		dividend    	offs:   0	type: unsigned int 
+  1330                           ;		divisor     	offs:   2	type: unsigned int 
+  1331                           ; Auto variables:
+  1332                           ;		counter     	       	type: unsigned char 
+  1333                           ; Return value:
+  1334                           ;		type: unsigned int 
+  1335                           ;		size: 2
+  1336                           ; Registers used:
+  1337                           ;		wreg, status,2, status,0
+  1338                           ; Tracked objects:
+  1339                           ;		On entry : 300/0
+  1340                           ;		On exit  : 0/0
+  1341                           ;		Unchanged: 0/0
+  1342                           ; Data sizes:
+  1343                           ;		Autos:    1
+  1344                           ;		Params:   4
+  1345                           ;		Temp:     1
+  1346                           ;		Total:    6
+  1347                           ; This function calls:
+  1348                           ;		Nothing
+  1349                           ; This function is called by:
+  1350                           ;		_timer
+  1351                           ; This function uses a non-reentrant model
+  1352                           ; 
+  1353                           	psect	text115,local,class=CODE,delta=2
+  1354                           	file	"C:\Program Files (x86)\HI-TECH Software\
+                                 PICC\PRO\9.65\sources\lwmod.c"
+  1355                           	line	5
+  1356                           	
+  1357  01B5                     ___lwmod:	
+  1358                           	opt stack 6
+  1359                           ; Regs used in ___lwmod: [wreg+status,2+status,
+                                 0]
+  1360                           	line	8
+  1361                           	
+  1362  01B5  0835               	movf	(___lwmod_divisor+1),w
+  1363  01B6  0434               	iorwf	(___lwmod_divisor),w
+  1364  01B7  1903               	skipnz
+  1365  01B8  29BA               	goto	i1u1581
+  1366  01B9  29BB               	goto	i1u1580
+  1367  01BA                     i1u1581:
+  1368  01BA  29EB               	goto	i1l80
+  1369  01BB                     i1u1580:
+  1370                           	line	9
+  1371                           	
+  1372  01BB  01B6               	clrf	(___lwmod_counter)
+  1373  01BC  1403               	bsf	status,0
+  1374  01BD  0DB6               	rlf	(___lwmod_counter),f
+  1375                           	line	10
+  1376  01BE  29CA               	goto	i1l81
+  1377                           	
+  1378  01BF                     i1l82:	
+  1379                           	line	11
+  1380                           	
+  1381  01BF  3001               	movlw	01h
+  1382  01C0                     i1u1595:
+  1383  01C0  1003               	clrc
+  1384  01C1  0DB4               	rlf	(___lwmod_divisor),f
+  1385  01C2  0DB5               	rlf	(___lwmod_divisor+1),f
+  1386  01C3  3EFF               	addlw	-1
+  1387  01C4  1D03               	skipz
+  1388  01C5  29C0               	goto	i1u1595
+  1389                           	line	12
+  1390  01C6  3001               	movlw	(01h)
+  1391  01C7  00B7               	movwf	(??___lwmod+1+0)
+  1392                           	
+  1393  01C8  0837               	movf	(??___lwmod+1+0),w
+  1394  01C9  07B6               	addwf	(___lwmod_counter),f
+  1395                           	line	13
+  1396                           	
+  1397  01CA                     i1l81:	
+  1398                           	line	10
+  1399                           	
+  1400  01CA  1FB5               	btfss	(___lwmod_divisor+1),(15)&7
+  1401  01CB  29CD               	goto	i1u1601
+  1402  01CC  29CE               	goto	i1u1600
+  1403  01CD                     i1u1601:
+  1404  01CD  29BF               	goto	i1l82
+  1405  01CE                     i1u1600:
+  1406                           	
+  1407  01CE                     i1l83:	
+  1408                           	line	14
+  1409                           	
+  1410  01CE                     i1l86:	
+  1411                           	line	15
+  1412                           	
+  1413                           	
+  1414  01CE  0835               	movf	(___lwmod_divisor+1),w
+  1415  01CF  0233               	subwf	(___lwmod_dividend+1),w
+  1416  01D0  1D03               	skipz
+  1417  01D1  29D4               	goto	i1u1615
+  1418  01D2  0834               	movf	(___lwmod_divisor),w
+  1419  01D3  0232               	subwf	(___lwmod_dividend),w
+  1420  01D4                     i1u1615:
+  1421  01D4  1C03               	skipc
+  1422  01D5  29D7               	goto	i1u1611
+  1423  01D6  29D8               	goto	i1u1610
+  1424  01D7                     i1u1611:
+  1425  01D7  29DE               	goto	i1l87
+  1426  01D8                     i1u1610:
+  1427                           	line	16
+  1428                           	
+  1429                           	
+  1430  01D8  0834               	movf	(___lwmod_divisor),w
+  1431  01D9  02B2               	subwf	(___lwmod_dividend),f
+  1432  01DA  0835               	movf	(___lwmod_divisor+1),w
+  1433  01DB  1C03               	skipc
+  1434  01DC  03B3               	decf	(___lwmod_dividend+1),f
+  1435  01DD  02B3               	subwf	(___lwmod_dividend+1),f
+  1436                           	
+  1437  01DE                     i1l87:	
+  1438                           	line	17
+  1439                           	
+  1440  01DE  3001               	movlw	01h
+  1441  01DF                     i1u1625:
+  1442  01DF  1003               	clrc
+  1443  01E0  0CB5               	rrf	(___lwmod_divisor+1),f
+  1444  01E1  0CB4               	rrf	(___lwmod_divisor),f
+  1445  01E2  3EFF               	addlw	-1
+  1446  01E3  1D03               	skipz
+  1447  01E4  29DF               	goto	i1u1625
+  1448                           	line	18
+  1449                           	
+  1450                           	
+  1451  01E5  3001               	movlw	low(01h)
+  1452  01E6  02B6               	subwf	(___lwmod_counter),f
+  1453  01E7  1D03               	btfss	status,2
+  1454  01E8  29EA               	goto	i1u1631
+  1455  01E9  29EB               	goto	i1u1630
+  1456  01EA                     i1u1631:
+  1457  01EA  29CE               	goto	i1l86
+  1458  01EB                     i1u1630:
+  1459                           	
+  1460  01EB                     i1l85:	
+  1461                           	line	19
+  1462                           	
+  1463  01EB                     i1l80:	
+  1464                           	line	20
+  1465  01EB  29EC               	goto	i1l79
+  1466                           	line	21
+  1467  01EC                     i1l79:	
+  1468  01EC  0008               	return
+  1469                           ; =============== function ___lwmod ends ======
+                                 =========
+  1470                           
+  1471                           GLOBAL __end_of___lwmod
+  1472  01ED                     	__end_of___lwmod:
+  1473                           	FNSIZE	___lwmod,2,4
+  1474                           	signat	___lwmod,8314
+  1475                           	FNCALL	_main,_MainSystemInitialize
+  1476                           	FNCALL	_main,_LCDDisplayInitializing
+  1477                           	FNCALL	_LCDDisplayInitializing,_LCDWriteString
+  1478                           	FNCALL	_LCDDisplayInitializing,_LCDWriteComman
+                                 d
+  1479                           	FNCALL	_LCDDisplayInitializing,_LCDWriteData
+  1480                           	FNCALL	_LCDDisplayInitializing,_Delay
+  1481                           	FNCALL	_MainSystemInitialize,_LCDInitialize
+  1482                           	FNCALL	_LCDWriteString,_LCDWriteData
+  1483                           	FNCALL	_LCDInitialize,_LCDReset
+  1484                           	FNCALL	_LCDInitialize,_LCDWriteCommand
+  1485                           	FNCALL	_LCDWriteData,_LCDWriteByte
+  1486                           	FNCALL	_LCDReset,_LCDWriteCommand
+  1487                           	FNCALL	_LCDWriteCommand,_LCDWriteByte
+  1488                           	FNCALL	_LCDWriteByte,_LCDEnable
+  1489                           	FNCALL	_LCDWriteByte,_Delay
+  1490                           	FNCALL	_LCDEnable,_Delay
+  1491                           	FNROOT	_main
+  1492                           	FNCALL	_timer,___lwmod
+  1493                           	FNCALL	intlevel1,_timer
+  1494                           	global	intlevel1
+  1495                           	FNROOT	intlevel1
+  1496                           	global	_c
+  1497                           	psect	common,class=COMMON,space=1
+  1498                           
+  1499                           	DABS	1,112,2	;_c
+  1500  0000                     	_c	set	0x70
+  1501                           
+  1502                           	global	_i
+  1503                           	global	_i
+  1504                           
+  1505                           	DABS	1,114,2	;_i
+  1506  0000                     	_i	set	0x72
+  1507                           
+  1508                           	global	_j
+  1509                           	global	_j
+  1510                           
+  1511                           	DABS	1,116,2	;_j
+  1512  0000                     	_j	set	0x74
+  1513                           
+  1514                           	global	_k
+  1515                           	global	_k
+  1516                           
+  1517                           	DABS	1,118,2	;_k
+  1518  0000                     	_k	set	0x76
+  1519                           
+  1520                           	global	_times
+  1521                           
+  1522                           	DABS	1,120,2	;_times
+  1523  0000                     	_times	set	0x78
+  1524                           
+  1525                           	psect	idata,class=CODE,delta=2,space=0
+  1526                           	file	"C:\Users\hardik\Desktop\projects\pwm bas
+                                 ed speed control of DC motor\main.c"
+  1527                           	line	5
+  1528                           
+  1529                           ;initializer for _c
+  1530  0123  3401               	retlw	01h
+  1531  0124  3400               	retlw	0
+  1532                           	line	3
+  1533                           
+  1534                           ;initializer for _i
+  1535  0125  3430               	retlw	030h
+  1536  0126  3400               	retlw	0
+  1537                           
+  1538                           ;initializer for _j
+  1539  0127  3430               	retlw	030h
+  1540  0128  3400               	retlw	0
+  1541                           
+  1542                           ;initializer for _k
+  1543  0129  3430               	retlw	030h
+  1544  012A  3400               	retlw	0
+  1545                           	line	5
+  1546                           
+  1547                           ;initializer for _times
+  1548  012B  342C               	retlw	02Ch
+  1549  012C  3401               	retlw	01h
+  1550                           	psect	strings,class=CODE,delta=2,reloc=256
+  1551                           	global	stringdir,stringtab,__stringbase,string
+                                 jmp
+  1552  0100                     stringtab:
+  1553  0100  00FE               	movwf	(btemp)&07Fh
+  1554  0101  1FFE               	btfss	(btemp)&07Fh,7
+  1555  0102  2908               	goto	stringcode
+  1556  0103  1383               	bcf	status,7
+  1557  0104  187E               	btfsc	btemp&7Fh,0
+  1558  0105  1783               	bsf	status,7
+  1559  0106  0800               	movf	indf,w
+  1560  0107  0008               	return
+  1561  0108                     stringcode:
+  1562  0108  0804               	movf	fsr,w
+  1563  0109                     stringdir:
+  1564  0109  00FE               movwf btemp&07Fh
+  1565  010A  3001               movlw high(stringdir)
+  1566  010B  008A               movwf pclath
+  1567  010C  087E               movf btemp&07Fh,w
+  1568  010D                     stringjmp:
+  1569  010D  0782               	addwf pc
+  1570  010E                     __stringbase:
+  1571  010E  3400               	retlw	0
+  1572                           	global	_count
+  1573                           	psect	common
+  1574                           
+  1575                           	DABS	1,122,2	;_count
+  1576  0000                     	_count	set	0x7A
+  1577                           
+  1578                           	global	_count1
+  1579                           
+  1580                           	DABS	1,124,2	;_count1
+  1581  0000                     	_count1	set	0x7C
+  1582                           
+  1583                           	global	_ADCON0
+  1584                           	global	_ADCON0
+  1585  0000                     	_ADCON0	set	0x1F
+  1586                           
+  1587                           	global	_ADCON1
+  1588                           	global	_ADCON1
+  1589  0000                     	_ADCON1	set	0x9F
+  1590                           
+  1591                           	global	_ADRESH
+  1592                           	global	_ADRESH
+  1593  0000                     	_ADRESH	set	0x1E
+  1594                           
+  1595                           	global	_ADRESL
+  1596                           	global	_ADRESL
+  1597  0000                     	_ADRESL	set	0x9E
+  1598                           
+  1599                           	global	_CCP1CON
+  1600                           	global	_CCP1CON
+  1601  0000                     	_CCP1CON	set	0x17
+  1602                           
+  1603                           	global	_CCP2CON
+  1604                           	global	_CCP2CON
+  1605  0000                     	_CCP2CON	set	0x1D
+  1606                           
+  1607                           	global	_CCPR1H
+  1608                           	global	_CCPR1H
+  1609  0000                     	_CCPR1H	set	0x16
+  1610                           
+  1611                           	global	_CCPR1L
+  1612                           	global	_CCPR1L
+  1613  0000                     	_CCPR1L	set	0x15
+  1614                           
+  1615                           	global	_CCPR2H
+  1616                           	global	_CCPR2H
+  1617  0000                     	_CCPR2H	set	0x1C
+  1618                           
+  1619                           	global	_CCPR2L
+  1620                           	global	_CCPR2L
+  1621  0000                     	_CCPR2L	set	0x1B
+  1622                           
+  1623                           	global	_CMCON
+  1624                           	global	_CMCON
+  1625  0000                     	_CMCON	set	0x9C
+  1626                           
+  1627                           	global	_CVRCON
+  1628                           	global	_CVRCON
+  1629  0000                     	_CVRCON	set	0x9D
+  1630                           
+  1631                           	global	_EEADR
+  1632                           	global	_EEADR
+  1633  0000                     	_EEADR	set	0x10D
+  1634                           
+  1635                           	global	_EEADRH
+  1636                           	global	_EEADRH
+  1637  0000                     	_EEADRH	set	0x10F
+  1638                           
+  1639                           	global	_EEADRL
+  1640                           	global	_EEADRL
+  1641  0000                     	_EEADRL	set	0x10D
+  1642                           
+  1643                           	global	_EECON1
+  1644                           	global	_EECON1
+  1645  0000                     	_EECON1	set	0x18C
+  1646                           
+  1647                           	global	_EECON2
+  1648                           	global	_EECON2
+  1649  0000                     	_EECON2	set	0x18D
+  1650                           
+  1651                           	global	_EEDATA
+  1652                           	global	_EEDATA
+  1653  0000                     	_EEDATA	set	0x10C
+  1654                           
+  1655                           	global	_EEDATH
+  1656                           	global	_EEDATH
+  1657  0000                     	_EEDATH	set	0x10E
+  1658                           
+  1659                           	global	_FSR
+  1660                           	global	_FSR
+  1661  0000                     	_FSR	set	0x4
+  1662                           
+  1663                           	global	_INDF
+  1664                           	global	_INDF
+  1665  0000                     	_INDF	set	0x0
+  1666                           
+  1667                           	global	_INTCON
+  1668                           	global	_INTCON
+  1669  0000                     	_INTCON	set	0xB
+  1670                           
+  1671                           	global	_OPTION
+  1672                           	global	_OPTION
+  1673  0000                     	_OPTION	set	0x81
+  1674                           
+  1675                           	global	_PCL
+  1676                           	global	_PCL
+  1677  0000                     	_PCL	set	0x2
+  1678                           
+  1679                           	global	_PCLATH
+  1680                           	global	_PCLATH
+  1681  0000                     	_PCLATH	set	0xA
+  1682                           
+  1683                           	global	_PCON
+  1684                           	global	_PCON
+  1685  0000                     	_PCON	set	0x8E
+  1686                           
+  1687                           	global	_PIE1
+  1688                           	global	_PIE1
+  1689  0000                     	_PIE1	set	0x8C
+  1690                           
+  1691                           	global	_PIE2
+  1692                           	global	_PIE2
+  1693  0000                     	_PIE2	set	0x8D
+  1694                           
+  1695                           	global	_PIR1
+  1696                           	global	_PIR1
+  1697  0000                     	_PIR1	set	0xC
+  1698                           
+  1699                           	global	_PIR2
+  1700                           	global	_PIR2
+  1701  0000                     	_PIR2	set	0xD
+  1702                           
+  1703                           	global	_PORTA
+  1704                           	global	_PORTA
+  1705  0000                     	_PORTA	set	0x5
+  1706                           
+  1707                           	global	_PORTB
+  1708  0000                     	_PORTB	set	0x6
+  1709                           
+  1710                           	global	_PORTC
+  1711                           	global	_PORTC
+  1712  0000                     	_PORTC	set	0x7
+  1713                           
+  1714                           	global	_PORTD
+  1715  0000                     	_PORTD	set	0x8
+  1716                           
+  1717                           	global	_PORTE
+  1718                           	global	_PORTE
+  1719  0000                     	_PORTE	set	0x9
+  1720                           
+  1721                           	global	_PR2
+  1722                           	global	_PR2
+  1723  0000                     	_PR2	set	0x92
+  1724                           
+  1725                           	global	_RCREG
+  1726                           	global	_RCREG
+  1727  0000                     	_RCREG	set	0x1A
+  1728                           
+  1729                           	global	_RCSTA
+  1730                           	global	_RCSTA
+  1731  0000                     	_RCSTA	set	0x18
+  1732                           
+  1733                           	global	_SPBRG
+  1734                           	global	_SPBRG
+  1735  0000                     	_SPBRG	set	0x99
+  1736                           
+  1737                           	global	_SSPADD
+  1738                           	global	_SSPADD
+  1739  0000                     	_SSPADD	set	0x93
+  1740                           
+  1741                           	global	_SSPBUF
+  1742                           	global	_SSPBUF
+  1743  0000                     	_SSPBUF	set	0x13
+  1744                           
+  1745                           	global	_SSPCON
+  1746                           	global	_SSPCON
+  1747  0000                     	_SSPCON	set	0x14
+  1748                           
+  1749                           	global	_SSPCON2
+  1750                           	global	_SSPCON2
+  1751  0000                     	_SSPCON2	set	0x91
+  1752                           
+  1753                           	global	_SSPSTAT
+  1754                           	global	_SSPSTAT
+  1755  0000                     	_SSPSTAT	set	0x94
+  1756                           
+  1757                           	global	_STATUS
+  1758                           	global	_STATUS
+  1759  0000                     	_STATUS	set	0x3
+  1760                           
+  1761                           	global	_T1CON
+  1762                           	global	_T1CON
+  1763  0000                     	_T1CON	set	0x10
+  1764                           
+  1765                           	global	_T2CON
+  1766                           	global	_T2CON
+  1767  0000                     	_T2CON	set	0x12
+  1768                           
+  1769                           	global	_TMR0
+  1770  0000                     	_TMR0	set	0x1
+  1771                           
+  1772                           	global	_TMR1H
+  1773                           	global	_TMR1H
+  1774  0000                     	_TMR1H	set	0xF
+  1775                           
+  1776                           	global	_TMR1L
+  1777                           	global	_TMR1L
+  1778  0000                     	_TMR1L	set	0xE
+  1779                           
+  1780                           	global	_TMR2
+  1781                           	global	_TMR2
+  1782  0000                     	_TMR2	set	0x11
+  1783                           
+  1784                           	global	_TRISA
+  1785                           	global	_TRISA
+  1786  0000                     	_TRISA	set	0x85
+  1787                           
+  1788                           	global	_TRISB
+  1789  0000                     	_TRISB	set	0x86
+  1790                           
+  1791                           	global	_TRISC
+  1792                           	global	_TRISC
+  1793  0000                     	_TRISC	set	0x87
+  1794                           
+  1795                           	global	_TRISD
+  1796  0000                     	_TRISD	set	0x88
+  1797                           
+  1798                           	global	_TRISE
+  1799                           	global	_TRISE
+  1800  0000                     	_TRISE	set	0x89
+  1801                           
+  1802                           	global	_TXREG
+  1803                           	global	_TXREG
+  1804  0000                     	_TXREG	set	0x19
+  1805                           
+  1806                           	global	_TXSTA
+  1807                           	global	_TXSTA
+  1808  0000                     	_TXSTA	set	0x98
+  1809                           
+  1810                           	global	_ACKDT
+  1811                           	global	_ACKDT
+  1812  0000                     	_ACKDT	set	0x48D	;byte address: 0x91
+  1813                           
+  1814                           	global	_ACKEN
+  1815                           	global	_ACKEN
+  1816  0000                     	_ACKEN	set	0x48C	;byte address: 0x91
+  1817                           
+  1818                           	global	_ACKSTAT
+  1819                           	global	_ACKSTAT
+  1820  0000                     	_ACKSTAT	set	0x48E	;byte address: 0x91
+  1821                           
+  1822                           	global	_ADCS0
+  1823                           	global	_ADCS0
+  1824  0000                     	_ADCS0	set	0xFE	;byte address: 0x1F
+  1825                           
+  1826                           	global	_ADCS1
+  1827                           	global	_ADCS1
+  1828  0000                     	_ADCS1	set	0xFF	;byte address: 0x1F
+  1829                           
+  1830                           	global	_ADCS2
+  1831                           	global	_ADCS2
+  1832  0000                     	_ADCS2	set	0x4FE	;byte address: 0x9F
+  1833                           
+  1834                           	global	_ADDEN
+  1835                           	global	_ADDEN
+  1836  0000                     	_ADDEN	set	0xC3	;byte address: 0x18
+  1837                           
+  1838                           	global	_ADFM
+  1839                           	global	_ADFM
+  1840  0000                     	_ADFM	set	0x4FF	;byte address: 0x9F
+  1841                           
+  1842                           	global	_ADGO
+  1843                           	global	_ADGO
+  1844  0000                     	_ADGO	set	0xFA	;byte address: 0x1F
+  1845                           
+  1846                           	global	_ADIE
+  1847                           	global	_ADIE
+  1848  0000                     	_ADIE	set	0x466	;byte address: 0x8C
+  1849                           
+  1850                           	global	_ADIF
+  1851                           	global	_ADIF
+  1852  0000                     	_ADIF	set	0x66	;byte address: 0xC
+  1853                           
+  1854                           	global	_ADON
+  1855                           	global	_ADON
+  1856  0000                     	_ADON	set	0xF8	;byte address: 0x1F
+  1857                           
+  1858                           	global	_BCLIE
+  1859                           	global	_BCLIE
+  1860  0000                     	_BCLIE	set	0x46B	;byte address: 0x8D
+  1861                           
+  1862                           	global	_BCLIF
+  1863                           	global	_BCLIF
+  1864  0000                     	_BCLIF	set	0x6B	;byte address: 0xD
+  1865                           
+  1866                           	global	_BF
+  1867                           	global	_BF
+  1868  0000                     	_BF	set	0x4A0	;byte address: 0x94
+  1869                           
+  1870                           	global	_BOR
+  1871                           	global	_BOR
+  1872  0000                     	_BOR	set	0x470	;byte address: 0x8E
+  1873                           
+  1874                           	global	_BRGH
+  1875                           	global	_BRGH
+  1876  0000                     	_BRGH	set	0x4C2	;byte address: 0x98
+  1877                           
+  1878                           	global	_C1INV
+  1879                           	global	_C1INV
+  1880  0000                     	_C1INV	set	0x4E4	;byte address: 0x9C
+  1881                           
+  1882                           	global	_C1OUT
+  1883                           	global	_C1OUT
+  1884  0000                     	_C1OUT	set	0x4E6	;byte address: 0x9C
+  1885                           
+  1886                           	global	_C2INV
+  1887                           	global	_C2INV
+  1888  0000                     	_C2INV	set	0x4E5	;byte address: 0x9C
+  1889                           
+  1890                           	global	_C2OUT
+  1891                           	global	_C2OUT
+  1892  0000                     	_C2OUT	set	0x4E7	;byte address: 0x9C
+  1893                           
+  1894                           	global	_CARRY
+  1895                           	global	_CARRY
+  1896  0000                     	_CARRY	set	0x18	;byte address: 0x3
+  1897                           
+  1898                           	global	_CCP1IE
+  1899                           	global	_CCP1IE
+  1900  0000                     	_CCP1IE	set	0x462	;byte address: 0x8C
+  1901                           
+  1902                           	global	_CCP1IF
+  1903                           	global	_CCP1IF
+  1904  0000                     	_CCP1IF	set	0x62	;byte address: 0xC
+  1905                           
+  1906                           	global	_CCP1M0
+  1907                           	global	_CCP1M0
+  1908  0000                     	_CCP1M0	set	0xB8	;byte address: 0x17
+  1909                           
+  1910                           	global	_CCP1M1
+  1911                           	global	_CCP1M1
+  1912  0000                     	_CCP1M1	set	0xB9	;byte address: 0x17
+  1913                           
+  1914                           	global	_CCP1M2
+  1915                           	global	_CCP1M2
+  1916  0000                     	_CCP1M2	set	0xBA	;byte address: 0x17
+  1917                           
+  1918                           	global	_CCP1M3
+  1919                           	global	_CCP1M3
+  1920  0000                     	_CCP1M3	set	0xBB	;byte address: 0x17
+  1921                           
+  1922                           	global	_CCP1X
+  1923                           	global	_CCP1X
+  1924  0000                     	_CCP1X	set	0xBD	;byte address: 0x17
+  1925                           
+  1926                           	global	_CCP1Y
+  1927                           	global	_CCP1Y
+  1928  0000                     	_CCP1Y	set	0xBC	;byte address: 0x17
+  1929                           
+  1930                           	global	_CCP2IE
+  1931                           	global	_CCP2IE
+  1932  0000                     	_CCP2IE	set	0x468	;byte address: 0x8D
+  1933                           
+  1934                           	global	_CCP2IF
+  1935                           	global	_CCP2IF
+  1936  0000                     	_CCP2IF	set	0x68	;byte address: 0xD
+  1937                           
+  1938                           	global	_CCP2M0
+  1939                           	global	_CCP2M0
+  1940  0000                     	_CCP2M0	set	0xE8	;byte address: 0x1D
+  1941                           
+  1942                           	global	_CCP2M1
+  1943                           	global	_CCP2M1
+  1944  0000                     	_CCP2M1	set	0xE9	;byte address: 0x1D
+  1945                           
+  1946                           	global	_CCP2M2
+  1947                           	global	_CCP2M2
+  1948  0000                     	_CCP2M2	set	0xEA	;byte address: 0x1D
+  1949                           
+  1950                           	global	_CCP2M3
+  1951                           	global	_CCP2M3
+  1952  0000                     	_CCP2M3	set	0xEB	;byte address: 0x1D
+  1953                           
+  1954                           	global	_CCP2X
+  1955                           	global	_CCP2X
+  1956  0000                     	_CCP2X	set	0xED	;byte address: 0x1D
+  1957                           
+  1958                           	global	_CCP2Y
+  1959                           	global	_CCP2Y
+  1960  0000                     	_CCP2Y	set	0xEC	;byte address: 0x1D
+  1961                           
+  1962                           	global	_CHS0
+  1963                           	global	_CHS0
+  1964  0000                     	_CHS0	set	0xFB	;byte address: 0x1F
+  1965                           
+  1966                           	global	_CHS1
+  1967                           	global	_CHS1
+  1968  0000                     	_CHS1	set	0xFC	;byte address: 0x1F
+  1969                           
+  1970                           	global	_CHS2
+  1971                           	global	_CHS2
+  1972  0000                     	_CHS2	set	0xFD	;byte address: 0x1F
+  1973                           
+  1974                           	global	_CIS
+  1975                           	global	_CIS
+  1976  0000                     	_CIS	set	0x4E3	;byte address: 0x9C
+  1977                           
+  1978                           	global	_CKE
+  1979                           	global	_CKE
+  1980  0000                     	_CKE	set	0x4A6	;byte address: 0x94
+  1981                           
+  1982                           	global	_CKP
+  1983                           	global	_CKP
+  1984  0000                     	_CKP	set	0xA4	;byte address: 0x14
+  1985                           
+  1986                           	global	_CM0
+  1987                           	global	_CM0
+  1988  0000                     	_CM0	set	0x4E0	;byte address: 0x9C
+  1989                           
+  1990                           	global	_CM1
+  1991                           	global	_CM1
+  1992  0000                     	_CM1	set	0x4E1	;byte address: 0x9C
+  1993                           
+  1994                           	global	_CM2
+  1995                           	global	_CM2
+  1996  0000                     	_CM2	set	0x4E2	;byte address: 0x9C
+  1997                           
+  1998                           	global	_CMIE
+  1999                           	global	_CMIE
+  2000  0000                     	_CMIE	set	0x46E	;byte address: 0x8D
+  2001                           
+  2002                           	global	_CMIF
+  2003                           	global	_CMIF
+  2004  0000                     	_CMIF	set	0x6E	;byte address: 0xD
+  2005                           
+  2006                           	global	_CREN
+  2007                           	global	_CREN
+  2008  0000                     	_CREN	set	0xC4	;byte address: 0x18
+  2009                           
+  2010                           	global	_CSRC
+  2011                           	global	_CSRC
+  2012  0000                     	_CSRC	set	0x4C7	;byte address: 0x98
+  2013                           
+  2014                           	global	_CVR0
+  2015                           	global	_CVR0
+  2016  0000                     	_CVR0	set	0x4E8	;byte address: 0x9D
+  2017                           
+  2018                           	global	_CVR1
+  2019                           	global	_CVR1
+  2020  0000                     	_CVR1	set	0x4E9	;byte address: 0x9D
+  2021                           
+  2022                           	global	_CVR2
+  2023                           	global	_CVR2
+  2024  0000                     	_CVR2	set	0x4EA	;byte address: 0x9D
+  2025                           
+  2026                           	global	_CVR3
+  2027                           	global	_CVR3
+  2028  0000                     	_CVR3	set	0x4EB	;byte address: 0x9D
+  2029                           
+  2030                           	global	_CVREN
+  2031                           	global	_CVREN
+  2032  0000                     	_CVREN	set	0x4EF	;byte address: 0x9D
+  2033                           
+  2034                           	global	_CVROE
+  2035                           	global	_CVROE
+  2036  0000                     	_CVROE	set	0x4EE	;byte address: 0x9D
+  2037                           
+  2038                           	global	_CVRR
+  2039                           	global	_CVRR
+  2040  0000                     	_CVRR	set	0x4ED	;byte address: 0x9D
+  2041                           
+  2042                           	global	_DA
+  2043                           	global	_DA
+  2044  0000                     	_DA	set	0x4A5	;byte address: 0x94
+  2045                           
+  2046                           	global	_DC
+  2047                           	global	_DC
+  2048  0000                     	_DC	set	0x19	;byte address: 0x3
+  2049                           
+  2050                           	global	_EEIE
+  2051                           	global	_EEIE
+  2052  0000                     	_EEIE	set	0x46C	;byte address: 0x8D
+  2053                           
+  2054                           	global	_EEIF
+  2055                           	global	_EEIF
+  2056  0000                     	_EEIF	set	0x6C	;byte address: 0xD
+  2057                           
+  2058                           	global	_EEPGD
+  2059                           	global	_EEPGD
+  2060  0000                     	_EEPGD	set	0xC67	;byte address: 0x18C
+  2061                           
+  2062                           	global	_FERR
+  2063                           	global	_FERR
+  2064  0000                     	_FERR	set	0xC2	;byte address: 0x18
+  2065                           
+  2066                           	global	_GCEN
+  2067                           	global	_GCEN
+  2068  0000                     	_GCEN	set	0x48F	;byte address: 0x91
+  2069                           
+  2070                           	global	_GIE
+  2071  0000                     	_GIE	set	0x5F	;byte address: 0xB
+  2072                           
+  2073                           	global	_GODONE
+  2074                           	global	_GODONE
+  2075  0000                     	_GODONE	set	0xFA	;byte address: 0x1F
+  2076                           
+  2077                           	global	_IBF
+  2078                           	global	_IBF
+  2079  0000                     	_IBF	set	0x44F	;byte address: 0x89
+  2080                           
+  2081                           	global	_IBOV
+  2082                           	global	_IBOV
+  2083  0000                     	_IBOV	set	0x44D	;byte address: 0x89
+  2084                           
+  2085                           	global	_INTE
+  2086                           	global	_INTE
+  2087  0000                     	_INTE	set	0x5C	;byte address: 0xB
+  2088                           
+  2089                           	global	_INTEDG
+  2090                           	global	_INTEDG
+  2091  0000                     	_INTEDG	set	0x40E	;byte address: 0x81
+  2092                           
+  2093                           	global	_INTF
+  2094                           	global	_INTF
+  2095  0000                     	_INTF	set	0x59	;byte address: 0xB
+  2096                           
+  2097                           	global	_IRP
+  2098                           	global	_IRP
+  2099  0000                     	_IRP	set	0x1F	;byte address: 0x3
+  2100                           
+  2101                           	global	_OBF
+  2102                           	global	_OBF
+  2103  0000                     	_OBF	set	0x44E	;byte address: 0x89
+  2104                           
+  2105                           	global	_OERR
+  2106                           	global	_OERR
+  2107  0000                     	_OERR	set	0xC1	;byte address: 0x18
+  2108                           
+  2109                           	global	_PCFG0
+  2110                           	global	_PCFG0
+  2111  0000                     	_PCFG0	set	0x4F8	;byte address: 0x9F
+  2112                           
+  2113                           	global	_PCFG1
+  2114                           	global	_PCFG1
+  2115  0000                     	_PCFG1	set	0x4F9	;byte address: 0x9F
+  2116                           
+  2117                           	global	_PCFG2
+  2118                           	global	_PCFG2
+  2119  0000                     	_PCFG2	set	0x4FA	;byte address: 0x9F
+  2120                           
+  2121                           	global	_PCFG3
+  2122                           	global	_PCFG3
+  2123  0000                     	_PCFG3	set	0x4FB	;byte address: 0x9F
+  2124                           
+  2125                           	global	_PD
+  2126                           	global	_PD
+  2127  0000                     	_PD	set	0x1B	;byte address: 0x3
+  2128                           
+  2129                           	global	_PEIE
+  2130                           	global	_PEIE
+  2131  0000                     	_PEIE	set	0x5E	;byte address: 0xB
+  2132                           
+  2133                           	global	_PEN
+  2134                           	global	_PEN
+  2135  0000                     	_PEN	set	0x48A	;byte address: 0x91
+  2136                           
+  2137                           	global	_POR
+  2138                           	global	_POR
+  2139  0000                     	_POR	set	0x471	;byte address: 0x8E
+  2140                           
+  2141                           	global	_PS0
+  2142  0000                     	_PS0	set	0x408	;byte address: 0x81
+  2143                           
+  2144                           	global	_PS1
+  2145  0000                     	_PS1	set	0x409	;byte address: 0x81
+  2146                           
+  2147                           	global	_PS2
+  2148  0000                     	_PS2	set	0x40A	;byte address: 0x81
+  2149                           
+  2150                           	global	_PSA
+  2151  0000                     	_PSA	set	0x40B	;byte address: 0x81
+  2152                           
+  2153                           	global	_PSPIE
+  2154                           	global	_PSPIE
+  2155  0000                     	_PSPIE	set	0x467	;byte address: 0x8C
+  2156                           
+  2157                           	global	_PSPIF
+  2158                           	global	_PSPIF
+  2159  0000                     	_PSPIF	set	0x67	;byte address: 0xC
+  2160                           
+  2161                           	global	_PSPMODE
+  2162                           	global	_PSPMODE
+  2163  0000                     	_PSPMODE	set	0x44C	;byte address: 0x89
+  2164                           
+  2165                           	global	_RA0
+  2166                           	global	_RA0
+  2167  0000                     	_RA0	set	0x28	;byte address: 0x5
+  2168                           
+  2169                           	global	_RA1
+  2170                           	global	_RA1
+  2171  0000                     	_RA1	set	0x29	;byte address: 0x5
+  2172                           
+  2173                           	global	_RA2
+  2174                           	global	_RA2
+  2175  0000                     	_RA2	set	0x2A	;byte address: 0x5
+  2176                           
+  2177                           	global	_RA3
+  2178                           	global	_RA3
+  2179  0000                     	_RA3	set	0x2B	;byte address: 0x5
+  2180                           
+  2181                           	global	_RA4
+  2182                           	global	_RA4
+  2183  0000                     	_RA4	set	0x2C	;byte address: 0x5
+  2184                           
+  2185                           	global	_RA5
+  2186                           	global	_RA5
+  2187  0000                     	_RA5	set	0x2D	;byte address: 0x5
+  2188                           
+  2189                           	global	_RB0
+  2190  0000                     	_RB0	set	0x30	;byte address: 0x6
+  2191                           
+  2192                           	global	_RB1
+  2193                           	global	_RB1
+  2194  0000                     	_RB1	set	0x31	;byte address: 0x6
+  2195                           
+  2196                           	global	_RB2
+  2197                           	global	_RB2
+  2198  0000                     	_RB2	set	0x32	;byte address: 0x6
+  2199                           
+  2200                           	global	_RB3
+  2201                           	global	_RB3
+  2202  0000                     	_RB3	set	0x33	;byte address: 0x6
+  2203                           
+  2204                           	global	_RB4
+  2205                           	global	_RB4
+  2206  0000                     	_RB4	set	0x34	;byte address: 0x6
+  2207                           
+  2208                           	global	_RB5
+  2209                           	global	_RB5
+  2210  0000                     	_RB5	set	0x35	;byte address: 0x6
+  2211                           
+  2212                           	global	_RB6
+  2213                           	global	_RB6
+  2214  0000                     	_RB6	set	0x36	;byte address: 0x6
+  2215                           
+  2216                           	global	_RB7
+  2217                           	global	_RB7
+  2218  0000                     	_RB7	set	0x37	;byte address: 0x6
+  2219                           
+  2220                           	global	_RBIE
+  2221                           	global	_RBIE
+  2222  0000                     	_RBIE	set	0x5B	;byte address: 0xB
+  2223                           
+  2224                           	global	_RBIF
+  2225                           	global	_RBIF
+  2226  0000                     	_RBIF	set	0x58	;byte address: 0xB
+  2227                           
+  2228                           	global	_RBPU
+  2229                           	global	_RBPU
+  2230  0000                     	_RBPU	set	0x40F	;byte address: 0x81
+  2231                           
+  2232                           	global	_RC0
+  2233                           	global	_RC0
+  2234  0000                     	_RC0	set	0x38	;byte address: 0x7
+  2235                           
+  2236                           	global	_RC1
+  2237                           	global	_RC1
+  2238  0000                     	_RC1	set	0x39	;byte address: 0x7
+  2239                           
+  2240                           	global	_RC2
+  2241                           	global	_RC2
+  2242  0000                     	_RC2	set	0x3A	;byte address: 0x7
+  2243                           
+  2244                           	global	_RC3
+  2245                           	global	_RC3
+  2246  0000                     	_RC3	set	0x3B	;byte address: 0x7
+  2247                           
+  2248                           	global	_RC4
+  2249                           	global	_RC4
+  2250  0000                     	_RC4	set	0x3C	;byte address: 0x7
+  2251                           
+  2252                           	global	_RC5
+  2253                           	global	_RC5
+  2254  0000                     	_RC5	set	0x3D	;byte address: 0x7
+  2255                           
+  2256                           	global	_RC6
+  2257                           	global	_RC6
+  2258  0000                     	_RC6	set	0x3E	;byte address: 0x7
+  2259                           
+  2260                           	global	_RC7
+  2261                           	global	_RC7
+  2262  0000                     	_RC7	set	0x3F	;byte address: 0x7
+  2263                           
+  2264                           	global	_RCEN
+  2265                           	global	_RCEN
+  2266  0000                     	_RCEN	set	0x48B	;byte address: 0x91
+  2267                           
+  2268                           	global	_RCIE
+  2269                           	global	_RCIE
+  2270  0000                     	_RCIE	set	0x465	;byte address: 0x8C
+  2271                           
+  2272                           	global	_RCIF
+  2273                           	global	_RCIF
+  2274  0000                     	_RCIF	set	0x65	;byte address: 0xC
+  2275                           
+  2276                           	global	_RD
+  2277                           	global	_RD
+  2278  0000                     	_RD	set	0xC60	;byte address: 0x18C
+  2279                           
+  2280                           	global	_RD0
+  2281                           	global	_RD0
+  2282  0000                     	_RD0	set	0x40	;byte address: 0x8
+  2283                           
+  2284                           	global	_RD1
+  2285                           	global	_RD1
+  2286  0000                     	_RD1	set	0x41	;byte address: 0x8
+  2287                           
+  2288                           	global	_RD2
+  2289  0000                     	_RD2	set	0x42	;byte address: 0x8
+  2290                           
+  2291                           	global	_RD3
+  2292  0000                     	_RD3	set	0x43	;byte address: 0x8
+  2293                           
+  2294                           	global	_RD4
+  2295                           	global	_RD4
+  2296  0000                     	_RD4	set	0x44	;byte address: 0x8
+  2297                           
+  2298                           	global	_RD5
+  2299                           	global	_RD5
+  2300  0000                     	_RD5	set	0x45	;byte address: 0x8
+  2301                           
+  2302                           	global	_RD6
+  2303                           	global	_RD6
+  2304  0000                     	_RD6	set	0x46	;byte address: 0x8
+  2305                           
+  2306                           	global	_RD7
+  2307                           	global	_RD7
+  2308  0000                     	_RD7	set	0x47	;byte address: 0x8
+  2309                           
+  2310                           	global	_RE0
+  2311                           	global	_RE0
+  2312  0000                     	_RE0	set	0x48	;byte address: 0x9
+  2313                           
+  2314                           	global	_RE1
+  2315                           	global	_RE1
+  2316  0000                     	_RE1	set	0x49	;byte address: 0x9
+  2317                           
+  2318                           	global	_RE2
+  2319                           	global	_RE2
+  2320  0000                     	_RE2	set	0x4A	;byte address: 0x9
+  2321                           
+  2322                           	global	_RP0
+  2323                           	global	_RP0
+  2324  0000                     	_RP0	set	0x1D	;byte address: 0x3
+  2325                           
+  2326                           	global	_RP1
+  2327                           	global	_RP1
+  2328  0000                     	_RP1	set	0x1E	;byte address: 0x3
+  2329                           
+  2330                           	global	_RSEN
+  2331                           	global	_RSEN
+  2332  0000                     	_RSEN	set	0x489	;byte address: 0x91
+  2333                           
+  2334                           	global	_RW
+  2335                           	global	_RW
+  2336  0000                     	_RW	set	0x4A2	;byte address: 0x94
+  2337                           
+  2338                           	global	_RX9
+  2339                           	global	_RX9
+  2340  0000                     	_RX9	set	0xC6	;byte address: 0x18
+  2341                           
+  2342                           	global	_RX9D
+  2343                           	global	_RX9D
+  2344  0000                     	_RX9D	set	0xC0	;byte address: 0x18
+  2345                           
+  2346                           	global	_SEN
+  2347                           	global	_SEN
+  2348  0000                     	_SEN	set	0x488	;byte address: 0x91
+  2349                           
+  2350                           	global	_SMP
+  2351                           	global	_SMP
+  2352  0000                     	_SMP	set	0x4A7	;byte address: 0x94
+  2353                           
+  2354                           	global	_SPEN
+  2355                           	global	_SPEN
+  2356  0000                     	_SPEN	set	0xC7	;byte address: 0x18
+  2357                           
+  2358                           	global	_SREN
+  2359                           	global	_SREN
+  2360  0000                     	_SREN	set	0xC5	;byte address: 0x18
+  2361                           
+  2362                           	global	_SSPEN
+  2363                           	global	_SSPEN
+  2364  0000                     	_SSPEN	set	0xA5	;byte address: 0x14
+  2365                           
+  2366                           	global	_SSPIE
+  2367                           	global	_SSPIE
+  2368  0000                     	_SSPIE	set	0x463	;byte address: 0x8C
+  2369                           
+  2370                           	global	_SSPIF
+  2371                           	global	_SSPIF
+  2372  0000                     	_SSPIF	set	0x63	;byte address: 0xC
+  2373                           
+  2374                           	global	_SSPM0
+  2375                           	global	_SSPM0
+  2376  0000                     	_SSPM0	set	0xA0	;byte address: 0x14
+  2377                           
+  2378                           	global	_SSPM1
+  2379                           	global	_SSPM1
+  2380  0000                     	_SSPM1	set	0xA1	;byte address: 0x14
+  2381                           
+  2382                           	global	_SSPM2
+  2383                           	global	_SSPM2
+  2384  0000                     	_SSPM2	set	0xA2	;byte address: 0x14
+  2385                           
+  2386                           	global	_SSPM3
+  2387                           	global	_SSPM3
+  2388  0000                     	_SSPM3	set	0xA3	;byte address: 0x14
+  2389                           
+  2390                           	global	_SSPOV
+  2391                           	global	_SSPOV
+  2392  0000                     	_SSPOV	set	0xA6	;byte address: 0x14
+  2393                           
+  2394                           	global	_START
+  2395                           	global	_START
+  2396  0000                     	_START	set	0x4A3	;byte address: 0x94
+  2397                           
+  2398                           	global	_STOP
+  2399                           	global	_STOP
+  2400  0000                     	_STOP	set	0x4A4	;byte address: 0x94
+  2401                           
+  2402                           	global	_SYNC
+  2403                           	global	_SYNC
+  2404  0000                     	_SYNC	set	0x4C4	;byte address: 0x98
+  2405                           
+  2406                           	global	_T0CS
+  2407  0000                     	_T0CS	set	0x40D	;byte address: 0x81
+  2408                           
+  2409                           	global	_T0IE
+  2410                           	global	_T0IE
+  2411  0000                     	_T0IE	set	0x5D	;byte address: 0xB
+  2412                           
+  2413                           	global	_T0IF
+  2414                           	global	_T0IF
+  2415  0000                     	_T0IF	set	0x5A	;byte address: 0xB
+  2416                           
+  2417                           	global	_T0SE
+  2418  0000                     	_T0SE	set	0x40C	;byte address: 0x81
+  2419                           
+  2420                           	global	_T1CKPS0
+  2421                           	global	_T1CKPS0
+  2422  0000                     	_T1CKPS0	set	0x84	;byte address: 0x10
+  2423                           
+  2424                           	global	_T1CKPS1
+  2425                           	global	_T1CKPS1
+  2426  0000                     	_T1CKPS1	set	0x85	;byte address: 0x10
+  2427                           
+  2428                           	global	_T1OSCEN
+  2429                           	global	_T1OSCEN
+  2430  0000                     	_T1OSCEN	set	0x83	;byte address: 0x10
+  2431                           
+  2432                           	global	_T1SYNC
+  2433                           	global	_T1SYNC
+  2434  0000                     	_T1SYNC	set	0x82	;byte address: 0x10
+  2435                           
+  2436                           	global	_T2CKPS0
+  2437                           	global	_T2CKPS0
+  2438  0000                     	_T2CKPS0	set	0x90	;byte address: 0x12
+  2439                           
+  2440                           	global	_T2CKPS1
+  2441                           	global	_T2CKPS1
+  2442  0000                     	_T2CKPS1	set	0x91	;byte address: 0x12
+  2443                           
+  2444                           	global	_TMR0IE
+  2445  0000                     	_TMR0IE	set	0x5D	;byte address: 0xB
+  2446                           
+  2447                           	global	_TMR0IF
+  2448  0000                     	_TMR0IF	set	0x5A	;byte address: 0xB
+  2449                           
+  2450                           	global	_TMR1CS
+  2451                           	global	_TMR1CS
+  2452  0000                     	_TMR1CS	set	0x81	;byte address: 0x10
+  2453                           
+  2454                           	global	_TMR1IE
+  2455                           	global	_TMR1IE
+  2456  0000                     	_TMR1IE	set	0x460	;byte address: 0x8C
+  2457                           
+  2458                           	global	_TMR1IF
+  2459                           	global	_TMR1IF
+  2460  0000                     	_TMR1IF	set	0x60	;byte address: 0xC
+  2461                           
+  2462                           	global	_TMR1ON
+  2463                           	global	_TMR1ON
+  2464  0000                     	_TMR1ON	set	0x80	;byte address: 0x10
+  2465                           
+  2466                           	global	_TMR2IE
+  2467                           	global	_TMR2IE
+  2468  0000                     	_TMR2IE	set	0x461	;byte address: 0x8C
+  2469                           
+  2470                           	global	_TMR2IF
+  2471                           	global	_TMR2IF
+  2472  0000                     	_TMR2IF	set	0x61	;byte address: 0xC
+  2473                           
+  2474                           	global	_TMR2ON
+  2475                           	global	_TMR2ON
+  2476  0000                     	_TMR2ON	set	0x92	;byte address: 0x12
+  2477                           
+  2478                           	global	_TO
+  2479                           	global	_TO
+  2480  0000                     	_TO	set	0x1C	;byte address: 0x3
+  2481                           
+  2482                           	global	_TOUTPS0
+  2483                           	global	_TOUTPS0
+  2484  0000                     	_TOUTPS0	set	0x93	;byte address: 0x12
+  2485                           
+  2486                           	global	_TOUTPS1
+  2487                           	global	_TOUTPS1
+  2488  0000                     	_TOUTPS1	set	0x94	;byte address: 0x12
+  2489                           
+  2490                           	global	_TOUTPS2
+  2491                           	global	_TOUTPS2
+  2492  0000                     	_TOUTPS2	set	0x95	;byte address: 0x12
+  2493                           
+  2494                           	global	_TOUTPS3
+  2495                           	global	_TOUTPS3
+  2496  0000                     	_TOUTPS3	set	0x96	;byte address: 0x12
+  2497                           
+  2498                           	global	_TRISA0
+  2499                           	global	_TRISA0
+  2500  0000                     	_TRISA0	set	0x428	;byte address: 0x85
+  2501                           
+  2502                           	global	_TRISA1
+  2503                           	global	_TRISA1
+  2504  0000                     	_TRISA1	set	0x429	;byte address: 0x85
+  2505                           
+  2506                           	global	_TRISA2
+  2507                           	global	_TRISA2
+  2508  0000                     	_TRISA2	set	0x42A	;byte address: 0x85
+  2509                           
+  2510                           	global	_TRISA3
+  2511                           	global	_TRISA3
+  2512  0000                     	_TRISA3	set	0x42B	;byte address: 0x85
+  2513                           
+  2514                           	global	_TRISA4
+  2515                           	global	_TRISA4
+  2516  0000                     	_TRISA4	set	0x42C	;byte address: 0x85
+  2517                           
+  2518                           	global	_TRISA5
+  2519                           	global	_TRISA5
+  2520  0000                     	_TRISA5	set	0x42D	;byte address: 0x85
+  2521                           
+  2522                           	global	_TRISB0
+  2523                           	global	_TRISB0
+  2524  0000                     	_TRISB0	set	0x430	;byte address: 0x86
+  2525                           
+  2526                           	global	_TRISB1
+  2527                           	global	_TRISB1
+  2528  0000                     	_TRISB1	set	0x431	;byte address: 0x86
+  2529                           
+  2530                           	global	_TRISB2
+  2531                           	global	_TRISB2
+  2532  0000                     	_TRISB2	set	0x432	;byte address: 0x86
+  2533                           
+  2534                           	global	_TRISB3
+  2535                           	global	_TRISB3
+  2536  0000                     	_TRISB3	set	0x433	;byte address: 0x86
+  2537                           
+  2538                           	global	_TRISB4
+  2539                           	global	_TRISB4
+  2540  0000                     	_TRISB4	set	0x434	;byte address: 0x86
+  2541                           
+  2542                           	global	_TRISB5
+  2543                           	global	_TRISB5
+  2544  0000                     	_TRISB5	set	0x435	;byte address: 0x86
+  2545                           
+  2546                           	global	_TRISB6
+  2547                           	global	_TRISB6
+  2548  0000                     	_TRISB6	set	0x436	;byte address: 0x86
+  2549                           
+  2550                           	global	_TRISB7
+  2551                           	global	_TRISB7
+  2552  0000                     	_TRISB7	set	0x437	;byte address: 0x86
+  2553                           
+  2554                           	global	_TRISC0
+  2555                           	global	_TRISC0
+  2556  0000                     	_TRISC0	set	0x438	;byte address: 0x87
+  2557                           
+  2558                           	global	_TRISC1
+  2559                           	global	_TRISC1
+  2560  0000                     	_TRISC1	set	0x439	;byte address: 0x87
+  2561                           
+  2562                           	global	_TRISC2
+  2563                           	global	_TRISC2
+  2564  0000                     	_TRISC2	set	0x43A	;byte address: 0x87
+  2565                           
+  2566                           	global	_TRISC3
+  2567                           	global	_TRISC3
+  2568  0000                     	_TRISC3	set	0x43B	;byte address: 0x87
+  2569                           
+  2570                           	global	_TRISC4
+  2571                           	global	_TRISC4
+  2572  0000                     	_TRISC4	set	0x43C	;byte address: 0x87
+  2573                           
+  2574                           	global	_TRISC5
+  2575                           	global	_TRISC5
+  2576  0000                     	_TRISC5	set	0x43D	;byte address: 0x87
+  2577                           
+  2578                           	global	_TRISC6
+  2579                           	global	_TRISC6
+  2580  0000                     	_TRISC6	set	0x43E	;byte address: 0x87
+  2581                           
+  2582                           	global	_TRISC7
+  2583                           	global	_TRISC7
+  2584  0000                     	_TRISC7	set	0x43F	;byte address: 0x87
+  2585                           
+  2586                           	global	_TRISD0
+  2587                           	global	_TRISD0
+  2588  0000                     	_TRISD0	set	0x440	;byte address: 0x88
+  2589                           
+  2590                           	global	_TRISD1
+  2591                           	global	_TRISD1
+  2592  0000                     	_TRISD1	set	0x441	;byte address: 0x88
+  2593                           
+  2594                           	global	_TRISD2
+  2595                           	global	_TRISD2
+  2596  0000                     	_TRISD2	set	0x442	;byte address: 0x88
+  2597                           
+  2598                           	global	_TRISD3
+  2599                           	global	_TRISD3
+  2600  0000                     	_TRISD3	set	0x443	;byte address: 0x88
+  2601                           
+  2602                           	global	_TRISD4
+  2603                           	global	_TRISD4
+  2604  0000                     	_TRISD4	set	0x444	;byte address: 0x88
+  2605                           
+  2606                           	global	_TRISD5
+  2607                           	global	_TRISD5
+  2608  0000                     	_TRISD5	set	0x445	;byte address: 0x88
+  2609                           
+  2610                           	global	_TRISD6
+  2611                           	global	_TRISD6
+  2612  0000                     	_TRISD6	set	0x446	;byte address: 0x88
+  2613                           
+  2614                           	global	_TRISD7
+  2615                           	global	_TRISD7
+  2616  0000                     	_TRISD7	set	0x447	;byte address: 0x88
+  2617                           
+  2618                           	global	_TRISE0
+  2619                           	global	_TRISE0
+  2620  0000                     	_TRISE0	set	0x448	;byte address: 0x89
+  2621                           
+  2622                           	global	_TRISE1
+  2623                           	global	_TRISE1
+  2624  0000                     	_TRISE1	set	0x449	;byte address: 0x89
+  2625                           
+  2626                           	global	_TRISE2
+  2627                           	global	_TRISE2
+  2628  0000                     	_TRISE2	set	0x44A	;byte address: 0x89
+  2629                           
+  2630                           	global	_TRMT
+  2631                           	global	_TRMT
+  2632  0000                     	_TRMT	set	0x4C1	;byte address: 0x98
+  2633                           
+  2634                           	global	_TX9
+  2635                           	global	_TX9
+  2636  0000                     	_TX9	set	0x4C6	;byte address: 0x98
+  2637                           
+  2638                           	global	_TX9D
+  2639                           	global	_TX9D
+  2640  0000                     	_TX9D	set	0x4C0	;byte address: 0x98
+  2641                           
+  2642                           	global	_TXEN
+  2643                           	global	_TXEN
+  2644  0000                     	_TXEN	set	0x4C5	;byte address: 0x98
+  2645                           
+  2646                           	global	_TXIE
+  2647                           	global	_TXIE
+  2648  0000                     	_TXIE	set	0x464	;byte address: 0x8C
+  2649                           
+  2650                           	global	_TXIF
+  2651                           	global	_TXIF
+  2652  0000                     	_TXIF	set	0x64	;byte address: 0xC
+  2653                           
+  2654                           	global	_UA
+  2655                           	global	_UA
+  2656  0000                     	_UA	set	0x4A1	;byte address: 0x94
+  2657                           
+  2658                           	global	_WCOL
+  2659                           	global	_WCOL
+  2660  0000                     	_WCOL	set	0xA7	;byte address: 0x14
+  2661                           
+  2662                           	global	_WR
+  2663                           	global	_WR
+  2664  0000                     	_WR	set	0xC61	;byte address: 0x18C
+  2665                           
+  2666                           	global	_WREN
+  2667                           	global	_WREN
+  2668  0000                     	_WREN	set	0xC62	;byte address: 0x18C
+  2669                           
+  2670                           	global	_WRERR
+  2671                           	global	_WRERR
+  2672  0000                     	_WRERR	set	0xC63	;byte address: 0x18C
+  2673                           
+  2674                           	global	_ZERO
+  2675                           	global	_ZERO
+  2676  0000                     	_ZERO	set	0x1A	;byte address: 0x3
+  2677                           
+  2678                           	psect	strings
+  2679                           	
+  2680  010F                     STR_1:	
+  2681  010F  3449               	retlw	73	;'I'
+  2682  0110  344E               	retlw	78	;'N'
+  2683  0111  3449               	retlw	73	;'I'
+  2684  0112  3454               	retlw	84	;'T'
+  2685  0113  3449               	retlw	73	;'I'
+  2686  0114  3441               	retlw	65	;'A'
+  2687  0115  344C               	retlw	76	;'L'
+  2688  0116  3449               	retlw	73	;'I'
+  2689  0117  345A               	retlw	90	;'Z'
+  2690  0118  3449               	retlw	73	;'I'
+  2691  0119  344E               	retlw	78	;'N'
+  2692  011A  3447               	retlw	71	;'G'
+  2693  011B  342E               	retlw	46	;'.'
+  2694  011C  342E               	retlw	46	;'.'
+  2695  011D  342E               	retlw	46	;'.'
+  2696  011E  342E               	retlw	46	;'.'
+  2697  011F  3400               	retlw	0
+  2698                           	
+  2699  0120                     STR_2:	
+  2700  0120  3420               	retlw	32	;' '
+  2701  0121  3420               	retlw	32	;' '
+  2702  0122  3400               	retlw	0
+  2703  0000                     STR_3	equ	STR_2+1
+  2704                           	PSECT	fnauto0,class=BANK0,space=1
+  2705                           	FNCONF	fnauto0,??,?
+  2706                           
+  2707                           	DABS	1,126,2	;btemp
+  2708                           	global	btemp
+  2709  0000                     	btemp set 07Eh
+  2710                           	global	wtemp0
+  2711  0000                     	wtemp0 set btemp
+  2712                           	global	wtemp1
+  2713  0000                     	wtemp1 set btemp+2
+  2714                           	global	ttemp0
+  2715  0000                     	ttemp0 set btemp
+  2716                           	global	ltemp0
+  2717  0000                     	ltemp0 set btemp
+  2718                           apbank macro
+  2719                           	bcf	status,5
+  2720                           	bcf	status,6
+  2721  0020                     	endm
+
+
+HI-TECH Software PICC Macro Assembler V9.65PL1 build 4898 
+Symbol Table                                          Sat Jul 14 11:27:48 2012
+
+                             l1 02B7                               l2 02B1  
+                             l3 02A0                               l4 02B7  
+                             l5 02A3                               l7 02AB  
+                             l8 02D8                               l9 02E3  
+                     __Lrdata_0 0070                               _c 0070  
+                             _i 0072                               _j 0074  
+                             _k 0076                               pc 0002  
+                     __Lramdata 0070                              l10 02EC  
+                            l11 029E                              l12 0291  
+                            _DA 04A5                              l21 0250  
+                            l13 0280                              _BF 04A0  
+                            l14 029E                              _DC 0019  
+                            l15 027B                              l16 02CA  
+                            l17 0224                              l18 0201  
+                            l19 021E                              l56 0063  
+                            l57 0063                              l59 02F2  
+                            _PD 001B                              _RD 0C60  
+                            _UA 04A1                              _TO 001C  
+                            _RW 04A2                              _WR 0C61  
+                            fsr 0004                 ___lwmod_divisor 0034  
+               ___lwmod_counter 0036                             _CM0 04E0  
+                           _CM1 04E1                             _CM2 04E2  
+                           _CKE 04A6                             _IBF 044F  
+                           _CIS 04E3                             _CKP 00A4  
+                           _GIE 005F                             _BOR 0470  
+                           _RA0 0028                             _RA1 0029  
+                           _RB0 0030                             _RA2 002A  
+                           _RB1 0031                             _RA3 002B  
+                           _RC0 0038                             _RB2 0032  
+                           _RA4 002C                             _RC1 0039  
+                           _RB3 0033                             _RA5 002D  
+                           _RD0 0040                             _RC2 003A  
+                           _RB4 0034                             _RD1 0041  
+                           _RC3 003B                             _RB5 0035  
+                           _RE0 0048                             _RD2 0042  
+                           _RC4 003C                             _RB6 0036  
+                           _RE1 0049                             _RD3 0043  
+                           _RC5 003D                             _RB7 0037  
+                           _RE2 004A                             _RD4 0044  
+                           _RC6 003E                             _RD5 0045  
+                           _RC7 003F                             _RD6 0046  
+                           _OBF 044E                             _RD7 0047  
+                           _FSR 0004                             _PCL 0002  
+                           _PS0 0408                             _PR2 0092  
+                           _PS1 0409                             _RP0 001D  
+                           _PS2 040A                             _PEN 048A  
+                           _IRP 001F                             _RP1 001E  
+                           _SEN 0488                             _PSA 040B  
+                           _POR 0471                             _RX9 00C6  
+                           _SMP 04A7                             _TX9 04C6  
+                           fsr0 0004                             indf 0000  
+              ___lwmod_dividend 0032                         ??_Delay 0029  
+                   _Delay_pause 0029                            _ADIE 0466  
+                          _ADIF 0066                            _ADFM 04FF  
+                          _ADGO 00FA                        __tempreg 0020  
+                          _ADON 00F8                            _CHS0 00FB  
+                          _CHS1 00FC                            _CHS2 00FD  
+                          _EEIE 046C                            _EEIF 006C  
+                          STR_1 010F                            STR_2 0120  
+                          _GCEN 048F                            _CMIE 046E  
+                          _CMIF 006E                         ??_timer 002A  
+                          _BRGH 04C2                            _T0IE 005D  
+                          _T0IF 005A                            _CREN 00C4  
+                          _T0CS 040D                            _FERR 00C2  
+                          _IBOV 044D                            _CVR0 04E8  
+                          _CVR1 04E9                            _CVR2 04EA  
+                          _CVR3 04EB                            _T0SE 040C  
+                          _CSRC 04C7                            _INDF 0000  
+                          u1720 02AB                            u1721 02AA  
+                          u1730 02B7                            u1650 021E  
+                          u1731 02B6                            u1651 021D  
+                          u1670 029E                            _PIE1 008C  
+                          u1671 029D                            _PIE2 008D  
+                          u1665 0237                            _CVRR 04ED  
+                          _PEIE 005E                            _INTE 005C  
+                          _INTF 0059                            _RBIE 005B  
+                          _RBIF 0058                            i1l50 014B  
+                          _RCIE 0465                            i1l51 0162  
+                          _RCIF 0065                            _RCEN 048B  
+                          i1l52 0179                            i1l53 0198  
+                          i1l54 01A6                            _PCON 008E  
+                          i1l80 01EB                            i1l48 01AA  
+                          _PIR1 000C                            i1l81 01CA  
+                          i1l49 01AA                            _PIR2 000D  
+                          i1l82 01BF                            i1l83 01CE  
+                          i1l85 01EB                            i1l86 01CE  
+                          i1l79 01EC                            i1l87 01DE  
+                          _OERR 00C1                            _RBPU 040F  
+                          _RX9D 00C0                            _TMR0 0001  
+                          _TMR2 0011                            _WCOL 00A7  
+                          _SPEN 00C7                            _RSEN 0489  
+                     __databank FFFFFFFF  
+                          _TX9D 04C0                            _SREN 00C5  
+                          _TRMT 04C1                            _STOP 04A4  
+                          _ZERO 001A                            _TXIE 0464  
+                          _WREN 0C62                            _TXIF 0064  
+                          _TXEN 04C5                            _SYNC 04C4  
+                          _main 003C                            btemp 007E  
+              __end_of_LCDReset 02CB                            start 0012  
+               _LCDWriteCommand 02D9               interrupt_function 0004  
+              ?_LCDWriteCommand 0022                       stringcode 0108  
+                 __end_of_Delay 02B8                 __end_of___lwmod 01ED  
+                       _CCP1CON 0017                         _CCP2CON 001D  
+                       _ACKSTAT 048E                           _C1INV 04E4  
+                         _C2INV 04E5                           _C1OUT 04E6  
+                         _C2OUT 04E7                           _ADCS0 00FE  
+                         _ADCS1 00FF                           _ADCS2 04FE  
+                         _ADDEN 00C3                           ?_main 0020  
+                         _ACKEN 048C                           _ACKDT 048D  
+                         _BCLIE 046B                           _BCLIF 006B  
+                         _CCP1X 00BD                           _CCP1Y 00BC  
+                         _CCP2X 00ED                           _CCP2Y 00EC  
+                         _EEADR 010D               ??_LCDWriteCommand 0022  
+                         _CARRY 0018                           _EEPGD 0C67  
+                         _CMCON 009C                           _T1CON 0010  
+                         _T2CON 0012                         _T1CKPS0 0084  
+                       _T1CKPS1 0085                           _PCFG0 04F8  
+                         _PCFG1 04F9                           _PCFG2 04FA  
+                         _PCFG3 04FB                         _T2CKPS0 0090  
+                       _T2CKPS1 0091                           _CVREN 04EF  
+                         _CVROE 04EE                  ?_LCDInitialize 0020  
+     _LCDWriteString_lcd_string 0022                           _RCREG 001A  
+                         _RCSTA 0018                   __end_of_timer 01B5  
+                         _TMR1H 000F                           _TMR1L 000E  
+                         _SPBRG 0099                           _PORTA 0005  
+                         _PORTB 0006                         _T1OSCEN 0083  
+                         _PORTC 0007                           _PORTD 0008  
+                         _PORTE 0009                           _PSPIE 0467  
+                         _PSPIF 0067                           _START 04A3  
+                         _SSPM0 00A0                           _SSPM1 00A1  
+                         _SSPM2 00A2                           _SSPM3 00A3  
+                         _TRISA 0085                           _TRISB 0086  
+                         _TRISC 0087                           _TRISD 0088  
+                         _SSPIE 0463                           _TRISE 0089  
+                         _SSPIF 0063                           _SSPEN 00A5  
+                         _SSPOV 00A6                           _WRERR 0C63  
+               ??_LCDInitialize 0020                           _TXREG 0019  
+                         _TXSTA 0098                           _Delay 029F  
+                         _count 007A                         _PSPMODE 044C  
+                       _SSPCON2 0091                       _LCDEnable 02CB  
+                         _timer 012D                           _times 0078  
+                ??_LCDWriteData 0024               __end_of_LCDEnable 02D9  
+                ??_LCDWriteByte 0025                         _SSPSTAT 0094  
+                       _TOUTPS0 0093                         _TOUTPS1 0094  
+                       _TOUTPS2 0095                         _TOUTPS3 0096  
+                         pclath 000A                           ltemp0 007E  
+                    ?_LCDEnable 0027                        intlevel1 0004  
+                         ttemp0 007E                           status 0003  
+          _MainSystemInitialize 02ED                           wtemp0 007E  
+                         wtemp1 0080           ?_MainSystemInitialize 0020  
+          _LCDWriteData_LCDData 0024                     ??_LCDEnable 0027  
+        ??_MainSystemInitialize 0020                     __stringbase 010E  
+__end_of_LCDDisplayInitializing 0225                         ___lwmod 01B5  
+       __end_of_LCDWriteCommand 02E4                        ?___lwmod 0032  
+                    _Delay_time 0027                       ??___lwmod 0036  
+                        ??_main 0020                          ?_Delay 0027  
+                      stringdir 0109                        stringjmp 010D  
+                      stringtab 0100                          _ADCON0 001F  
+                        _ADCON1 009F                    _LCDWriteData 02E4  
+                        _CCP1M0 00B8                          _CCP1M1 00B9  
+                        _CCP1M2 00BA                          _CCP1M3 00BB  
+                        _CCP2M0 00E8                          _CCP2M1 00E9  
+                        _CCP2M2 00EA                          _CCP2M3 00EB  
+                        _CCP1IE 0462                          _CCP1IF 0062  
+                        _CCP2IE 0468                          _CCP2IF 0068  
+                  _LCDWriteByte 0225                  _LCDWriteString 027C  
+                        _ADRESH 001E                          _EEADRH 010F  
+                        _ADRESL 009E                          _EEADRL 010D  
+                        _EEDATA 010C                          _CCPR1H 0016  
+                        _EEDATH 010E                          _CCPR2H 001C  
+                        _CCPR1L 0015                          _CCPR2L 001B  
+                        _EECON1 018C                          _EECON2 018D  
+  __end_of_MainSystemInitialize 02F3                          ?_timer 002A  
+                  __end_of_main 0067                 ?_LCDWriteString 0022  
+                        _GODONE 00FA                          _CVRCON 009D  
+                        _T1SYNC 0082                          _INTEDG 040E  
+                        _PCLATH 000A                          _INTCON 000B  
+                        i1u1600 01CE                          i1u1520 0131  
+                        i1u1601 01CD                          i1u1521 0130  
+                        i1u1610 01D8                          i1u1530 0147  
+                        i1u1611 01D7                          i1u1531 0146  
+                        i1u1540 0161                          i1u1541 0160  
+                        i1u1630 01EB                          i1u1550 0178  
+                        i1u1631 01EA                          i1u1615 01D4  
+                        i1u1551 0177                          i1u1535 0143  
+                        i1u1560 0192                          i1u1625 01DF  
+                        i1u1561 0191                          i1u1545 015D  
+                        i1u1570 01A2                          i1u1571 01A1  
+                        i1u1555 0174                          i1u1580 01BB  
+                        i1u1581 01BA                          i1u1575 019E  
+                        i1u1595 01C0            __end_of_LCDWriteData 02ED  
+          __end_of_LCDWriteByte 0251          _LCDDisplayInitializing 01ED  
+                        _TMR0IE 005D                          _TMR0IF 005A  
+                        _TMR1IE 0460                          _TMR1IF 0060  
+                        _TMR1CS 0081                          _TMR2IE 0461  
+                        _TMR2IF 0061                          _TMR1ON 0080  
+                        _OPTION 0081         _LCDWriteCommand_LCDData 0022  
+                        _TMR2ON 0092                          _SSPADD 0093  
+                        _TRISA0 0428                ??_LCDWriteString 0022  
+                        _TRISA1 0429                          _TRISB0 0430  
+                        _TRISA2 042A                          _TRISB1 0431  
+                        _TRISA3 042B                          _TRISC0 0438  
+                        _TRISB2 0432                          _TRISA4 042C  
+                        _TRISC1 0439                          _TRISB3 0433  
+                        _TRISA5 042D                          _TRISD0 0440  
+                        _TRISC2 043A                          _TRISB4 0434  
+                        _TRISD1 0441                          _TRISC3 043B  
+                        _TRISB5 0435                          _TRISE0 0448  
+                        _TRISD2 0442                          _TRISC4 043C  
+                        _TRISB6 0436                          _TRISE1 0449  
+                        _TRISD3 0443                          _TRISC5 043D  
+                        _TRISB7 0437                          _TRISE2 044A  
+                        _TRISD4 0444                          _TRISC6 043E  
+                        _TRISD5 0445                          _TRISC7 043F  
+                        _TRISD6 0446                          _TRISD7 0447  
+                        _STATUS 0003                          _SSPCON 0014  
+                        _SSPBUF 0013                        _LCDReset 02B8  
+                     ?_LCDReset 0021                      ??_LCDReset 0021  
+       ?_LCDDisplayInitializing 0020        _LCDDisplayInitializing_i 0020  
+                        _count1 007C          __end_of_LCDWriteString 029F  
+                 _LCDInitialize 0251            _LCDWriteByte_LCDData 0025  
+                        saved_w 007F                   ?_LCDWriteData 0024  
+                 ?_LCDWriteByte 0025           __end_of_LCDInitialize 027C  
+      ??_LCDDisplayInitializing 0020                        __Hcommon 007E  
+                     __Hrdata_0 007A                       __Hramdata 007A  
+                      __Lcommon 007A  

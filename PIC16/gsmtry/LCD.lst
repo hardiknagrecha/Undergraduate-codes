@@ -1,0 +1,962 @@
+
+
+HI-TECH Software PICC Macro Assembler V9.60
+                                                      Thu Jan 24 23:02:56 2013
+
+
+     1                           	processor	16F877A
+     2                           	opt	pw 79
+     3                           	psect	text0,local,class=CODE,delta=2
+     4                           	psect	text1,local,class=CODE,delta=2
+     5                           	psect	text2,local,class=CODE,delta=2
+     6                           	psect	text3,local,class=CODE,delta=2
+     7                           	psect	text4,local,class=CODE,delta=2
+     8                           	psect	text5,local,class=CODE,delta=2
+     9                           	psect	text6,local,class=CODE,delta=2
+    10                           	psect	text7,local,class=CODE,delta=2
+    11                           	psect	text8,local,class=CODE,delta=2
+    12                           	psect	text9,local,class=CODE,delta=2
+    13                           	psect	text10,local,class=CODE,delta=2
+    14                           	psect	strings,global,class=STRING,delta=2
+    15                           	psect	temp,global,ovrld,class=BANK0,space=1,de
+      +                          lta=1
+    16  0000                     
+    17  0000                     
+    18  0000                     
+    19  0000                     
+    20  0000                     
+    21  0000                     
+    22  0000                     
+    23  0000                     
+    24  0000                     
+    25  0000                     
+    26                           
+    27                           	psect	text0
+    28  0000'                    _LCDEnable
+    29                           ;LCD.c: 4: static void LCDEnable(void)
+    30  0000' 0183               	clrf	3	;select bank 0
+    31  0001' 1588               	bsf	8,3
+    32                           ;LCD.c: 7: Delay(10);
+    33  0002' 300A               	movlw	10
+    34  0003' 0080'              	movwf	?_Delay
+    35  0004' 0181'              	clrf	?_Delay+1
+    36  0005' 2000'              	call	_Delay
+    37                           ;LCD.c: 8: RD3 = 0;
+    38  0006' 1188               	bcf	8,3
+    39                           ;LCD.c: 9: }
+    40  0007' 0008               	return	;W free
+    41                           
+    42                           	psect	text1
+    43  0000'                    _LCDWriteCommand
+    44                           ;	_LCDData assigned to ?a_LCDWriteCommand+0
+    45  0000                     _LCDWriteCommand$LCDData	set	?a_LCDWriteCommand
+    46                           ;_LCDData stored from w
+    47  0000' 0183               	clrf	3	;select bank 0
+    48  0001' 0080'              	movwf	?a_LCDWriteCommand
+    49                           ;LCD.c: 11: void LCDWriteCommand(LCDubyte LCDDa
+      +                          ta)
+    50  0002' 1108               	bcf	8,2
+    51                           ;LCD.c: 14: LCDWriteByte(LCDData);
+    52  0003' 2800'              	goto	_LCDWriteByte
+    53                           
+    54                           	psect	text2
+    55  0000'                    _LCDWriteData
+    56                           ;	_LCDData assigned to ?a_LCDWriteData+0
+    57  0000                     _LCDWriteData$LCDData	set	?a_LCDWriteData
+    58                           ;_LCDData stored from w
+    59  0000' 0183               	clrf	3	;select bank 0
+    60  0001' 0080'              	movwf	?a_LCDWriteData
+    61                           ;LCD.c: 17: void LCDWriteData(LCDubyte LCDData)
+    62  0002' 1508               	bsf	8,2
+    63                           ;LCD.c: 20: LCDWriteByte(LCDData);
+    64  0003' 2800'              	goto	_LCDWriteByte
+    65                           
+    66                           	psect	text3
+    67  0000'                    _LCDWriteString
+    68                           ;LCD.c: 24: void LCDWriteString(const char *lcd
+      +                          _string)
+    69  0000' 2800'              	goto	l5
+    70  0001'                    l6
+    71                           ;LCD.c: 27: {
+    72  0001' 0801'              	movf	?_LCDWriteString+1,w
+    73  0002' 0081'              	movwf	code_ptr+1
+    74  0003' 0800'              	movf	?_LCDWriteString,w
+    75  0004' 0A80'              	incf	?_LCDWriteString
+    76  0005' 1903               	btfsc	3,2
+    77  0006' 0A81'              	incf	?_LCDWriteString+1
+    78  0007' 2000'              	call	string_table
+    79  0008' 2000'              	call	_LCDWriteData
+    80  0009'                    l5
+    81  0009' 1283               	bcf	3,5
+    82  000A' 1303               	bcf	3,6	;carry unused
+    83  000B' 0801'              	movf	?_LCDWriteString+1,w
+    84  000C' 0081'              	movwf	code_ptr+1
+    85  000D' 0800'              	movf	?_LCDWriteString,w
+    86  000E' 2000'              	call	string_table
+    87  000F' 3800               	iorlw	0
+    88  0010' 1903               	btfsc	3,2
+    89  0011' 0008               	return
+    90  0012' 2800'              	goto	l6
+    91                           
+    92                           	psect	text4
+    93  0000'                    _LCDInitialize
+    94                           ;LCD.c: 33: void LCDInitialize(void)
+    95  0000' 3003               	movlw	3
+    96  0001' 1683               	bsf	3,5
+    97  0002' 1303               	bcf	3,6	;carry unused
+    98  0003' 0588               	andwf	8	;volatile
+    99                           ;LCD.c: 36: RD3 = 0;
+   100  0004' 1283               	bcf	3,5
+   101  0005' 1188               	bcf	8,3
+   102                           ;LCD.c: 37: RD2 = 0;
+   103  0006' 1108               	bcf	8,2
+   104                           ;LCD.c: 38: PORTD &= 0x0f;
+   105  0007' 300F               	movlw	15
+   106  0008' 0588               	andwf	8	;volatile
+   107                           ;LCD.c: 39: LCDReset();
+   108  0009' 2000'              	call	_LCDReset
+   109                           ;LCD.c: 40: LCDWriteCommand(0x28);
+   110  000A' 3028               	movlw	40
+   111  000B' 2000'              	call	_LCDWriteCommand
+   112                           ;LCD.c: 41: LCDWriteCommand(0x0C);
+   113  000C' 300C               	movlw	12
+   114  000D' 2000'              	call	_LCDWriteCommand
+   115                           ;LCD.c: 42: LCDWriteCommand(0x06);
+   116  000E' 3006               	movlw	6
+   117  000F' 2000'              	call	_LCDWriteCommand
+   118                           ;LCD.c: 43: LCDWriteCommand(0x01);
+   119  0010' 3001               	movlw	1
+   120  0011' 2800'              	goto	_LCDWriteCommand
+   121                           
+   122                           	psect	text5
+   123  0000'                    _LCDReset
+   124                           ;LCD.c: 46: static void LCDReset(void)
+   125  0000' 3033               	movlw	51
+   126  0001' 2000'              	call	_LCDWriteCommand
+   127                           ;LCD.c: 49: LCDWriteCommand(0x33);
+   128  0002' 3033               	movlw	51
+   129  0003' 2000'              	call	_LCDWriteCommand
+   130                           ;LCD.c: 50: LCDWriteCommand(0x32);
+   131  0004' 3032               	movlw	50
+   132  0005' 2800'              	goto	_LCDWriteCommand
+   133                           
+   134                           	psect	text6
+   135  0000'                    _LCDDisplayInitializing
+   136                           ;	_i assigned to ?a_LCDDisplayInitializing+0
+   137  0000                     _LCDDisplayInitializing$i	set	?a_LCDDisplayInit
+      +                          ializing
+   138                           ;LCD.c: 52: void LCDDisplayInitializing(void)
+   139  0000' 3000'              	movlw	low u19
+   140  0001' 0183               	clrf	3	;select bank 0
+   141  0002' 0080'              	movwf	?_LCDWriteString
+   142  0003' 3000'              	movlw	high u19
+   143  0004' 0081'              	movwf	?_LCDWriteString+1
+   144  0005' 2000'              	call	_LCDWriteString
+   145                           ;LCD.c: 57: LCDWriteCommand(0xC0);
+   146  0006' 30C0               	movlw	-64
+   147  0007' 2000'              	call	_LCDWriteCommand
+   148                           ;LCD.c: 58: for(i = 0 ; i < 16; i++)
+   149  0008' 0180'              	clrf	?a_LCDDisplayInitializing
+   150  0009'                    l11
+   151                           ;LCD.c: 59: {
+   152  0009' 302E               	movlw	46
+   153  000A' 2000'              	call	_LCDWriteData
+   154                           ;LCD.c: 61: Delay(100);
+   155  000B' 3064               	movlw	100
+   156  000C' 0080'              	movwf	?_Delay
+   157  000D' 0181'              	clrf	?_Delay+1
+   158  000E' 2000'              	call	_Delay
+   159  000F' 0A80'              	incf	?a_LCDDisplayInitializing
+   160  0010' 3010               	movlw	16
+   161  0011' 0200'              	subwf	?a_LCDDisplayInitializing,w
+   162  0012' 1C03               	btfss	3,0
+   163  0013' 2800'              	goto	l11
+   164                           ;LCD.c: 62: }
+   165  0014' 3001               	movlw	1
+   166  0015' 2800'              	goto	_LCDWriteCommand
+   167                           
+   168                           	psect	text7
+   169  0000'                    _LCDWriteByte
+   170                           ;	_LCDData assigned to ?a_LCDWriteByte+0
+   171  0000                     _LCDWriteByte$LCDData	set	?a_LCDWriteByte
+   172                           ;_LCDData stored from w
+   173  0000' 0183               	clrf	3	;select bank 0
+   174  0001' 0080'              	movwf	?a_LCDWriteByte
+   175                           ;LCD.c: 65: static void LCDWriteByte(LCDubyte L
+      +                          CDData)
+   176  0002' 39F0               	andlw	-16
+   177  0003' 0081'              	movwf	?a_LCDWriteByte+1
+   178  0004' 0808               	movf	8,w	;volatile
+   179  0005' 390F               	andlw	15
+   180  0006' 0401'              	iorwf	?a_LCDWriteByte+1,w
+   181  0007' 0088               	movwf	8	;volatile
+   182                           ;LCD.c: 68: LCDEnable();
+   183  0008' 2000'              	call	_LCDEnable
+   184                           ;LCD.c: 69: PORTD = (PORTD & 0x0F)|(LCDData << 
+      +                          4);
+   185  0009' 0E00'              	swapf	?a_LCDWriteByte,w
+   186  000A' 39F0               	andlw	240
+   187  000B' 0081'              	movwf	?a_LCDWriteByte+1
+   188  000C' 0808               	movf	8,w	;volatile
+   189  000D' 390F               	andlw	15
+   190  000E' 0401'              	iorwf	?a_LCDWriteByte+1,w
+   191  000F' 0088               	movwf	8	;volatile
+   192                           ;LCD.c: 70: LCDEnable();
+   193  0010' 2000'              	call	_LCDEnable
+   194                           ;LCD.c: 71: Delay(2);
+   195  0011' 3002               	movlw	2
+   196  0012' 0080'              	movwf	?_Delay
+   197  0013' 0181'              	clrf	?_Delay+1
+   198  0014' 2800'              	goto	_Delay
+   199                           
+   200                           	psect	text8
+   201  0000'                    _LCDDisplayByte
+   202                           ;	_LCDAdress assigned to ?a_LCDDisplayByte+0
+   203  0000                     _LCDDisplayByte$LCDAdress	set	?a_LCDDisplayByte
+   204                           ;_LCDAdress stored from w
+   205  0000' 0183               	clrf	3	;select bank 0
+   206  0001' 0080'              	movwf	?a_LCDDisplayByte
+   207                           ;LCD.c: 73: void LCDDisplayByte(LCDubyte LCDAdr
+      +                          ess, LCDubyte Value)
+   208  0002' 2000'              	call	_LCDWriteCommand
+   209                           ;LCD.c: 76: if(( Value / 100 ) == 0)
+   210  0003' 3064               	movlw	100
+   211  0004' 0081'              	movwf	btemp+1
+   212  0005' 0800'              	movf	?_LCDDisplayByte,w
+   213  0006' 2000'              	call	lbdiv
+   214  0007' 3800               	iorlw	0
+   215  0008' 1D03               	btfss	3,2
+   216  0009' 2800'              	goto	l16
+   217                           ;LCD.c: 77: LCDWriteData(0x20);
+   218  000A' 3020               	movlw	32
+   219  000B' 2800'              	goto	L1
+   220  000C'                    l16
+   221                           ;LCD.c: 78: else
+   222  000C' 3064               	movlw	100
+   223  000D' 0081'              	movwf	btemp+1
+   224  000E' 0800'              	movf	?_LCDDisplayByte,w
+   225  000F' 2000'              	call	lbdiv
+   226  0010' 3830               	iorlw	48
+   227  0011'                    L1
+   228  0011' 2000'              	call	_LCDWriteData
+   229                           ;LCD.c: 81: if(((Value % 100) / 10) == 0)
+   230  0012' 3064               	movlw	100
+   231  0013' 0081'              	movwf	btemp+1
+   232  0014' 0800'              	movf	?_LCDDisplayByte,w
+   233  0015' 2000'              	call	lbmod
+   234  0016' 0800'              	movf	btemp,w
+   235  0017' 0081'              	movwf	?a_LCDDisplayByte+1
+   236  0018' 300A               	movlw	10
+   237  0019' 0081'              	movwf	btemp+1
+   238  001A' 0801'              	movf	?a_LCDDisplayByte+1,w
+   239  001B' 2000'              	call	lbdiv
+   240  001C' 3800               	iorlw	0
+   241                           ;LCD.c: 82: if(( Value / 100 ) == 0)
+   242  001D' 3064               	movlw	100
+   243  001E' 0081'              	movwf	btemp+1
+   244  001F' 1D03               	btfss	3,2
+   245  0020' 2800'              	goto	L3
+   246  0021' 0800'              	movf	?_LCDDisplayByte,w
+   247  0022' 2000'              	call	lbdiv
+   248  0023' 3800               	iorlw	0
+   249  0024' 1D03               	btfss	3,2
+   250  0025' 2800'              	goto	l18
+   251                           ;LCD.c: 83: LCDWriteData(0x20);
+   252  0026' 3020               	movlw	32
+   253  0027' 2800'              	goto	L2
+   254                           ;LCD.c: 84: else
+   255  0028'                    l18
+   256                           ;LCD.c: 86: else
+   257  0028' 3064               	movlw	100
+   258  0029' 0081'              	movwf	btemp+1
+   259  002A'                    L3
+   260  002A' 0800'              	movf	?_LCDDisplayByte,w
+   261  002B' 2000'              	call	lbmod
+   262  002C' 0800'              	movf	btemp,w
+   263  002D' 0081'              	movwf	?a_LCDDisplayByte+1
+   264  002E' 300A               	movlw	10
+   265  002F' 0081'              	movwf	btemp+1
+   266  0030' 0801'              	movf	?a_LCDDisplayByte+1,w
+   267  0031' 2000'              	call	lbdiv
+   268  0032' 3830               	iorlw	48
+   269  0033'                    L2
+   270  0033' 2000'              	call	_LCDWriteData
+   271                           ;LCD.c: 89: LCDWriteData((Value % 10) | 0x30);
+   272  0034' 300A               	movlw	10
+   273  0035' 0081'              	movwf	btemp+1
+   274  0036' 0800'              	movf	?_LCDDisplayByte,w
+   275  0037' 2000'              	call	lbmod
+   276  0038' 0800'              	movf	btemp,w
+   277  0039' 3830               	iorlw	48
+   278  003A' 2800'              	goto	_LCDWriteData
+   279                           
+   280                           	psect	text9
+   281  0000'                    _LCDWriteFloat
+   282                           ;	_i assigned to ?a_LCDWriteFloat+0
+   283  0000                     _LCDWriteFloat$i	set	?a_LCDWriteFloat
+   284                           ;	_Temp assigned to ?a_LCDWriteFloat+1
+   285  0000                     _LCDWriteFloat$Temp	set	?a_LCDWriteFloat+1
+   286                           ;	_n assigned to ?a_LCDWriteFloat+3
+   287  0000                     _LCDWriteFloat$n	set	?a_LCDWriteFloat+3
+   288                           ;	_c assigned to ?a_LCDWriteFloat+5
+   289  0000                     _LCDWriteFloat$c	set	?a_LCDWriteFloat+5
+   290                           ;LCD.c: 92: void LCDWriteFloat(float FloatNumbe
+      +                          r)
+   291  0000' 0183               	clrf	3	;select bank 0
+   292  0001' 0180'              	clrf	?a_LCDWriteFloat
+   293                           ;LCD.c: 96: int n, Temp;
+   294  0002' 0183'              	clrf	btemp+3
+   295  0003' 0184'              	clrf	btemp+4
+   296  0004' 0185'              	clrf	btemp+5
+   297  0005' 0800'              	movf	?_LCDWriteFloat,w
+   298  0006' 0080'              	movwf	btemp
+   299  0007' 0801'              	movf	?_LCDWriteFloat+1,w
+   300  0008' 0081'              	movwf	btemp+1
+   301  0009' 0802'              	movf	?_LCDWriteFloat+2,w
+   302  000A' 0082'              	movwf	btemp+2
+   303  000B' 2000'              	call	ftcmp
+   304  000C' 1803               	btfsc	3,0
+   305  000D' 2800'              	goto	l23
+   306                           ;LCD.c: 98: {
+   307  000E' 302D               	movlw	45
+   308  000F' 2000'              	call	_LCDWriteData
+   309                           ;LCD.c: 100: FloatNumber = -(FloatNumber);
+   310  0010' 0800'              	movf	?_LCDWriteFloat,w
+   311  0011' 0080'              	movwf	btemp
+   312  0012' 0801'              	movf	?_LCDWriteFloat+1,w
+   313  0013' 0081'              	movwf	btemp+1
+   314  0014' 0802'              	movf	?_LCDWriteFloat+2,w
+   315  0015' 0082'              	movwf	btemp+2
+   316  0016' 2000'              	call	ftneg
+   317  0017' 0800'              	movf	btemp,w
+   318  0018' 0080'              	movwf	?_LCDWriteFloat
+   319  0019' 0801'              	movf	btemp+1,w
+   320  001A' 0081'              	movwf	?_LCDWriteFloat+1
+   321  001B' 0802'              	movf	btemp+2,w
+   322  001C' 0082'              	movwf	?_LCDWriteFloat+2
+   323  001D'                    l23
+   324                           ;LCD.c: 101: }
+   325  001D' 0800'              	movf	?_LCDWriteFloat,w
+   326  001E' 0080'              	movwf	btemp
+   327  001F' 0801'              	movf	?_LCDWriteFloat+1,w
+   328  0020' 0081'              	movwf	btemp+1
+   329  0021' 0802'              	movf	?_LCDWriteFloat+2,w
+   330  0022' 0082'              	movwf	btemp+2
+   331  0023' 2000'              	call	fttol
+   332  0024' 0800'              	movf	btemp,w
+   333  0025' 0083'              	movwf	?a_LCDWriteFloat+3
+   334  0026' 0801'              	movf	btemp+1,w
+   335  0027' 0084'              	movwf	?a_LCDWriteFloat+4
+   336                           ;LCD.c: 103: Temp = n;
+   337  0028' 0803'              	movf	?a_LCDWriteFloat+3,w
+   338  0029' 0081'              	movwf	?a_LCDWriteFloat+1
+   339  002A' 0804'              	movf	?a_LCDWriteFloat+4,w
+   340  002B' 0082'              	movwf	?a_LCDWriteFloat+2
+   341                           ;LCD.c: 104: LCDWriteInteger(n);
+   342  002C' 0803'              	movf	?a_LCDWriteFloat+3,w
+   343  002D' 0080'              	movwf	?_LCDWriteInteger
+   344  002E' 0804'              	movf	?a_LCDWriteFloat+4,w
+   345  002F' 0081'              	movwf	?_LCDWriteInteger+1
+   346  0030' 2000'              	call	_LCDWriteInteger
+   347                           ;LCD.c: 105: LCDWriteData('.');
+   348  0031' 302E               	movlw	46
+   349  0032' 2000'              	call	_LCDWriteData
+   350                           ;LCD.c: 106: FloatNumber = ((FloatNumber - n) +
+      +                           1) * 1000;
+   351  0033' 0804'              	movf	?a_LCDWriteFloat+4,w
+   352  0034' 0081'              	movwf	btemp+1
+   353  0035' 0803'              	movf	?a_LCDWriteFloat+3,w
+   354  0036' 0080'              	movwf	btemp
+   355  0037' 2000'              	call	awtoft
+   356  0038' 0800'              	movf	btemp,w
+   357  0039' 0083'              	movwf	btemp+3
+   358  003A' 0801'              	movf	btemp+1,w
+   359  003B' 0084'              	movwf	btemp+4
+   360  003C' 0802'              	movf	btemp+2,w
+   361  003D' 0085'              	movwf	btemp+5
+   362  003E' 0800'              	movf	?_LCDWriteFloat,w
+   363  003F' 0080'              	movwf	btemp
+   364  0040' 0801'              	movf	?_LCDWriteFloat+1,w
+   365  0041' 0081'              	movwf	btemp+1
+   366  0042' 0802'              	movf	?_LCDWriteFloat+2,w
+   367  0043' 0082'              	movwf	btemp+2
+   368  0044' 2000'              	call	ftsub
+   369  0045' 0183'              	clrf	btemp+3
+   370  0046' 3080               	movlw	128
+   371  0047' 0084'              	movwf	btemp+4
+   372  0048' 303F               	movlw	63
+   373  0049' 0085'              	movwf	btemp+5
+   374  004A' 2000'              	call	ftadd
+   375  004B' 0183'              	clrf	btemp+3
+   376  004C' 307A               	movlw	122
+   377  004D' 0084'              	movwf	btemp+4
+   378  004E' 3044               	movlw	68
+   379  004F' 0085'              	movwf	btemp+5
+   380  0050' 2000'              	call	ftmul
+   381  0051' 0800'              	movf	btemp,w
+   382  0052' 0080'              	movwf	?_LCDWriteFloat
+   383  0053' 0801'              	movf	btemp+1,w
+   384  0054' 0081'              	movwf	?_LCDWriteFloat+1
+   385  0055' 0802'              	movf	btemp+2,w
+   386  0056' 0082'              	movwf	?_LCDWriteFloat+2
+   387                           ;LCD.c: 107: n = FloatNumber;
+   388  0057' 0800'              	movf	?_LCDWriteFloat,w
+   389  0058' 0080'              	movwf	btemp
+   390  0059' 0801'              	movf	?_LCDWriteFloat+1,w
+   391  005A' 0081'              	movwf	btemp+1
+   392  005B' 0802'              	movf	?_LCDWriteFloat+2,w
+   393  005C' 0082'              	movwf	btemp+2
+   394  005D' 2000'              	call	fttol
+   395  005E' 0800'              	movf	btemp,w
+   396  005F' 0083'              	movwf	?a_LCDWriteFloat+3
+   397  0060' 0801'              	movf	btemp+1,w
+   398  0061'                    L4
+   399  0061' 0084'              	movwf	?a_LCDWriteFloat+4
+   400  0062' 3A80               	xorlw	128
+   401  0063' 0080'              	movwf	btemp
+   402  0064' 3080               	movlw	128
+   403  0065' 0200'              	subwf	btemp,w
+   404  0066' 3001               	movlw	1
+   405                           ;set	bank bits (((?a_LCDWriteFloat+3)))
+   406  0067' 1903               	btfsc	3,2
+   407  0068' 0203'              	subwf	?a_LCDWriteFloat+3,w
+   408  0069' 1C03               	btfss	3,0
+   409  006A' 2800'              	goto	l26
+   410                           ;LCD.c: 109: while(n > 0)
+   411                           ;LCD.c: 110: {
+   412  006B' 0800'              	movf	?a_LCDWriteFloat,w
+   413  006C' 3E05'              	addlw	?a_LCDWriteFloat+5
+   414  006D' 0084               	movwf	4
+   415  006E' 1383               	bcf	3,7
+   416  006F' 300A               	movlw	10
+   417  0070' 0082'              	movwf	btemp+2
+   418  0071' 0183'              	clrf	btemp+3
+   419  0072' 0804'              	movf	?a_LCDWriteFloat+4,w
+   420  0073' 0081'              	movwf	btemp+1
+   421  0074' 0803'              	movf	?a_LCDWriteFloat+3,w
+   422  0075' 0080'              	movwf	btemp
+   423  0076' 2000'              	call	awmod
+   424  0077' 0800'              	movf	btemp,w
+   425  0078' 3E30               	addlw	48
+   426  0079' 0080               	movwf	0
+   427  007A' 0A80'              	incf	?a_LCDWriteFloat
+   428                           ;LCD.c: 112: n /= 10;
+   429  007B' 300A               	movlw	10
+   430  007C' 0082'              	movwf	btemp+2
+   431  007D' 0183'              	clrf	btemp+3
+   432  007E' 0803'              	movf	?a_LCDWriteFloat+3,w
+   433  007F' 0080'              	movwf	btemp
+   434  0080' 0804'              	movf	?a_LCDWriteFloat+4,w
+   435  0081' 0081'              	movwf	btemp+1
+   436  0082' 2000'              	call	awdiv
+   437  0083' 0804'              	movf	btemp+4,w
+   438  0084' 0083'              	movwf	?a_LCDWriteFloat+3
+   439  0085' 0805'              	movf	btemp+5,w
+   440  0086' 2800'              	goto	L4
+   441  0087'                    l26
+   442                           ;LCD.c: 113: }
+   443  0087' 0380'              	decf	?a_LCDWriteFloat
+   444                           ;LCD.c: 115: while(i-- > 1)
+   445  0088'                    l27
+   446  0088' 3002               	movlw	2
+   447  0089' 0200'              	subwf	?a_LCDWriteFloat,w
+   448  008A' 0380'              	decf	?a_LCDWriteFloat
+   449  008B' 1C03               	btfss	3,0
+   450  008C' 2800'              	goto	l29
+   451                           ;LCD.c: 116: LCDWriteData(c[i]);
+   452  008D' 0800'              	movf	?a_LCDWriteFloat,w
+   453  008E' 3E05'              	addlw	?a_LCDWriteFloat+5
+   454  008F' 0084               	movwf	4
+   455  0090' 1383               	bcf	3,7
+   456  0091' 0800               	movf	0,w
+   457  0092' 2000'              	call	_LCDWriteData
+   458  0093' 2800'              	goto	l27
+   459  0094'                    l29
+   460                           ;LCD.c: 118: if(Temp < 10)
+   461  0094' 0802'              	movf	?a_LCDWriteFloat+2,w
+   462  0095' 3A80               	xorlw	128
+   463  0096' 0080'              	movwf	btemp
+   464  0097' 3080               	movlw	128
+   465  0098' 0200'              	subwf	btemp,w
+   466  0099' 300A               	movlw	10
+   467                           ;set	bank bits (((?a_LCDWriteFloat+1)))
+   468  009A' 1903               	btfsc	3,2
+   469  009B' 0201'              	subwf	?a_LCDWriteFloat+1,w
+   470  009C' 1803               	btfsc	3,0
+   471  009D' 2800'              	goto	l30
+   472                           ;LCD.c: 119: {
+   473  009E' 30CC               	movlw	-52
+   474  009F' 2000'              	call	_LCDWriteCommand
+   475                           ;LCD.c: 121: LCDWriteString("  ");
+   476  00A0' 3000'              	movlw	low u29
+   477  00A1' 0080'              	movwf	?_LCDWriteString
+   478  00A2' 3000'              	movlw	high u29
+   479  00A3' 0081'              	movwf	?_LCDWriteString+1
+   480  00A4' 2000'              	call	_LCDWriteString
+   481  00A5'                    l30
+   482                           ;LCD.c: 123: }
+   483  00A5' 0802'              	movf	?a_LCDWriteFloat+2,w
+   484  00A6' 3A80               	xorlw	128
+   485  00A7' 0080'              	movwf	btemp
+   486  00A8' 3080               	movlw	128
+   487  00A9' 0200'              	subwf	btemp,w
+   488  00AA' 300A               	movlw	10
+   489                           ;set	bank bits for (((?a_LCDWriteFloat+1)))
+   490  00AB' 1903               	btfsc	3,2
+   491  00AC' 0201'              	subwf	?a_LCDWriteFloat+1,w
+   492  00AD' 1C03               	btfss	3,0
+   493  00AE' 0008               	return
+   494  00AF' 0802'              	movf	?a_LCDWriteFloat+2,w
+   495  00B0' 3A80               	xorlw	128
+   496  00B1' 0080'              	movwf	btemp
+   497  00B2' 3080               	movlw	128
+   498  00B3' 0200'              	subwf	btemp,w
+   499  00B4' 3064               	movlw	100
+   500                           ;set	bank bits (((?a_LCDWriteFloat+1)))
+   501  00B5' 1903               	btfsc	3,2
+   502  00B6' 0201'              	subwf	?a_LCDWriteFloat+1,w
+   503  00B7' 1803               	btfsc	3,0
+   504  00B8' 0008               	return
+   505                           ;LCD.c: 125: {
+   506  00B9' 30CD               	movlw	-51
+   507  00BA' 2000'              	call	_LCDWriteCommand
+   508                           ;LCD.c: 127: LCDWriteString(" ");
+   509  00BB' 3000'              	movlw	low u39
+   510  00BC' 0080'              	movwf	?_LCDWriteString
+   511  00BD' 3000'              	movlw	high u39
+   512  00BE' 0081'              	movwf	?_LCDWriteString+1
+   513  00BF' 2800'              	goto	l5
+   514                           
+   515                           	psect	text10
+   516  0000'                    _LCDWriteInteger
+   517                           ;	_i assigned to ?a_LCDWriteInteger+0
+   518  0000                     _LCDWriteInteger$i	set	?a_LCDWriteInteger
+   519                           ;	_c assigned to ?a_LCDWriteInteger+1
+   520  0000                     _LCDWriteInteger$c	set	?a_LCDWriteInteger+1
+   521                           ;LCD.c: 131: void LCDWriteInteger(int IntegerNu
+      +                          mber)
+   522  0000' 0183               	clrf	3	;select bank 0
+   523  0001' 0180'              	clrf	?a_LCDWriteInteger
+   524                           ;LCD.c: 136: if(IntegerNumber < 0)
+   525  0002' 1F81'              	btfss	?_LCDWriteInteger+1,7
+   526  0003' 2800'              	goto	l33
+   527                           ;LCD.c: 137: {
+   528  0004' 302D               	movlw	45
+   529  0005' 2000'              	call	_LCDWriteData
+   530                           ;LCD.c: 139: IntegerNumber = - (IntegerNumber);
+   531  0006' 0980'              	comf	?_LCDWriteInteger
+   532  0007' 0981'              	comf	?_LCDWriteInteger+1
+   533  0008' 0A80'              	incf	?_LCDWriteInteger
+   534  0009' 1903               	btfsc	3,2
+   535  000A' 0A81'              	incf	?_LCDWriteInteger+1
+   536  000B'                    l33
+   537                           ;LCD.c: 140: }
+   538  000B' 0801'              	movf	?_LCDWriteInteger+1,w
+   539  000C' 0400'              	iorwf	?_LCDWriteInteger,w
+   540  000D' 1D03               	btfss	3,2
+   541  000E' 2800'              	goto	l35
+   542                           ;LCD.c: 143: LCDWriteData(0x30);
+   543  000F' 3030               	movlw	48
+   544  0010' 2000'              	call	_LCDWriteData
+   545                           ;LCD.c: 145: while( IntegerNumber > 0)
+   546  0011'                    l35
+   547  0011' 0801'              	movf	?_LCDWriteInteger+1,w
+   548  0012' 3A80               	xorlw	128
+   549  0013' 0080'              	movwf	btemp
+   550  0014' 3080               	movlw	128
+   551  0015' 0200'              	subwf	btemp,w
+   552  0016' 3001               	movlw	1
+   553                           ;set	bank bits (((?_LCDWriteInteger+0)))
+   554  0017' 1903               	btfsc	3,2
+   555  0018' 0200'              	subwf	?_LCDWriteInteger,w
+   556  0019' 1C03               	btfss	3,0
+   557  001A' 2800'              	goto	l38
+   558                           ;LCD.c: 146: {
+   559  001B' 0800'              	movf	?a_LCDWriteInteger,w
+   560  001C' 3E01'              	addlw	?a_LCDWriteInteger+1
+   561  001D' 0084               	movwf	4
+   562  001E' 1383               	bcf	3,7
+   563  001F' 300A               	movlw	10
+   564  0020' 0082'              	movwf	btemp+2
+   565  0021' 0183'              	clrf	btemp+3
+   566  0022' 0801'              	movf	?_LCDWriteInteger+1,w
+   567  0023' 0081'              	movwf	btemp+1
+   568  0024' 0800'              	movf	?_LCDWriteInteger,w
+   569  0025' 0080'              	movwf	btemp
+   570  0026' 2000'              	call	awmod
+   571  0027' 0800'              	movf	btemp,w
+   572  0028' 3830               	iorlw	48
+   573  0029' 0080               	movwf	0
+   574  002A' 0A80'              	incf	?a_LCDWriteInteger
+   575                           ;LCD.c: 148: IntegerNumber /= 10;
+   576  002B' 300A               	movlw	10
+   577  002C' 0082'              	movwf	btemp+2
+   578  002D' 0183'              	clrf	btemp+3
+   579  002E' 0800'              	movf	?_LCDWriteInteger,w
+   580  002F' 0080'              	movwf	btemp
+   581  0030' 0801'              	movf	?_LCDWriteInteger+1,w
+   582  0031' 0081'              	movwf	btemp+1
+   583  0032' 2000'              	call	awdiv
+   584  0033' 0804'              	movf	btemp+4,w
+   585  0034' 0080'              	movwf	?_LCDWriteInteger
+   586  0035' 0805'              	movf	btemp+5,w
+   587  0036' 0081'              	movwf	?_LCDWriteInteger+1
+   588  0037' 2800'              	goto	l35
+   589                           ;LCD.c: 149: }
+   590  0038'                    l39
+   591                           ;LCD.c: 152: LCDWriteData(c[i]);
+   592  0038' 0800'              	movf	?a_LCDWriteInteger,w
+   593  0039' 3E01'              	addlw	?a_LCDWriteInteger+1
+   594  003A' 0084               	movwf	4
+   595  003B' 1383               	bcf	3,7
+   596  003C' 0800               	movf	0,w
+   597  003D' 2000'              	call	_LCDWriteData
+   598  003E'                    l38
+   599  003E' 0380'              	decf	?a_LCDWriteInteger
+   600  003F' 0F00'              	incfsz	?a_LCDWriteInteger,w
+   601  0040' 2800'              	goto	l39
+   602  0041' 0008               	return
+   603                           
+   604                           	psect	strings
+   605  0000                     
+   606  0000                     
+   607  0000                     
+   608  0000                     
+   609  0000                     
+   610  0000                     
+   611  0000                     
+   612  0000                     
+   613  0000                     
+   614  0000                     
+   615  0000                     
+   616  0000                     
+   617  0000                     
+   618  0000                     
+   619  0000                     
+   620  0000                     
+   621  0000                     
+   622  0000                     
+   623  0000                     
+   624  0000                     
+   625  0000                     
+   626  0000                     
+   627  0000                     
+   628  0000                     
+   629  0000                     
+   630  0000                     
+   631  0000                     
+   632  0000                     
+   633  0000                     
+   634  0000                     
+   635  0000                     
+   636  0000                     
+   637  0000                     
+   638  0000                     
+   639  0000                     
+   640  0000                     
+   641  0000                     
+   642  0000                     
+   643  0000                     
+   644  0000                     
+   645  0000                     
+   646  0000                     
+   647  0000                     
+   648  0000                     
+   649  0000                     
+   650  0000                     
+   651  0000                     
+   652  0000                     
+   653  0000                     
+   654  0000                     
+   655  0000                     
+   656  0000                     
+   657  0000                     
+   658  0000                     
+   659  0000                     
+   660  0000                     
+   661  0000                     
+   662  0000                     
+   663  0000                     
+   664  0000                     
+   665  0000                     
+   666  0000                     
+   667  0000                     
+   668  0000                     
+   669  0000                     
+   670  0000                     
+   671  0000                     
+   672  0000                     
+   673  0000                     
+   674  0000                     
+   675  0000                     
+   676  0000                     
+   677  0000                     
+   678  0000                     
+   679  0000                     
+   680  0000                     
+   681  0000                     
+   682  0000                     
+   683  0000                     
+   684  0000                     
+   685  0000                     
+   686  0000                     
+   687  0000                     
+   688  0000                     
+   689  0000                     
+   690  0000                     
+   691  0000                     
+   692  0000                     
+   693  0000                     
+   694  0000                     
+   695  0000                     
+   696  0000                     
+   697  0000                     
+   698  0000                     
+   699  0000                     
+   700  0000                     
+   701  0000                     
+   702  0000                     
+   703  0000                     
+   704  0000                     
+   705  0000                     
+   706  0000                     
+   707  0000                     
+   708  0000                     
+   709  0000                     
+   710  0000                     
+   711  0000                     
+   712  0000                     
+   713  0000                     
+   714  0000                     
+   715  0000                     
+   716  0000                     
+   717  0000                     
+   718  0000                     
+   719  0000                     
+   720  0000                     
+   721  0000                     
+   722  0000                     
+   723  0000                     
+   724  0000                     
+   725  0000                     
+   726  0000                     
+   727  0000                     
+   728  0000                     
+   729  0000                     
+   730  0000                     
+   731  0000                     
+   732  0000                     
+   733  0000                     
+   734  0000                     
+   735  0000                     
+   736  0000                     
+   737  0000                     
+   738  0000                     
+   739  0000                     
+   740  0000                     
+   741  0000                     
+   742  0000                     
+   743  0000                     
+   744  0000                     
+   745  0000                     
+   746  0000                     
+   747  0000                     
+   748  0000                     
+   749  0000                     
+   750  0000                     
+   751  0000                     
+   752  0000                     
+   753  0000                     
+   754  0000                     
+   755  0000                     
+   756  0000                     
+   757  0000                     
+   758  0000                     
+   759  0000                     
+   760  0000                     
+   761  0000                     
+   762  0000                     
+   763  0000                     
+   764  0000                     
+   765  0000                     
+   766  0000                     
+   767  0000                     
+   768  0000                     
+   769  0000                     
+   770  0000                     
+   771  0000                     
+   772  0000                     
+   773  0000                     
+   774  0000                     
+   775  0000                     
+   776  0000                     
+   777  0000                     
+   778  0000                     
+   779  0000                     
+   780  0000                     
+   781  0000                     
+   782  0000                     
+   783  0000                     
+   784  0000                     
+   785  0000                     
+   786  0000                     
+   787  0000                     
+   788  0000                     
+   789  0000                     
+   790  0000                     
+   791  0000                     
+   792  0000                     
+   793  0000                     
+   794  0000                     
+   795  0000                     
+   796  0000                     
+   797  0000                     
+   798  0000                     
+   799  0000                     
+   800  0000                     
+   801  0000                     
+   802  0000                     
+   803  0000                     
+   804  0000                     
+   805  0000                     
+   806  0000                     
+   807  0000                     
+   808  0000                     
+   809  0000                     
+   810  0000                     
+   811  0000                     
+   812  0000                     
+   813  0000                     
+   814  0000                     
+   815  0000                     
+   816  0000                     
+   817  0000                     
+   818  0000                     
+   819  0000                     
+   820  0000                     
+   821  0000                     
+   822  0000                     
+   823  0000                     
+   824  0000                     
+   825  0000                     
+   826  0000                     
+   827  0000                     
+   828  0000                     
+   829  0000                     
+   830  0000                     
+   831  0000                     
+   832  0000                     
+   833  0000                     
+   834  0000                     
+   835  0000                     
+   836  0000                     
+   837  0000                     
+   838  0000                     
+   839  0000                     
+   840  0000                     
+   841  0000                     
+   842  0000                     
+   843  0000                     
+   844  0000                     
+   845  0000                     
+   846  0000                     
+   847  0000                     
+   848  0000                     
+   849  0000                     
+   850  0000                     
+   851  0000                     
+   852  0000                     
+   853  0000                     
+   854  0000                     
+   855  0000                     
+   856  0000                     
+   857  0000                     
+   858  0000                     
+   859  0000                     
+   860  0000                     
+   861  0000                     
+   862  0000                     
+   863  0000                     
+   864  0000                     
+   865  0000                     
+   866  0000                     
+   867  0000                     
+   868  0000                     
+   869  0000                     
+   870  0000                     
+   871  0000                     
+   872  0000                     
+   873  0000                     
+   874  0000                     
+   875  0000                     
+   876  0000                     
+   877  0000                     
+   878  0000                     
+   879  0000                     
+   880  0000                     
+   881                           ; Strings
+   882  0000'                    u19
+   883  0000' 3449               	retlw	73	;'I'
+   884  0001' 344E               	retlw	78	;'N'
+   885  0002' 3449               	retlw	73	;'I'
+   886  0003' 3454               	retlw	84	;'T'
+   887  0004' 3449               	retlw	73	;'I'
+   888  0005' 3441               	retlw	65	;'A'
+   889  0006' 344C               	retlw	76	;'L'
+   890  0007' 3449               	retlw	73	;'I'
+   891  0008' 345A               	retlw	90	;'Z'
+   892  0009' 3449               	retlw	73	;'I'
+   893  000A' 344E               	retlw	78	;'N'
+   894  000B' 3447               	retlw	71	;'G'
+   895  000C' 342E               	retlw	46
+   896  000D' 342E               	retlw	46
+   897  000E' 342E               	retlw	46
+   898  000F' 342E               	retlw	46
+   899  0010' 3400               	retlw	0
+   900  0011'                    u29
+   901  0011' 3420               	retlw	32
+   902  0012'                    u39
+   903  0012' 3420               	retlw	32
+   904  0013' 3400               	retlw	0
+   905                           
+   906                           	psect	temp
+   907  0000'                    btemp
+   908  0000'                    	ds	6
+
+
+HI-TECH Software PICC Macro Assembler V9.60
+Symbol Table                                          Thu Jan 24 23:02:56 2013
+
+                            l5 0009                              l6 0001  
+             ?_LCDWriteInteger 0000*                            l11 0009  
+                           l30 00A5                             l23 001D  
+                           l16 000C                             l33 000B  
+                           l26 0087                             l18 0028  
+                           l35 0011                             l27 0088  
+                           l29 0094                             l38 003E  
+                           l39 0038                             u19 0000  
+                           u29 0011                             u39 0012  
+                           fsr 0004                 _LCDDisplayByte 0000  
+                         f2883 0001                           f2893 0001  
+               _LCDWriteString 0000                           btemp 0000  
+                         awdiv 0000*                          lbdiv 0000* 
+                         ftadd 0000*                          awmod 0000* 
+                         lbmod 0000*                          ftcmp 0000* 
+                         ftneg 0000*                          ftmul 0000* 
+                         ftsub 0000*                          fttol 0000* 
+                     _LCDReset 0000                 ?a_LCDWriteData 0000* 
+             ?a_LCDDisplayByte 0000*                ?a_LCDWriteByte 0000* 
+              _LCDWriteCommand 0000                ?_LCDDisplayByte 0000* 
+              _LCDWriteInteger 0000                ?_LCDWriteString 0000* 
+                        _Delay 0000*                 _LCDWriteFloat 0000  
+                      code_ptr 0000*                   string_table 0000* 
+                    _LCDEnable 0000                          awtoft 0000* 
+              ?a_LCDWriteFloat 0000*                         status 0003  
+               ?_LCDWriteFloat 0000*                  _LCDWriteData 0000  
+                 _LCDWriteByte 0000                  _LCDInitialize 0000  
+            ?a_LCDWriteCommand 0000*        _LCDDisplayInitializing 0000  
+            ?a_LCDWriteInteger 0000*                  used_code_ptr 0000* 
+                       ?_Delay 0000*                    used_btemp0 0000* 
+                   used_btemp1 0000*                    used_btemp2 0000* 
+                   used_btemp3 0000*                    used_btemp4 0000* 
+                   used_btemp5 0000*      ?a_LCDDisplayInitializing 0000* 

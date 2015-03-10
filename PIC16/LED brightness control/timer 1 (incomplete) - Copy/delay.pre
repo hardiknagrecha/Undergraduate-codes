@@ -1,0 +1,20 @@
+
+# 1 "C:\Users\Suchitra\Desktop\hardik\codes\LED brightness control\timer 1 (incomplete) - Copy\delay.c"
+
+# 5 "C:\Users\Suchitra\Desktop\hardik\codes\LED brightness control\timer 1 (incomplete) - Copy\delay.h"
+void Delay(unsigned int time);
+
+# 3 "C:\Users\Suchitra\Desktop\hardik\codes\LED brightness control\timer 1 (incomplete) - Copy\delay.c"
+void Delay(unsigned int time)
+{
+
+
+
+unsigned char pause;
+while( time > 0)
+{
+pause = 250;
+while(pause--);
+time--;
+}
+}

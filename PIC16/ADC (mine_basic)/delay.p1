@@ -1,0 +1,45 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;delay.h: 5: void Delay(unsigned int time);
+[; ;delay.h: 8: typedef unsigned char ubyte;
+"4 C:\Users\hardik\Desktop\ADC\delay.c
+[v _Delay `(v 1 ef1`ui ]
+{
+[; ;delay.c: 3: void Delay(unsigned int time)
+[; ;delay.c: 4: {
+[e :U _Delay ]
+[v _time `ui 1 r1 ]
+[f ]
+"5
+[v _pause `uc 1 a ]
+[; ;delay.c: 5: unsigned char pause;
+[; ;delay.c: 6: while( time > 0)
+"6
+[e $U 2  ]
+[e :U 3 ]
+[; ;delay.c: 7: {
+"7
+{
+[; ;delay.c: 8: pause = 255;
+"8
+[e = _pause -> -> 255 `i `uc ]
+[; ;delay.c: 9: while(pause--);
+"9
+[e $U 5  ]
+[e :U 6 ]
+[e :U 5 ]
+[e $ != -> -- _pause -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 6  ]
+[e :U 7 ]
+[; ;delay.c: 10: time--;
+"10
+[e -- _time -> -> 1 `i `ui ]
+"11
+}
+[e :U 2 ]
+"6
+[e $ > _time -> -> 0 `i `ui 3  ]
+[e :U 4 ]
+[; ;delay.c: 11: }
+[; ;delay.c: 12: }
+"12
+[e :UE 1 ]
+}

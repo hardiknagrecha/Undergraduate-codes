@@ -1,0 +1,46 @@
+#include<pic.h>
+#include<stdio.h>
+
+__CONFIG (0x2F0A);
+
+#define trig RB0
+#define echo RB1
+
+void main(void)
+{
+	unsigned int count(void);
+unsigned int range;
+
+
+while(1) 
+  {
+	  TMR1H = 0;
+	  TMR1L = 0;
+	  T1CON = 0x21; 
+      TMR1IF = 0;
+      
+      while(!TMR1IF); 
+      TMR1ON = 0; 
+}
+}
+
+unsigned int count(void)
+{
+TMR1H =  
+TMR1L = 
+T1CON = 0x21; 
+TMR1IF = 0;
+trig = 1; 
+while(!TMR1IF); 
+trig = 0; 
+TMR1ON = 0; 
+TMR1H = 0; 
+TMR1L = 0;
+T1CON = 0x20;
+TMR1IF = 0;
+while(!echo && !TMR1IF); 
+TMR1ON = 1; 
+while(echo && !TMR1IF); 
+TMR1ON = 0; 
+
+}

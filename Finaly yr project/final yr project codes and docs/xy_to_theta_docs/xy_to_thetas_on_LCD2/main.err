@@ -1,0 +1,7 @@
+Warning[2073] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 10 : null-terminated initializer string too long
+Warning[2073] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 11 : null-terminated initializer string too long
+Warning[2073] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 12 : null-terminated initializer string too long
+Warning[2073] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 13 : null-terminated initializer string too long
+Warning[2064] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 67 : static function 'LCDReset' not defined
+Warning[2064] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 67 : static function 'LCDWriteByte' not defined
+Warning[2064] H:\ROYTEK\PIC18\PIC18F458\18F458 Demo Projects\ROYTEK_UNLEASHED\LCD_Interfacing - Copy\main.c 67 : static function 'LCDEnable' not defined

@@ -1,0 +1,760 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+--edf=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\dat\en_msgs.txt \
+  -cs -h+display.sym -z -Q16F877A -ol.obj -Mdisplay.map -E1 \
+  -ACODE=00h-07FFhx4 -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 \
+  -ASTRING=00h-0FFhx32 -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
+  -AABS1=020h-07Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh -ABANK0=020h-07Fh \
+  -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
+  -ACOMMON=070h-07Fh \
+  -preset_vec=00h,intentry,intcode,intret,init,init23,end_init,clrtext,maintext,pstrings \
+  -pstrings=CODE -ppowerup=CODE -ptemp=-COMMON -pcommon=-COMMON \
+  -prbss_0=BANK0,rbit_0=BANK0,rdata_0=BANK0,idata_0=CODE -pnvram=BANK0 \
+  -prbss_1=BANK1,rbit_1=BANK1,rdata_1=BANK1,idata_1=CODE \
+  -pnvram_1=BANK1,nvbit_1=BANK1 \
+  -prbss_2=BANK2,rbit_2=BANK2,rdata_2=BANK2,idata_2=CODE \
+  -pnvram_2=BANK2,nvbit_2=BANK2 \
+  -prbss_3=BANK3,rbit_3=BANK3,rdata_3=BANK3,idata_3=CODE \
+  -pnvram_3=BANK3,nvbit_3=BANK3 -pidata=CODE -pfnautoc=COMMON \
+  -pfnauto0=BANK0 -pfnauto1=BANK1 -pfnauto2=BANK2 -pfnauto3=BANK3 \
+  -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
+  -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
+  -DEEDATA=2 -pfloat_text0=CODE,float_text1=CODE,float_text2=CODE \
+  -pfloat_text3=CODE,float_text4=CODE -DCODE=2 startup.obj display.obj 
+
+Object code version is 3.10
+
+Machine type is 16F877A
+
+Call graph: (short form)
+
+
+
+
+                Name          Link     Load   Length Selector   Space       Scale
+startup.obj     end_init        15       15        3       0     0
+                init             0        0       15       0     0
+display.obj     idata          723      723        6       E     0
+                strings        700      700       23       E     0
+                maintext        18       18       48       0     0
+                config        2007     2007        1    400E     0
+                text177         66       66        B      CC     0
+                text178        729      729       C6       E     0
+                text179        FC9      FC9        B    1F92     0
+                text176        FD4      FD4       13    1FA8     0
+                text173        484      484      11E     908     0
+                text174        222      222       5B     444     0
+                text175        FBE      FBE        B    1F7C     0
+                text180        1C8      1C8       5A     390     0
+                text181         DC       DC       2C     1B8     0
+                text182        7EF      7EF        E       E     0
+                text183        FE7      FE7       19    1FCE     0
+                text162        5A2      5A2      15E     B44     0
+                text163         60       60        6       0     0
+                text164         8E       8E       23     11C     0
+                text161        108      108       38     210     0
+                text165        140      140       38     280     0
+                text170        3E1      3E1       A3     7C2     0
+                text171        178      178       50     2F0     0
+                text172        2F0      2F0       74     5E0     0
+                text169         71       71       1D      E2     0
+                text166        27D      27D       73     4FA     0
+                text167        364      364       7D     6C8     0
+                text168         B1       B1       2B     162     0
+
+COMMON          fnauto0         20       20       28      20     1
+
+TOTAL           Name          Link     Load   Length     Space
+        CLASS   CODE           
+                idata          723      723        6     0
+                strings        700      700       23     0
+                end_init        15       15        3     0
+                init             0        0       15     0
+                maintext        18       18       48     0
+                text177         66       66        B     0
+                text178        729      729       C6     0
+                text179        FC9      FC9        B     0
+                text176        FD4      FD4       13     0
+                text173        484      484      11E     0
+                text174        222      222       5B     0
+                text175        FBE      FBE        B     0
+                text180        1C8      1C8       5A     0
+                text181         DC       DC       2C     0
+                text182        7EF      7EF        E     0
+                text183        FE7      FE7       19     0
+                text162        5A2      5A2      15E     0
+                text163         60       60        6     0
+                text164         8E       8E       23     0
+                text161        108      108       38     0
+                text165        140      140       38     0
+                text170        3E1      3E1       A3     0
+                text171        178      178       50     0
+                text172        2F0      2F0       74     0
+                text169         71       71       1D     0
+                text166        27D      27D       73     0
+                text167        364      364       7D     0
+                text168         B1       B1       2B     0
+
+        CLASS   CONST          
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1          78       78        8     1
+
+        CLASS   BANK0          
+                fnauto0         20       20       28     1
+
+        CLASS   BANK1          
+
+        CLASS   BANK2          
+
+        CLASS   BANK3          
+
+        CLASS   COMMON         
+
+        CLASS   CONFIG         
+                config        2007     2007        1     0
+
+        CLASS   IDLOC          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name            Load    Length   Top    Selector    Space      Class      Delta
+
+                reset_vec       000000  000066  000066         0       0  CODE        2
+                fnauto0         000020  000028  000048        20       1  BANK0       1
+                text177         000066  00000B  000071        CC       0  CODE        2
+                text169         000071  00001D  00008E        E2       0  CODE        2
+                text164         00008E  000023  0000B1       11C       0  CODE        2
+                text168         0000B1  00002B  0000DC       162       0  CODE        2
+                text181         0000DC  00002C  000108       1B8       0  CODE        2
+                text161         000108  000038  000140       210       0  CODE        2
+                text165         000140  000038  000178       280       0  CODE        2
+                text171         000178  000050  0001C8       2F0       0  CODE        2
+                text180         0001C8  00005A  000222       390       0  CODE        2
+                text174         000222  00005B  00027D       444       0  CODE        2
+                text166         00027D  000073  0002F0       4FA       0  CODE        2
+                text172         0002F0  000074  000364       5E0       0  CODE        2
+                text167         000364  00007D  0003E1       6C8       0  CODE        2
+                text170         0003E1  0000A3  000484       7C2       0  CODE        2
+                text173         000484  00011E  0005A2       908       0  CODE        2
+                text162         0005A2  00015E  000700       B44       0  CODE        2
+                strings         000700  0000FD  0007FD         E       0  CODE        2
+                text175         000FBE  00000B  000FC9      1F7C       0  CODE        2
+                text179         000FC9  00000B  000FD4      1F92       0  CODE        2
+                text176         000FD4  000013  000FE7      1FA8       0  CODE        2
+                text183         000FE7  000019  001000      1FCE       0  CODE        2
+                config          002007  000001  002008      400E       0  CONFIG      2
+
+
+UNUSED ADDRESS RANGES
+
+        BANK0            00000048-00000077         1
+        BANK1            000000A0-000000EF         1
+        BANK2            00000110-0000016F         1
+        BANK3            00000190-000001EF         1
+        CODE             000007FD-00000FBD         2
+                         00001000-00001FFF
+        COMMON           00000070-00000077         1
+        CONST            00000FFA-00001F7B         1
+        EEDATA           00002100-000021FF         2
+        ENTRY            00000FFA-00001F7B         1
+        IDLOC            00002000-00002003         2
+        STRING           00000FFA-00001F7B         1
+
+                                  Symbol Table
+
+??_Delay                        fnauto0     0000003E
+??_LCDDisplayInitializing       fnauto0     00000020
+??_LCDEnable                    fnauto0     0000003C
+??_LCDInitialize                fnauto0     00000020
+??_LCDReset                     fnauto0     00000021
+??_LCDWriteByte                 fnauto0     0000003A
+??_LCDWriteCommand              fnauto0     0000002F
+??_LCDWriteData                 fnauto0     00000039
+??_LCDWriteFloat                fnauto0     00000023
+??_LCDWriteInteger              fnauto0     00000031
+??_LCDWriteString               fnauto0     0000002F
+??_MainSystemInitialize         fnauto0     00000020
+??___awdiv                      fnauto0     0000003D
+??___awmod                      fnauto0     0000003D
+??___awtoft                     fnauto0     00000032
+??___ftadd                      fnauto0     0000003B
+??___ftge                       fnauto0     00000035
+??___ftmul                      fnauto0     00000035
+??___ftneg                      fnauto0     0000003B
+??___ftpack                     fnauto0     00000042
+??___ftsub                      fnauto0     00000035
+??___fttol                      fnauto0     00000033
+??___ftunpack                   fnauto0     00000042
+??_main                         fnauto0     00000020
+?_Delay                         fnauto0     0000003C
+?_LCDDisplayInitializing        fnauto0     00000020
+?_LCDEnable                     fnauto0     0000003C
+?_LCDInitialize                 fnauto0     00000020
+?_LCDReset                      fnauto0     00000021
+?_LCDWriteByte                  fnauto0     0000003A
+?_LCDWriteCommand               fnauto0     0000002F
+?_LCDWriteData                  fnauto0     00000039
+?_LCDWriteFloat                 fnauto0     00000020
+?_LCDWriteInteger               fnauto0     0000002F
+?_LCDWriteString                fnauto0     0000002F
+?_MainSystemInitialize          fnauto0     00000020
+?___awdiv                       fnauto0     00000039
+?___awmod                       fnauto0     00000039
+?___awtoft                      fnauto0     0000002F
+?___ftadd                       fnauto0     00000035
+?___ftge                        fnauto0     0000002F
+?___ftmul                       fnauto0     0000002F
+?___ftneg                       fnauto0     00000038
+?___ftpack                      fnauto0     00000041
+?___ftsub                       fnauto0     0000002F
+?___fttol                       fnauto0     0000002F
+?___ftunpack                    fnauto0     00000041
+?_main                          fnauto0     00000020
+_ACKDT                          (abs)       0000048D
+_ACKEN                          (abs)       0000048C
+_ACKSTAT                        (abs)       0000048E
+_ADCON0                         (abs)       0000001F
+_ADCON1                         (abs)       0000009F
+_ADCS0                          (abs)       000000FE
+_ADCS1                          (abs)       000000FF
+_ADCS2                          (abs)       000004FE
+_ADDEN                          (abs)       000000C3
+_ADFM                           (abs)       000004FF
+_ADGO                           (abs)       000000FA
+_ADIE                           (abs)       00000466
+_ADIF                           (abs)       00000066
+_ADON                           (abs)       000000F8
+_ADRESH                         (abs)       0000001E
+_ADRESL                         (abs)       0000009E
+_BCLIE                          (abs)       0000046B
+_BCLIF                          (abs)       0000006B
+_BF                             (abs)       000004A0
+_BOR                            (abs)       00000470
+_BRGH                           (abs)       000004C2
+_C1INV                          (abs)       000004E4
+_C1OUT                          (abs)       000004E6
+_C2INV                          (abs)       000004E5
+_C2OUT                          (abs)       000004E7
+_CARRY                          (abs)       00000018
+_CCP1CON                        (abs)       00000017
+_CCP1IE                         (abs)       00000462
+_CCP1IF                         (abs)       00000062
+_CCP1M0                         (abs)       000000B8
+_CCP1M1                         (abs)       000000B9
+_CCP1M2                         (abs)       000000BA
+_CCP1M3                         (abs)       000000BB
+_CCP1X                          (abs)       000000BD
+_CCP1Y                          (abs)       000000BC
+_CCP2CON                        (abs)       0000001D
+_CCP2IE                         (abs)       00000468
+_CCP2IF                         (abs)       00000068
+_CCP2M0                         (abs)       000000E8
+_CCP2M1                         (abs)       000000E9
+_CCP2M2                         (abs)       000000EA
+_CCP2M3                         (abs)       000000EB
+_CCP2X                          (abs)       000000ED
+_CCP2Y                          (abs)       000000EC
+_CCPR1H                         (abs)       00000016
+_CCPR1L                         (abs)       00000015
+_CCPR2H                         (abs)       0000001C
+_CCPR2L                         (abs)       0000001B
+_CHS0                           (abs)       000000FB
+_CHS1                           (abs)       000000FC
+_CHS2                           (abs)       000000FD
+_CIS                            (abs)       000004E3
+_CKE                            (abs)       000004A6
+_CKP                            (abs)       000000A4
+_CM0                            (abs)       000004E0
+_CM1                            (abs)       000004E1
+_CM2                            (abs)       000004E2
+_CMCON                          (abs)       0000009C
+_CMIE                           (abs)       0000046E
+_CMIF                           (abs)       0000006E
+_CREN                           (abs)       000000C4
+_CSRC                           (abs)       000004C7
+_CVR0                           (abs)       000004E8
+_CVR1                           (abs)       000004E9
+_CVR2                           (abs)       000004EA
+_CVR3                           (abs)       000004EB
+_CVRCON                         (abs)       0000009D
+_CVREN                          (abs)       000004EF
+_CVROE                          (abs)       000004EE
+_CVRR                           (abs)       000004ED
+_DA                             (abs)       000004A5
+_DC                             (abs)       00000019
+_Delay                          text183     00000FE7
+_Delay_pause                    fnauto0     0000003E
+_Delay_time                     fnauto0     0000003C
+_EEADR                          (abs)       0000010D
+_EEADRH                         (abs)       0000010F
+_EEADRL                         (abs)       0000010D
+_EECON1                         (abs)       0000018C
+_EECON2                         (abs)       0000018D
+_EEDATA                         (abs)       0000010C
+_EEDATH                         (abs)       0000010E
+_EEIE                           (abs)       0000046C
+_EEIF                           (abs)       0000006C
+_EEPGD                          (abs)       00000C67
+_FERR                           (abs)       000000C2
+_FSR                            (abs)       00000004
+_GCEN                           (abs)       0000048F
+_GIE                            (abs)       0000005F
+_GODONE                         (abs)       000000FA
+_IBF                            (abs)       0000044F
+_IBOV                           (abs)       0000044D
+_INDF                           (abs)       00000000
+_INTCON                         (abs)       0000000B
+_INTE                           (abs)       0000005C
+_INTEDG                         (abs)       0000040E
+_INTF                           (abs)       00000059
+_IRP                            (abs)       0000001F
+_LCDDisplayInitializing         text161     00000108
+_LCDDisplayInitializing_i       fnauto0     00000020
+_LCDEnable                      text182     000007EF
+_LCDInitialize                  text168     000000B1
+_LCDReset                       text176     00000FD4
+_LCDWriteByte                   text181     000000DC
+_LCDWriteByte_LCDData           fnauto0     0000003A
+_LCDWriteCommand                text179     00000FC9
+_LCDWriteCommand_LCDData        fnauto0     0000002F
+_LCDWriteData                   text175     00000FBE
+_LCDWriteData_LCDData           fnauto0     00000039
+_LCDWriteFloat                  text162     000005A2
+_LCDWriteFloat_FloatNumber      fnauto0     00000020
+_LCDWriteFloat_Temp             fnauto0     00000024
+_LCDWriteFloat_c                fnauto0     00000028
+_LCDWriteFloat_i                fnauto0     00000023
+_LCDWriteFloat_n                fnauto0     00000026
+_LCDWriteInteger                text167     00000364
+_LCDWriteInteger_IntegerNumber  fnauto0     0000002F
+_LCDWriteInteger_c              fnauto0     00000032
+_LCDWriteInteger_i              fnauto0     00000031
+_LCDWriteString                 text164     0000008E
+_LCDWriteString_lcd_string      fnauto0     0000002F
+_MainSystemInitialize           text163     00000060
+_OBF                            (abs)       0000044E
+_OERR                           (abs)       000000C1
+_OPTION                         (abs)       00000081
+_PCFG0                          (abs)       000004F8
+_PCFG1                          (abs)       000004F9
+_PCFG2                          (abs)       000004FA
+_PCFG3                          (abs)       000004FB
+_PCL                            (abs)       00000002
+_PCLATH                         (abs)       0000000A
+_PCON                           (abs)       0000008E
+_PD                             (abs)       0000001B
+_PEIE                           (abs)       0000005E
+_PEN                            (abs)       0000048A
+_PIE1                           (abs)       0000008C
+_PIE2                           (abs)       0000008D
+_PIR1                           (abs)       0000000C
+_PIR2                           (abs)       0000000D
+_POR                            (abs)       00000471
+_PORTA                          (abs)       00000005
+_PORTB                          (abs)       00000006
+_PORTC                          (abs)       00000007
+_PORTD                          (abs)       00000008
+_PORTE                          (abs)       00000009
+_PR2                            (abs)       00000092
+_PS0                            (abs)       00000408
+_PS1                            (abs)       00000409
+_PS2                            (abs)       0000040A
+_PSA                            (abs)       0000040B
+_PSPIE                          (abs)       00000467
+_PSPIF                          (abs)       00000067
+_PSPMODE                        (abs)       0000044C
+_RA0                            (abs)       00000028
+_RA1                            (abs)       00000029
+_RA2                            (abs)       0000002A
+_RA3                            (abs)       0000002B
+_RA4                            (abs)       0000002C
+_RA5                            (abs)       0000002D
+_RB0                            (abs)       00000030
+_RB1                            (abs)       00000031
+_RB2                            (abs)       00000032
+_RB3                            (abs)       00000033
+_RB4                            (abs)       00000034
+_RB5                            (abs)       00000035
+_RB6                            (abs)       00000036
+_RB7                            (abs)       00000037
+_RBIE                           (abs)       0000005B
+_RBIF                           (abs)       00000058
+_RBPU                           (abs)       0000040F
+_RC0                            (abs)       00000038
+_RC1                            (abs)       00000039
+_RC2                            (abs)       0000003A
+_RC3                            (abs)       0000003B
+_RC4                            (abs)       0000003C
+_RC5                            (abs)       0000003D
+_RC6                            (abs)       0000003E
+_RC7                            (abs)       0000003F
+_RCEN                           (abs)       0000048B
+_RCIE                           (abs)       00000465
+_RCIF                           (abs)       00000065
+_RCREG                          (abs)       0000001A
+_RCSTA                          (abs)       00000018
+_RD                             (abs)       00000C60
+_RD0                            (abs)       00000040
+_RD1                            (abs)       00000041
+_RD2                            (abs)       00000042
+_RD3                            (abs)       00000043
+_RD4                            (abs)       00000044
+_RD5                            (abs)       00000045
+_RD6                            (abs)       00000046
+_RD7                            (abs)       00000047
+_RE0                            (abs)       00000048
+_RE1                            (abs)       00000049
+_RE2                            (abs)       0000004A
+_RP0                            (abs)       0000001D
+_RP1                            (abs)       0000001E
+_RSEN                           (abs)       00000489
+_RW                             (abs)       000004A2
+_RX9                            (abs)       000000C6
+_RX9D                           (abs)       000000C0
+_SEN                            (abs)       00000488
+_SMP                            (abs)       000004A7
+_SPBRG                          (abs)       00000099
+_SPEN                           (abs)       000000C7
+_SREN                           (abs)       000000C5
+_SSPADD                         (abs)       00000093
+_SSPBUF                         (abs)       00000013
+_SSPCON                         (abs)       00000014
+_SSPCON2                        (abs)       00000091
+_SSPEN                          (abs)       000000A5
+_SSPIE                          (abs)       00000463
+_SSPIF                          (abs)       00000063
+_SSPM0                          (abs)       000000A0
+_SSPM1                          (abs)       000000A1
+_SSPM2                          (abs)       000000A2
+_SSPM3                          (abs)       000000A3
+_SSPOV                          (abs)       000000A6
+_SSPSTAT                        (abs)       00000094
+_START                          (abs)       000004A3
+_STATUS                         (abs)       00000003
+_STOP                           (abs)       000004A4
+_SYNC                           (abs)       000004C4
+_T0CS                           (abs)       0000040D
+_T0IE                           (abs)       0000005D
+_T0IF                           (abs)       0000005A
+_T0SE                           (abs)       0000040C
+_T1CKPS0                        (abs)       00000084
+_T1CKPS1                        (abs)       00000085
+_T1CON                          (abs)       00000010
+_T1OSCEN                        (abs)       00000083
+_T1SYNC                         (abs)       00000082
+_T2CKPS0                        (abs)       00000090
+_T2CKPS1                        (abs)       00000091
+_T2CON                          (abs)       00000012
+_TMR0                           (abs)       00000001
+_TMR0IE                         (abs)       0000005D
+_TMR0IF                         (abs)       0000005A
+_TMR1CS                         (abs)       00000081
+_TMR1H                          (abs)       0000000F
+_TMR1IE                         (abs)       00000460
+_TMR1IF                         (abs)       00000060
+_TMR1L                          (abs)       0000000E
+_TMR1ON                         (abs)       00000080
+_TMR2                           (abs)       00000011
+_TMR2IE                         (abs)       00000461
+_TMR2IF                         (abs)       00000061
+_TMR2ON                         (abs)       00000092
+_TO                             (abs)       0000001C
+_TOUTPS0                        (abs)       00000093
+_TOUTPS1                        (abs)       00000094
+_TOUTPS2                        (abs)       00000095
+_TOUTPS3                        (abs)       00000096
+_TRISA                          (abs)       00000085
+_TRISA0                         (abs)       00000428
+_TRISA1                         (abs)       00000429
+_TRISA2                         (abs)       0000042A
+_TRISA3                         (abs)       0000042B
+_TRISA4                         (abs)       0000042C
+_TRISA5                         (abs)       0000042D
+_TRISB                          (abs)       00000086
+_TRISB0                         (abs)       00000430
+_TRISB1                         (abs)       00000431
+_TRISB2                         (abs)       00000432
+_TRISB3                         (abs)       00000433
+_TRISB4                         (abs)       00000434
+_TRISB5                         (abs)       00000435
+_TRISB6                         (abs)       00000436
+_TRISB7                         (abs)       00000437
+_TRISC                          (abs)       00000087
+_TRISC0                         (abs)       00000438
+_TRISC1                         (abs)       00000439
+_TRISC2                         (abs)       0000043A
+_TRISC3                         (abs)       0000043B
+_TRISC4                         (abs)       0000043C
+_TRISC5                         (abs)       0000043D
+_TRISC6                         (abs)       0000043E
+_TRISC7                         (abs)       0000043F
+_TRISD                          (abs)       00000088
+_TRISD0                         (abs)       00000440
+_TRISD1                         (abs)       00000441
+_TRISD2                         (abs)       00000442
+_TRISD3                         (abs)       00000443
+_TRISD4                         (abs)       00000444
+_TRISD5                         (abs)       00000445
+_TRISD6                         (abs)       00000446
+_TRISD7                         (abs)       00000447
+_TRISE                          (abs)       00000089
+_TRISE0                         (abs)       00000448
+_TRISE1                         (abs)       00000449
+_TRISE2                         (abs)       0000044A
+_TRMT                           (abs)       000004C1
+_TX9                            (abs)       000004C6
+_TX9D                           (abs)       000004C0
+_TXEN                           (abs)       000004C5
+_TXIE                           (abs)       00000464
+_TXIF                           (abs)       00000064
+_TXREG                          (abs)       00000019
+_TXSTA                          (abs)       00000098
+_UA                             (abs)       000004A1
+_WCOL                           (abs)       000000A7
+_WR                             (abs)       00000C61
+_WREN                           (abs)       00000C62
+_WRERR                          (abs)       00000C63
+_ZERO                           (abs)       0000001A
+__Beeprom_data                  eeprom_data 00002100
+__Bnvbit_0                      nvbit_0     00000E52
+__Bnvbit_1                      nvbit_1     000000A0
+__Bnvbit_2                      nvbit_2     00000110
+__Bnvbit_3                      nvbit_3     00000190
+__Bptbit_0                      ptbit_0     00000E52
+__Brbit_0                       rbit_0      0000007E
+__Brbit_1                       rbit_1      000000A0
+__Brbit_2                       rbit_2      00000110
+__Brbit_3                       rbit_3      00000190
+__Hclrtext                      clrtext     00000018
+__Hcode                         code        00000E52
+__Hcommon                       common      0000007E
+__Hconfig                       config      00002008
+__Heeprom_data                  eeprom_data 00000000
+__Hend_init                     end_init    00000018
+__Hfloat_text0                  float_text0 00000729
+__Hfloat_text1                  float_text1 00000729
+__Hfloat_text2                  float_text2 00000729
+__Hfloat_text3                  float_text3 00000729
+__Hfloat_text4                  float_text4 00000729
+__Hfnauto0                      fnauto0     00000048
+__Hfnauto1                      fnauto1     000000A0
+__Hfnauto2                      fnauto2     00000110
+__Hfnauto3                      fnauto3     00000190
+__Hfnautoc                      fnautoc     0000007E
+__Hidata                        idata       00000729
+__Hidata_0                      idata_0     00000723
+__Hidata_1                      idata_1     00000723
+__Hidata_2                      idata_2     00000723
+__Hidata_3                      idata_3     00000723
+__Hidloc                        idloc       00002000
+__Hinit                         init        00000015
+__Hinit23                       init23      00000015
+__Hintcode                      intcode     00000000
+__Hintentry                     intentry    00000000
+__Hintret                       intret      00000000
+__Hintsave                      intsave     00000E52
+__Hintsave_1                    intsave_1   00000E52
+__Hintsave_2                    intsave_2   00000E52
+__Hintsave_3                    intsave_3   00000E52
+__Hmaintext                     maintext    00000060
+__Hnvbit_0                      nvbit_0     00007290
+__Hnvbit_1                      nvbit_1     00000500
+__Hnvbit_2                      nvbit_2     00000880
+__Hnvbit_3                      nvbit_3     00000C80
+__Hnvram                        nvram       0000007E
+__Hnvram_1                      nvram_1     000000A0
+__Hnvram_2                      nvram_2     00000110
+__Hnvram_3                      nvram_3     00000190
+__Hpowerup                      powerup     00000723
+__Hpstrings                     pstrings    00000060
+__Hptbit_0                      ptbit_0     00007290
+__Hramdata                      (abs)       0000007E
+__Hrbit_0                       rbit_0      000003F0
+__Hrbit_1                       rbit_1      00000500
+__Hrbit_2                       rbit_2      00000880
+__Hrbit_3                       rbit_3      00000C80
+__Hrbss_0                       rbss_0      0000007E
+__Hrbss_1                       rbss_1      000000A0
+__Hrbss_2                       rbss_2      00000110
+__Hrbss_3                       rbss_3      00000190
+__Hrdata_0                      (abs)       0000007E
+__Hrdata_1                      rdata_1     000000A0
+__Hrdata_2                      rdata_2     00000110
+__Hrdata_3                      rdata_3     00000190
+__Hreset_vec                    reset_vec   00000000
+__Hstrings                      strings     00000723
+__Hstruct                       struct      0000007E
+__Htemp                         temp        0000007E
+__Htext                         text        00000E52
+__Lclrtext                      clrtext     00000018
+__Lcode                         code        00000E52
+__Lcommon                       common      0000007E
+__Lconfig                       config      00002007
+__Leeprom_data                  eeprom_data 00000000
+__Lend_init                     end_init    00000015
+__Lfloat_text0                  float_text0 00000729
+__Lfloat_text1                  float_text1 00000729
+__Lfloat_text2                  float_text2 00000729
+__Lfloat_text3                  float_text3 00000729
+__Lfloat_text4                  float_text4 00000729
+__Lfnauto0                      fnauto0     00000020
+__Lfnauto1                      fnauto1     000000A0
+__Lfnauto2                      fnauto2     00000110
+__Lfnauto3                      fnauto3     00000190
+__Lfnautoc                      fnautoc     0000007E
+__Lidata                        idata       00000723
+__Lidata_0                      idata_0     00000723
+__Lidata_1                      idata_1     00000723
+__Lidata_2                      idata_2     00000723
+__Lidata_3                      idata_3     00000723
+__Lidloc                        idloc       00002000
+__Linit                         init        00000000
+__Linit23                       init23      00000015
+__Lintcode                      intcode     00000000
+__Lintentry                     intentry    00000000
+__Lintret                       intret      00000000
+__Lintsave                      intsave     00000E52
+__Lintsave_1                    intsave_1   00000E52
+__Lintsave_2                    intsave_2   00000E52
+__Lintsave_3                    intsave_3   00000E52
+__Lmaintext                     maintext    00000018
+__Lnvbit_0                      nvbit_0     00007290
+__Lnvbit_1                      nvbit_1     00000500
+__Lnvbit_2                      nvbit_2     00000880
+__Lnvbit_3                      nvbit_3     00000C80
+__Lnvram                        nvram       0000007E
+__Lnvram_1                      nvram_1     000000A0
+__Lnvram_2                      nvram_2     00000110
+__Lnvram_3                      nvram_3     00000190
+__Lpowerup                      powerup     00000723
+__Lpstrings                     pstrings    00000060
+__Lptbit_0                      ptbit_0     00007290
+__Lramdata                      (abs)       00000078
+__Lrbit_0                       rbit_0      000003F0
+__Lrbit_1                       rbit_1      00000500
+__Lrbit_2                       rbit_2      00000880
+__Lrbit_3                       rbit_3      00000C80
+__Lrbss_0                       rbss_0      0000007E
+__Lrbss_1                       rbss_1      000000A0
+__Lrbss_2                       rbss_2      00000110
+__Lrbss_3                       rbss_3      00000190
+__Lrdata_0                      (abs)       00000078
+__Lrdata_1                      rdata_1     000000A0
+__Lrdata_2                      rdata_2     00000110
+__Lrdata_3                      rdata_3     00000190
+__Lreset_vec                    reset_vec   00000000
+__Lstrings                      strings     00000700
+__Lstruct                       struct      0000007E
+__Ltemp                         temp        0000007E
+__Ltext                         text        00000E52
+__S0                            (abs)       00002008
+__S1                            (abs)       00000190
+__S2                            (abs)       00002100
+___awdiv                        text172     000002F0
+___awdiv_counter                fnauto0     0000003E
+___awdiv_dividend               fnauto0     00000039
+___awdiv_divisor                fnauto0     0000003B
+___awdiv_quotient               fnauto0     0000003F
+___awdiv_sign                   fnauto0     0000003D
+___awmod                        text174     00000222
+___awmod_counter                fnauto0     0000003E
+___awmod_dividend               fnauto0     00000039
+___awmod_divisor                fnauto0     0000003B
+___awmod_sign                   fnauto0     0000003D
+___awtoft                       text171     00000178
+___awtoft_c                     fnauto0     0000002F
+___awtoft_f1                    fnauto0     00000032
+___ftadd                        text173     00000484
+___ftadd_cntr                   fnauto0     0000003C
+___ftadd_exp1                   fnauto0     0000003F
+___ftadd_exp2                   fnauto0     0000003E
+___ftadd_f1                     fnauto0     00000035
+___ftadd_f2                     fnauto0     00000038
+___ftadd_sign1                  fnauto0     0000003D
+___ftadd_sign2                  fnauto0     0000003B
+___ftge                         text165     00000140
+___ftge_ff1                     fnauto0     0000002F
+___ftge_ff2                     fnauto0     00000032
+___ftmul                        text170     000003E1
+___ftmul_cntr                   fnauto0     00000037
+___ftmul_exp1                   fnauto0     00000036
+___ftmul_f1                     fnauto0     0000002F
+___ftmul_f2                     fnauto0     00000032
+___ftmul_f3                     fnauto0     00000038
+___ftmul_sign1                  fnauto0     00000035
+___ftneg                        text177     00000066
+___ftneg_f1                     fnauto0     00000038
+___ftpack                       text178     00000729
+___ftpack_arg                   fnauto0     00000042
+___ftpack_exp                   fnauto0     00000041
+___ftsub                        text169     00000071
+___ftsub_f1                     fnauto0     0000002F
+___ftsub_f2                     fnauto0     00000032
+___fttol                        text166     0000027D
+___fttol_exp1                   fnauto0     00000034
+___fttol_f1                     fnauto0     0000002F
+___fttol_lval                   fnauto0     00000035
+___fttol_sign1                  fnauto0     00000033
+___ftunpack                     text180     000001C8
+___ftunpack_arg                 fnauto0     00000042
+___ftunpack_exp                 fnauto0     00000041
+___ftunpack_sign                fnauto0     00000043
+__databank                      (abs)       FFFFFFFF
+__end_of_Delay                  text183     00001000
+__end_of_LCDDisplayInitializing text161     00000140
+__end_of_LCDEnable              text182     000007FD
+__end_of_LCDInitialize          text168     000000DC
+__end_of_LCDReset               text176     00000FE7
+__end_of_LCDWriteByte           text181     00000108
+__end_of_LCDWriteCommand        text179     00000FD4
+__end_of_LCDWriteData           text175     00000FC9
+__end_of_LCDWriteFloat          text162     00000700
+__end_of_LCDWriteInteger        text167     000003E1
+__end_of_LCDWriteString         text164     000000B1
+__end_of_MainSystemInitialize   text163     00000066
+__end_of___awdiv                text172     00000364
+__end_of___awmod                text174     0000027D
+__end_of___awtoft               text171     000001C8
+__end_of___ftadd                text173     000005A2
+__end_of___ftge                 text165     00000178
+__end_of___ftmul                text170     00000484
+__end_of___ftneg                text177     00000071
+__end_of___ftpack               text178     000007EF
+__end_of___ftsub                text169     0000008E
+__end_of___fttol                text166     000002F0
+__end_of___ftunpack             text180     00000222
+__end_of_main                   maintext    00000060
+__stringbase                    strings     0000070E
+__tempreg                       (abs)       00000020
+_exit                           init        00000000
+_i                              (abs)       00000078
+_j                              (abs)       0000007A
+_k                              (abs)       0000007C
+_main                           maintext    00000018
+btemp                           (abs)       0000007E
+intlevel0                       intentry    00000000
+intlevel1                       intentry    00000000
+intlevel2                       intentry    00000000
+intlevel3                       intentry    00000000
+intlevel4                       intentry    00000000
+intlevel5                       intentry    00000000
+ltemp0                          (abs)       0000007E
+reset_vec                       reset_vec   00000000
+start                           init        00000000
+stringdir                       strings     00000709
+stringjmp                       strings     0000070D
+stringtab                       strings     00000700
+ttemp0                          (abs)       0000007E
+wtemp0                          (abs)       0000007E
+wtemp1                          (abs)       00000080

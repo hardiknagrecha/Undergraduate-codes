@@ -1,0 +1,12 @@
+___awdiv: CODE, 883 0 123
+_InitializeSerialCommunication: CODE, 436 0 14
+___awmod: CODE, 663 0 106
+_SeriallyDisplayByte: CODE, 1006 0 262
+_main: CODE, 1268 0 780
+_MainSystemInitialize: CODE, 399 0 6
+_currentlevel: CODE, 769 0 114
+_SendByteSerially: CODE, 424 0 12
+_Delay: CODE, 523 0 31
+_ReceiveByteSerially: CODE, 413 0 11
+___bmul: CODE, 494 0 29
+Total: 1488

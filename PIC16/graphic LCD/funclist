@@ -1,0 +1,18 @@
+_SetStartLine: CODE, 1211 0 27
+_delay: CODE, 1163 0 23
+_LCDprintf: CODE, 1675 0 109
+_LCDprintf2: CODE, 1910 0 138
+_main: CODE, 1269 0 40
+_SendLCDData: CODE, 1784 0 126
+_output: CODE, 1527 0 68
+_MainSystemInitailize: CODE, 1126 0 15
+_OmaDelay: CODE, 1116 0 10
+_SetPage: CODE, 1186 0 25
+_SetColumn: CODE, 1464 0 63
+_on: CODE, 1141 0 22
+_SendLCDCommand: CODE, 1401 0 63
+_clear: CODE, 1595 0 80
+_Delay: CODE, 1238 0 31
+_MainDisplayProjectTitle: CODE, 1353 0 48
+___wmul: CODE, 1309 0 44
+Total: 932

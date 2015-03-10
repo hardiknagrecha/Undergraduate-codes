@@ -1,0 +1,26 @@
+___ftneg: CODE, 2893 0 12
+___awdiv: CODE, 3677 0 121
+___ftpack: CODE, 6 0 123
+___awmod: CODE, 3463 0 106
+_main: CODE, 1445 0 603
+___lwtoft: CODE, 2990 0 27
+_LCDWriteData: CODE, 2871 0 11
+_LCDWriteByte: CODE, 3168 0 44
+_ADCInitialize: CODE, 2953 0 18
+___ftadd: CODE, 729 0 330
+_LCDWriteFloat: CODE, 1059 0 386
+_MainSystemInitialize: CODE, 2882 0 11
+_LCDInitialize: CODE, 3125 0 43
+_LCDWriteString: CODE, 3083 0 42
+_LCDReset: CODE, 2971 0 19
+_ADCReadData: CODE, 3935 0 161
+_Delay: CODE, 3017 0 31
+___ftmul: CODE, 491 0 238
+_LCDWriteCommand: CODE, 2860 0 11
+_LCDWriteInteger: CODE, 3798 0 137
+___awtoft: CODE, 3212 0 46
+_LCDEnable: CODE, 2920 0 16
+___fttol: CODE, 129 0 164
+___ftge: CODE, 3569 0 108
+___ftdiv: CODE, 293 0 198
+Total: 3006

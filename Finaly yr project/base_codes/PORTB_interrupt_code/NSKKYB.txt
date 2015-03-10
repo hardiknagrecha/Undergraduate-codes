@@ -1,0 +1,8 @@
+purle : RB3
+blue : RB2
+green : RB1
+yellow : RB0
+orange : RB7
+red : RB6
+brown : RB5
+black : RB4

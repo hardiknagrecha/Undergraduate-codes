@@ -1,0 +1,57 @@
+
+
+HI-TECH Software PICC Macro Assembler V9.60
+                                                      Tue Apr 10 11:22:32 2012
+
+
+     1                           	processor	16F877A
+     2                           	opt	pw 79
+     3                           	psect	text0,local,class=CODE,delta=2
+     4                           	psect	text1,local,class=CODE,delta=2
+     5  0000                     
+     6  0000                     
+     7  0000                     
+     8  0000                     
+     9  0000                     
+    10  0000                     
+    11  0000                     
+    12  0000                     
+    13  0000                     
+    14  0000                     
+    15  0000                     _Delay$time	set	?_Delay
+    16                           
+    17                           	psect	text0
+    18  06DE                     _Delay
+    19                           ;	_pause assigned to ?a_Delay+0
+    20  0000                     _Delay$pause	set	?a_Delay
+    21                           ;delay.c: 3: void Delay(unsigned int time)
+    22  06DE  2EE8               	goto	l2
+    23  06DF                     l3
+    24                           ;delay.c: 7: {
+    25  06DF  30FF               	movlw	-1
+    26  06E0  00B1               	movwf	?a_Delay
+    27                           ;delay.c: 9: while(pause--);
+    28  06E1                     l5
+    29  06E1  03B1               	decf	?a_Delay
+    30  06E2  0F31               	incfsz	?a_Delay,w
+    31  06E3  2EE1               	goto	l5
+    32                           ;delay.c: 10: time--;
+    33  06E4  08AF               	movf	?_Delay
+    34  06E5  1903               	btfsc	3,2
+    35  06E6  03B0               	decf	?_Delay+1
+    36  06E7  03AF               	decf	?_Delay
+    37  06E8                     l2
+    38  06E8  1283               	bcf	3,5
+    39  06E9  1303               	bcf	3,6	;carry unused
+    40  06EA  0830               	movf	?_Delay+1,w
+    41  06EB  042F               	iorwf	?_Delay,w
+    42  06EC  1903               	btfsc	3,2
+    43  06ED  0008               	return
+    44  06EE  2EDF               	goto	l3
+
+
+HI-TECH Software PICC Macro Assembler V9.60
+Symbol Table                                          Tue Apr 10 11:22:32 2012
+
+          l2 06E8            l3 06DF            l5 06E1        _Delay 06DE  
+      status 0003       ?_Delay 002F      ?a_Delay 0031  

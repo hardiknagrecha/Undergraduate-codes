@@ -1,0 +1,3 @@
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\two_motors_p_pos_xy_LCD_motor2\motor2\P_positive_continuous2\serial.c 37 : static function 'LCDReset' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\two_motors_p_pos_xy_LCD_motor2\motor2\P_positive_continuous2\serial.c 37 : static function 'LCDWriteByte' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\final yr project codes and docs\two_motors_p_pos_xy_LCD_motor2\motor2\P_positive_continuous2\serial.c 37 : static function 'LCDEnable' not defined

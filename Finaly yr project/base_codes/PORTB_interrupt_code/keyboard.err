@@ -1,0 +1,3 @@
+Warning[2064] C:\Users\hardik - admin\Desktop\KEYBOARD\keyboard.c 49 : static function 'LCDReset' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\KEYBOARD\keyboard.c 49 : static function 'LCDWriteByte' not defined
+Warning[2064] C:\Users\hardik - admin\Desktop\KEYBOARD\keyboard.c 49 : static function 'LCDEnable' not defined

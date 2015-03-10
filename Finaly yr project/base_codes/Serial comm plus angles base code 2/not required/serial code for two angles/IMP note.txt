@@ -1,0 +1,3 @@
+I by mistake am checking the same flag bit for both the interrupts and that is where the issue is coming.
+I need to check the interrupt flags seperately in the ISR. But as of now, only one interrupt required as a uC is used
+for every motor....

@@ -1,0 +1,13 @@
+_main: CODE, 1785 0 38
+_LCDWriteData: CODE, 1638 0 11
+_LCDWriteByte: CODE, 1906 0 44
+_MainSystemInitialize: CODE, 1621 0 6
+_value: CODE, 1748 0 37
+_LCDInitialize: CODE, 1863 0 43
+_LCDWriteString: CODE, 1715 0 33
+_LCDReset: CODE, 1665 0 19
+_Delay: CODE, 1684 0 31
+_LCDWriteCommand: CODE, 1627 0 11
+_numbersdisplay: CODE, 1950 0 98
+_LCDEnable: CODE, 1649 0 16
+Total: 387

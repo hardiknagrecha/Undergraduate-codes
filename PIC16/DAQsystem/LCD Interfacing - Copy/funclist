@@ -1,0 +1,23 @@
+___ftneg: CODE, 2962 0 12
+___awdiv: CODE, 3559 0 121
+_InitializeSerialCommunication: CODE, 2974 0 14
+___ftpack: CODE, 3680 0 123
+___awmod: CODE, 3453 0 106
+_main: CODE, 1585 0 463
+___lwtoft: CODE, 3023 0 27
+_ADCInitialize: CODE, 3005 0 18
+___ftadd: CODE, 887 0 330
+_MainSystemInitialize: CODE, 2939 0 11
+_SendIntegerSerially: CODE, 3803 0 129
+_SendFloatSerially: CODE, 1217 0 368
+_SendByteSerially: CODE, 2950 0 12
+_ADCReadData: CODE, 278 0 173
+_Delay: CODE, 3050 0 31
+___ftmul: CODE, 649 0 238
+___awtoft: CODE, 3158 0 46
+___wmul: CODE, 3114 0 44
+___fttol: CODE, 3932 0 164
+___ftge: CODE, 170 0 108
+_SendStringSerially: CODE, 3081 0 33
+___ftdiv: CODE, 451 0 198
+Total: 2769

@@ -1,0 +1,20 @@
+
+# 1 "C:\Users\hardik\Desktop\new\delay.c"
+
+# 5 "C:\Users\hardik\Desktop\new\delay.h"
+void Delay(unsigned int time);
+
+
+typedef unsigned char ubyte;
+
+# 3 "C:\Users\hardik\Desktop\new\delay.c"
+void Delay(unsigned int time)
+{
+unsigned char pause;
+while( time > 0)
+{
+pause = 255;
+while(pause--);
+time--;
+}
+}
